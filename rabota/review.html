@@ -3,42 +3,160 @@
 
 <head>
     <meta charset="utf-8">
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1YEQZftkjBaVyO3g-65hkMewjF74XBV8"></script>
-    <script type="text/javascript" src="assets/script/map.js"></script>
-    <link rel="stylesheet" href="assets/css/snow.css" type="text/css" />
-    <link href="assets/style/9459.ttf" rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="assets/css/review.css" type="text/css" />
+
     <title>Зимние виды спорта</title>
 </head>
 
 <body>
-<div class="main">Для нас важен каждый отзыв!
-    <form>
-        Bаше имя:<input type="text" name="name" placeholder="Иванов Иван Иванович"> Bаша почта:<input type="text" name="mail" placeholder="ivanov@mail.ru">
-        <datalist id=place>
-        <option value="Силичи">
-            <option value="Раубичи">
-                <option value="Логойск">
-                    <option value="Солнечная долина">
-                        <option value="Якутские горы">
-                            <option value="Силичи">
-                                <option value="Силичи">
-                                    <option value="Силичи">
-                                        <option value="Силичи">
-                                            <option value="Силичи">
-                                                <option value="Силичи">
-                                                    <option value="Силичи">
-                                                        <option value="Силичи">
-                                                            <option value="Силичи">
-                                                                <option value="Силичи">
-                                                                    <option value="Силичи">
-                                                                        <option value="Силичи">
-                                                                            <option value="Силичи">
-                                                                                <option value="Силичи">
-                                                                                    <option value="Силичи">
-                                                                                        </datalist>
-                                                                                        Место отдыха: <input type=text list="place">
-                                                                                        Ваши впечатления:<textarea name="review"></textarea>
 
-        
-    </form>
-</div>
+    <div class="header">
+        <a href="main_page.html"><img src="assets/image/sun.png"></img></a>
+        <div class="language">
+
+            <ul>
+                <li> <a href=""><img src="assets/image/bel.png" title="Бел"></img></a></li>
+                <li> <a href=""><img src="assets/image/amer.png" title="En"></img></a></li>
+                <li><a href=""><img src="assets/image/rus.png" title="Рус"></img></a></li>
+
+            </ul>
+        </div>
+        <h1>АКТИВНЫЙ ОТДЫХ ДЛЯ КАЖДОГО</h1>
+
+        <div class="animation"><a href="main_page.html"></a></div>
+    </div>
+
+    <div class="main">
+
+
+        <div class="nav1">
+
+            <nav>
+                <ul>
+                    <li><a href="velo.html">ВЕЛОСПОРТ,<br>РОЛИКИ</a></li>
+                    <li> <a href="snow.html">ЛЫЖИ, <br>СНОУБОРД</a></li>
+                    <li><a href="boll.html">ЛАЗЕРТАГ, <br>ПЕЙНТБОЛ</a></li>
+                    <li><a href="climbing.html">СКАЛОДРОМ, <br>ВЕРЕВОЧНЫЙ ГОРОД</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="nav2">
+            <nav>
+                <ul>
+                    <li><a href="rent.html">Прокат снаряжения</a></li>
+                    <li><a href="review.html">Отзывы</a></li>
+                    <li><a href="snow.html">Новости</a></li>
+                </ul>
+            </nav>
+        </div>
+
+
+
+        <div class="main2">
+            <div class="review">
+                <div class="review1">
+                    <img src="assets/image3/man1.png">
+                    <p class="name">Николай</p>
+                    <p class="place">Клуб 067</p>
+                    <p class="rev">Слаженная работа инструкторов и команды, продуманная организация, понравилось оборудование и хорошее состояние игровой зоны. Спасибо за отличную работу! Вы просто КОСМОС! </p>
+                </div>
+                <div class="review1">
+                    <img src="assets/image3/women1.jpg">
+                    <p class="name">Дарья</p>
+                    <p class="place">"Якутские горы"</p>
+                    <p class="rev">Никакого шума, посетителей немного, очередей почти нет, вокруг – одна природа, спокойствие, самый чистый воздух… В общем, приятное местечко и с пользой проведенное время.
+                    </p>
+                </div>
+                 <div class="review1">
+                    <img src="assets/image3/kate.jpg">
+                    <p class="name">Катя&Алена</p>
+                    <p class="place">"Солнечная долина"</p>
+                    <p class="rev">Прекрасное место для активного отдыха, которое расположено в черте Минска.
+Цена на отдых в Солнечной долине меньше чем в других подобных местах, которые расположены недалеко от города.
+Для проголодавшихся есть пункты общественного питания, цены также не очень большие.
+В целом, нам нравится это место и уверены, что побываем там еще не раз.
+Удачи и приятного отдыха.
+                    </p>
+                </div>
+               <a href="">Читать остальные отзывы &rArr;</a>
+            </div>
+            <form><h3>Для нас важен каждый отзыв!</h3>
+                <fieldset><br> Bаше имя:
+                <br><input type="text" name="name" placeholder="Иванов Иван Иванович" id="name">
+                <br>Bаша почта:
+                <br><input type="text" name="mail" placeholder="ivanov@mail.ru" id="name">
+                <br> Место отдыха:
+                <br><select name="place" size=1>
+        <option value=1>"Силичи"</option>
+            <option value=2>"Раубичи"</option>
+                <option value=3>"Логойск"</option>
+                    <option value=4>"Солнечная долина"</option>
+                        <option value=5>"Якутские горы"</option>
+                            <option value=6>"Силичи"</option>
+                                <option value=7>"Силичи"</option>
+                                    <option value=8>"Силичи</option>
+                                        <option value=9>"Силичи"</option>
+                                            <option value=10>"Силичи"</option>
+                                                <option value=11>"Силичи"</option>
+                                                    <option value=12>"Силичи"</option>
+                                                        <option value=13>"Силичи"</option>
+                                                            <option value=14>"Силичи"</option>
+                                                                <option value=15>"Силичи"</option>
+                                                                    <option value=16>"Силичи"</option>
+                                                                        <option value=17>"Силичи"</option>
+                                                                            <option value=18>"Силичи"</option>
+                                                                                <option value=19>"Силичи"</option>
+                                                                                    <option value=20>"Силичи"</option>
+                                                                                        </select>
+
+                <br>Ваши впечатления:
+                <br><textarea name="review"></textarea>
+                </fieldset>
+                <br><input type="submit" value="Отправить отзыв">
+
+
+            </form>
+            <div class="empty"></div>
+        </div>
+
+
+
+
+
+
+        <div class="footer1">
+            <div class="subscription">
+                <h4>&#9993;ПОДПИСКА</h4>
+                <p>Подпишитесь на нас в социальных сетях, оформите рассылку уведомлений, и тогда Вы всегда будете в курсе всех незабываемых и азартных мероприятий!</p>
+                <img src="assets/image/facebook.png">
+                <img src="assets/image/gmail.png">
+                <img src="assets/image/vk.png">
+                <img src="assets/image/twitter.png">
+            </div>
+
+            <div class="contacts">
+                <h4>&#9990;КОНТАКТЫ</h4>
+                <p>Связь с юридическими лицами по номерам телефонов:
+                    <p class="special">+375292004422(МТС)
+                        <br>+375296004422(Велком)</p>
+                    <p>Также можете писать нам на почтовый ящик:
+                        <p class="special">shust1111@mail.ru</p>
+            </div>
+            <div class="menu">
+                <h4 class="h4">&#9734;МЕНЮ</h4>
+                <ul>
+                    <li><a href="velo.html">Велоспорт, ролики</a></li>
+                    <li><a href="snow.html">Лыжи, сноуборд</a></li>
+                    <li><a href="boll.html">Лазертаг, пейнтбол</a></li>
+                    <li><a href="climbing.html">Скалодром, веревочный город</a></li>
+                    <li><a href="climbing.html">Отзывы</a></li>
+                    <li><a href="climbing.html">Новости</a></li>
+                </ul>
+            </div>
+            <div class="empty"></div>
+        </div>
+        <div class="footer2">&copy; 2017 Shust Kristina. ALL RIGHTS RESERVED.</div>
+</body>
+
+</html>

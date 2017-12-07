@@ -159,13 +159,12 @@ label[for="pl-5"]:not(:checked)~div {
     display: none;
 }
 
-#pl-1:checked~.s1,
-#pl-2:checked~.s2,
-#pl-3:checked~.s3,
-#pl-4:checked~.s4,
-#pl-5:checked~.s5{
+#pl-1:checked~div,
+#pl-2:checked~div,
+#pl-3:checked~div,
+#pl-4:checked~div,
+#pl-5:checked~div {
     display: block;
-    height: 0;
     position: relative;
 }
 
@@ -206,30 +205,20 @@ label[for="pl-5"]:not(:checked)~div {
     top: -74.5vh;
 }
 
-#pl-1:checked~div>#map,
-#pl-2:checked~div>#map_two,
-#pl-3:checked~div>#map3,
-#pl-4:checked~div>#map4,
-#pl-5:checked~div>#map5
+#pl-1:checked~div>.map,
+#pl-2:checked~div>.map2,
+#pl-3:checked~div>.map3,
+#pl-4:checked~div>.map4,
+#pl-5:checked~div>.map5
+
 {
     width: 42vw;
     height: 65vh;
     position: absolute;
     left: 52vw;
-    top: 62vh;
+    top: 60vh;
     box-shadow: 3px -2px 5px 3px gray;
-}
-#pl-2:checked~div>#map_two{
-    top: 47vh;
-}
-#pl-3:checked~div>#map3{
-    top: 32vh;
-}
-#pl-4:checked~div>#map4{
-    top: 17vh;
-}
-#pl-5:checked~div>#map5{
-   top: 2vh;
+
 }
 
 #pl-1:checked~div>.slider,
@@ -242,19 +231,19 @@ label[for="pl-5"]:not(:checked)~div {
      padding-top: 67vh;
 }
 #pl-1:checked~div>.slider{
-    top: 62vh;
+    top: 60vh;
 }
 #pl-2:checked~div>.slider2{
-    top: 47vh;
+    top: 45vh;
 }
 #pl-3:checked~div>.slider3{
-    top: 32vh;
+    top: 30vh;
 }
 #pl-4:checked~div>.slider4{
-    top: 17vh;
+    top: 15vh;
 }
 #pl-5:checked~div>.slider5{
-    top: 2vh;
+    top: 0;
 }
 
 .slider>img,

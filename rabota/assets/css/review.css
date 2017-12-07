@@ -1,0 +1,333 @@
+
+
+
+
+
+body {
+    width: 95vw;
+    margin-left: 2vw;
+    margin-right: 2vw;
+    font-size: 3vmin;
+}
+
+.header,
+.main,
+.footer1,
+.footer2 {
+    width: 95vw;
+    background-color: #F8F8FF;
+    position: relative;
+}
+
+.language>ul>li {
+    padding-right: 2.5vw;
+}
+
+.language>ul>li:hover>a>img {
+    width: 2.4vw;
+    box-shadow: 0 0 6px 3px #20B2AA;
+
+}
+
+.language>ul>li>a>img {
+    width: 2.2vw;
+    display: inline-block;
+    position: absolute;
+    margin-left: 76vw;
+    margin-top: -15vh;
+    transition: all 0.3s;
+}
+
+.header>a>img {
+    width: 26vw;
+    height: 20vh;
+    transition: all 0.5s;
+}
+
+.header>a:hover>img {
+    transform: translateY(40px) translateX(40px);
+}
+
+.animation {
+    width: 95vw;
+    height: 15vh;
+    background: url(../image/velo.gif) 0 30% no-repeat;
+    background-size: 15%;
+    animation: velo 25s ease-in-out infinite;
+    animation-direction: alternate;
+    position: relative;
+}
+
+@keyframes velo {
+    from {
+        margin-left: 0;
+    }
+    to {
+        margin-left: 80vw;
+    }
+}
+
+h1 {
+    margin: 0;
+    text-align: center;
+}
+
+.nav1 {
+    border-radius: 80px 10px 0 0;
+    background-color: #008B8B;
+}
+
+ul {
+    display: block;
+    margin: 0;
+}
+
+li {
+    display: inline-block;
+}
+
+.nav1>nav>ul>li>a,
+.nav2>nav>ul>li>a {
+    display: inline-block;
+    width: 22vw;
+    text-decoration: none;
+    color: white;
+    font-family: sans-serif;
+    text-align: center;
+    padding: 1vmin 0 1vmin 0;
+}
+
+.nav1>nav>ul>li:hover {
+    border-radius: 20px;
+    background-color: #20B2AA;
+    box-shadow: 0 0 12px 3px white;
+    font-weight: bold;
+}
+
+.nav2>nav>ul>li:hover {
+    border-radius: 20px;
+    background-color: #008B8B;
+    box-shadow: 0 0 12px 3px white;
+    font-weight: bold;
+}
+
+.nav2 {
+    width: 95vw;
+    border-radius: 0 0 80px 10px;
+    background-color: #20B2AA;
+    text-align: center;
+}
+
+.review {
+    width: 40vw;
+    float: left;
+    margin-top: 5vh;
+    margin-left: 5vw;
+    margin-bottom: 5vh;
+}
+
+form {
+    width: 35vw;
+    margin-left: 55vw;
+     padding-top: 15px;
+}
+
+.review1>img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+    border: 2px solid darkgrey;
+}
+
+.review1 {
+    position: relative;
+    padding-top: 15px;
+    border: 2px solid lightgray;
+    background-color: lightgray;
+     border-radius: 5px;
+     margin-bottom: 8vh;
+     padding-left: 1vw;
+     box-shadow: 0 0 10px 3px #808080;
+}
+
+.name,
+.place {
+    font-weight: bold;
+}
+
+.place {
+    font-style: italic;
+}
+.review1::after{content: "";
+display: block;
+width: 0;
+height: 0;
+    border-top: 40px solid lightgray;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    transform: skewX(-40deg);
+    position: absolute;
+    left: 10vw;
+}
+
+.review1>img{
+    float: left;
+}
+.review1>.name,
+.review1>.place
+{
+    position: absolute;
+}
+.review1>.name{
+    left: calc(110px + 1vw);
+}
+.review1>.place {
+    left: calc(110px + 1vw);
+    top: 50px;
+   
+}
+.rev{
+    clear: both;
+}
+.review>a{
+    float: right;
+    text-decoration: none;
+    color: dimgray;
+}
+
+form>h3{
+    text-align: center;
+}
+
+
+   
+    
+
+
+
+input,
+label,
+textarea,
+select{
+    height: 4vh;
+    width: 20vw;
+     border: 2px solid #008080;
+     padding-left: 5px;
+}
+select{
+    width: 20.9vw;
+}
+input:last-child{
+    width: 10vw;
+   margin-left: 13vw;
+   background: linear-gradient(#008B8B, #66CDAA, #008B8B);
+   color: white;
+   cursor: pointer;
+}
+textarea{
+    height: 12vh;
+    width: 30vw;
+}
+fieldset{
+    width: 30vw;
+    background: url("../image3/letter.png") 90% 40% no-repeat;
+    background-size: 20%;
+    border: 4px outset;
+}
+
+
+
+
+
+
+.empty {
+    clear: both;
+}
+
+.menu,
+.subscription,
+.contacts {
+    width: 25vw;
+    display: block;
+    background-color: #008B8B;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, .3),
+    -13px 0 20px -3px rgba(0, 0, 0, .8),
+    13px 0 20px -3px rgba(0, 0, 0, .8),
+    0 0 40px rgba(0, 0, 0, .1) inset;
+    font-size: 1.7vw;
+    padding: 0 0.5vw 0 0.5vw;
+}
+
+.subscription {
+    float: left;
+    margin-left: 5vw;
+}
+
+.contacts {
+    float: right;
+    margin-right: 5vw;
+}
+
+.menu {
+    margin-left: 35vw;
+    margin-right: 30vw;
+
+
+}
+
+.h4 {
+    margin-top: 0;
+    padding-top: 2.5vh;
+
+}
+
+.menu li {
+    display: block;
+    width: 23vw;
+}
+
+.menu ul {
+    text-align: center;
+    padding: 0 1vmin 1vmin 1vmin;
+}
+
+.menu>ul>li>a {
+    text-decoration: none;
+    color: white;
+    padding-bottom: 0.8vh;
+}
+
+h4 {
+    text-align: center;
+}
+
+.subscription p,
+.contacts p {
+    text-indent: 15px;
+    text-align: justify;
+    margin: 0;
+}
+
+.subscription img {
+    width: 4vw;
+    margin-left: 1.5vw;
+    transition: all 0.5s;
+}
+
+.subscription img:hover {
+    box-shadow: 3px -3px 10px 2px white;
+    width: 4.2vw;
+}
+
+.footer2 {
+    text-align: center;
+    clear: both;
+}
+
+.special {
+    display: block;
+    font-style: italic;
+    color: #00BFFF;
+    text-align: center;
+    padding: 2vh 0 2vh 3.5vw;
+}
