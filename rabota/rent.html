@@ -3,139 +3,173 @@
 
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1YEQZftkjBaVyO3g-65hkMewjF74XBV8"></script>
+    <script type="text/javascript" src="assets/script/map.js"></script>
+    <link rel="stylesheet" href="assets/css/header_footer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/snow.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/rent.css" type="text/css" />
-    <link href="assets/style/9459.ttf" rel='stylesheet' type='text/css'>
-    <title>Прокат снаряжения</title>
+    <link rel="shortcut icon" href="assets/image_snow/favicon_snow.png" type="image/png">
+    <title>Зимние виды отдыха</title>
 </head>
 
 <body>
 
-    <div class="header">
-        <a href="main_page.html"><img src="assets/image/sun.png"></img></a>
-        <div class="language">
-            <ul>
-                <li><a href=""><img src="assets/image/rus.png"></img></a></li>
-                <li> <a href=""><img src="assets/image/amer.png"></img></a></li>
-                <li> <a href=""><img src="assets/image/bel.png"></img></a></li>
+    <header>
+
+        <!-- Nav_hamburger -->
+
+        <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+        <label class="btn-menu" for="hmt">
+  <span class="first"></span>
+  <span class="second"></span>
+  <span class="third"></span>
+ </label>
+        <ul class="hidden-menu">
+            <li><a href="index.html">ГЛАВНАЯ</a></li>
+            <li><a href="velo.html">ВЕЛОТУРИЗМ</a></li>
+            <li><a href="snow.html">ЛЫЖИ, СНОУБОРД</a></li>
+            <li><a href="ball.html">ЛАЗЕРТАГ, ПЕЙНТБОЛ</a></li>
+            <li><a href="rent.html">ПРОКАТ СНАРЯЖЕНИЯ</a></li>
+            <li><a href="review.html">ОТЗЫВЫ</a></li>
+            <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
+
+        </ul>
+
+        <!-- Nav&logo -->
+
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="index.html">Главная</a></li>
+                <li><a href="velo.html">Велотуризм</a></li>
+                <li><a href="snow.html">Лыжи, сноуборд</a></li>
+                <li><a href="ball.html">Лазертаг, пейнтбол</a></li>
+                <li class="active"><a href="rent.html">Прокат снаряжения</a></li>
+                <li><a href="review.html">Отзывы</a></li>
+                <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
+                <li><i class="fa fa-phone  fa-1x " aria-hidden="true"></i></li>
             </ul>
-        </div>
-        <h1>АКТИВНЫЙ ОТДЫХ ДЛЯ КАЖДОГО</h1>
+        </nav>
+        <div class="logo"><a href="index.html"><span id="big">АКТИВНЫЙ ОТДЫХ</span>
+            <br><span id="little">для каждого</span></a></div>
+    </header>
 
-        <div class="animation"><a href="main_page.html"></a></div>
-    </div>
+    <main>
 
-    <div class="main">
-
-
-        <div class="nav1">
-
-            <nav>
-                <ul>
-                    <li><a href="velo.html">ВЕЛОСПОРТ,<br>РОЛИКИ</a></li>
-                    <li> <a href="snow.html">ЛЫЖИ, <br>СНОУБОРД</a></li>
-                    <li><a href="boll.html">ЛАЗЕРТАГ, <br>ПЕЙНТБОЛ</a></li>
-                    <li><a href="climbing.html">СКАЛОДРОМ, <br>ВЕРЕВОЧНЫЙ ГОРОД</a></li>
-                </ul>
-            </nav>
-        </div>
-        <div class="nav2">
-            <nav>
-                <ul>
-                    <li><a href="rent.html">Прокат снаряжения</a></li>
-                    <li><a href="review.html">Отзывы</a></li>
-                    <li><a href="snow.html">Новости</a></li>
-                </ul>
-            </nav>
-        </div>
-
-        <div class="rent_bike">
+        <div class="rent">
             <h3>Всё для велопрогулок</h3>
-            <img src="assets/image/velo1.png">
+            <img src="assets/image_rent/velo1.png">
             <div class="address">
-                <ul>Адреса:
-                    <li>ул.Гамарника, 3</li>
-                    <li>ул.Гамарника, 3</li>
-                    <li>ул.Гамарника, 3</li>
-                    <li>ул.Гамарника, 3</li>
-                    <li>ул.Гамарника, 3</li>
-                    <li>ул.Гамарника, 3</li>
-                </ul>
+                Выберите район: <select name="region" size="1">
+                    <option value="1">Заводской</option>                    
+                    <ul><li>1</li>
+                    <li>2</li></ul>
+                     <option value="2">Ленинский</option>
+                      <option value="3">Московский</option>
+                       <option value="4">Октябрьский</option>
+                        <option value="5">Партизанский</option>
+                         <option value="6">Первомайский</option>
+                          <option value="7">Советский</option>
+                           <option value="8">Фрунзенский</option>
+                            <option value="9">Центральный</option>
+                </select>
             </div>
-            <div class="text">Освобождены от должностей целый ряд руководителей: первый зампред исполкома, председатель комитета по сельскому хозяйству, в Министерстве сельского хозяйства — два начальника управления. Порядок там жесткий наводится, — рассказал, отвечая
-                на вопрос TUT.BY, вице-премьер Михаил Русый. Как нам стало известно, уволен начальник управления сельского хозяйства и продовольствия Гомельского облисполкома Дмитрий Петрожицкий. Увольнение же первого зампреда облисполкома, озвученное
-                вице-премьером, наши источники не подтверждают. Сам Александр Микалуцкий, курирующий в регионе сельское хозяйство, находится на рабочем месте. Напомним, в Гомельской области райисполкомы, ряд предприятий и учебных заведений получили письма
-                с просьбой оказать содействие в уборке льна в нескольких районах региона. Уже спустя сутки в Кормянский, Рогачевский, Буда-Кошелевский и Чечерский районы со всей области были направлены колонны автобусов с тысячами помощников.
+            <div class="text">Если Вы собрались покататься на велосипеде, то одного велосипеда парой недостаточно. Чтобы прогулка была одновременно и комфортной, и безопасной, необходимо заранее позаботиться о нескольких деталях: специальной одежде, средствах защиты как
+                для себя, так и для вашего железного коня. Элементы защиты (шлем, очки, перчатки) очень важны для велосипедиста. Очки для езды на велосипеде должны выполнять ряд условий: они должны защищать от ультрафиолетовых лучей, быть легкими и достаточно
+                ударопрочными. Перчатки предотвращают соскальзывание рук с руля. Для защиты еще необходимо надеть налокотники и наколенники. Так же с собой необходимо взять насос, фонарик (для езды в темное время суток), звонок и бутылку воды. Теперь
+                можно отправляться в путешествие.
             </div>
             <div class="empty"></div>
 
         </div>
-        <div class="rent_bike">
+        <div class="rent">
             <h3>Всё для зимних видов спорта</h3>
-            <img src="assets/image/snow.png">
+            <img src="assets/image_rent/snow.png">
 
             <div class="address">
-                <ul>Адреса:
-                    <li>ул.Шафарнянская, 3</li>
-                    <li>ул.Шафарнянская, 3</li>
-                    <li>ул.Шафарнянская, 3</li>
-                    <li>ул.Шафарнянская, 3</li>
-                    <li>ул.Шафарнянская, 3</li>
-                    <li>ул.Шафарнянская, 3</li>
-                </ul>
+                Выберите район: <select name="region" size="1">
+                    <option value="1">Заводской</option>
+                     <option value="2">Ленинский</option>
+                      <option value="3">Московский</option>
+                       <option value="4">Октябрьский</option>
+                        <option value="5">Партизанский</option>
+                         <option value="6">Первомайский</option>
+                          <option value="7">Советский</option>
+                           <option value="8">Фрунзенский</option>
+                            <option value="9">Центральный</option>
+                </select>
             </div>
-            <div class="text"></div>
+            <div class="text"> С наступлением зимы настало время выбрать лыжи или сноуборд и отправиться на ближайший склон! Чтобы правильно выбрать сноуборд, необходимо знать основные критерии выбора. Начинающим спортсменам лучше всего подходит минимальная жесткость сноуборда.
+                С «мягкой» доской легче учиться, она будет более плавно вести себя на трассе и прощать множество ошибок. К сноуборду подбираем крепления. Главная задача креплений – надежно зафиксировать ноги райдера на доске. Чем надежнее фиксация, тем
+                лучше управляемость и меньше риск получить травму. Крепления подбирают под ботинки, но не наоборот. Не нравится сноуборд? Попробуем подобрать лыжи. Когда вы пришли в магазин, подбирайте горные лыжи по росту за минусом 20 сантиметров от
+                вашего роста. Вопрос, как подобрать лыжные палки, Вас вообще не должен сильно беспокоить. Также необходимо подобрать одежду для катания на лыжах и сноуборде. Зимняя теплая куртка, штаны, термобелье, маска на лицо от ветра. Начинающим необходимо
+                надеть шлем. У качественной одежды для катания гарантированно будут мембранное покрытие, спасающее от влаги, и вентиляционные вырезы, пропускающие воздух внутрь; на куртке – мягкая подкладка внутри, защищающая подбородок и запястья от
+                натирания, и внутренняя «юбка» на заклепках, предохраняющая от попадания снега при падении; на штанах – заклепки или липучки, позволяющие зафиксировать штаны на талии без ремня или пояса, и закрывающиеся на молнию карманы.
+            </div>
             <div class="empty"></div>
         </div>
-        <div class="rent_bike">
-            <h3>Всё для игры в лазертаг</h3>
-            <img src="assets/image/lazertag.png">
+        <div class="rent">
+            <h3>Всё для игры в пейнтбол</h3>
+            <img src="assets/image_rent/lazertag.png">
 
             <div class="address">
-                <ul>Адреса:
-                    <li>ул.Щорса, 3</li>
-                    <li>ул.Щорса, 3</li>
-                    <li>ул.Щорса, 3</li>
-                    <li>ул.Щорса, 3</li>
-                    <li>ул.Щорса, 3</li>
-                    <li>ул.Щорса, 3</li>
-                </ul>
+                Выберите район: <select name="region" size="1">
+                    <option value="1">Заводской</option>
+                     <option value="2">Ленинский</option>
+                      <option value="3">Московский</option>
+                       <option value="4">Октябрьский</option>
+                        <option value="5">Партизанский</option>
+                         <option value="6">Первомайский</option>
+                          <option value="7">Советский</option>
+                           <option value="8">Фрунзенский</option>
+                            <option value="9">Центральный</option>
+                </select>
             </div>
-            <div class="text"></div>
+            <div class="text">Надоело кататься? Хочется побегать на своих ногах? Берем друзей и идем играть в пейнтбол. И если площадку найти можно в любом лесу, то с экипировкой придется помучаться. Обязательно надо подобрать хорошую защитную маску на лицо. Это основной
+                элемент, отсутствие которого в пейнтболе недопустимо. Основная функция – не допустить попадания краски из разорвавшегося пейнтбольного шара в глаза, и максимально предотвратить возможные травмы лица. Теперь перейдем к нашему оружию. Чтобы
+                собрать пушку, надо подобрать маркер (это и есть пейнтбольное оружие, стреляющее специальными шарами с краской. Самым простым в обслуживании и надежным является механический маркер. Он идеально подходит для начального уровня игры в пейнтбол.
+                Для игры в пейнтбол нам нужны пейнтбольные шары. Они универсальные: круглые шарики с краской внутри, разрывающиеся при попадании в противника или в другое препятствие на их пути. Тут главное не качество, а количество. Кому хочется большего
+                разнообразия в боеприпасах, покупает гранаты с краской, дымовые шашки. Одежда для достаточно проста. Обычный камуфляжный костюм поверх своей одежды – лучшая одежда для игрока. Его не жалко измазать краской, и он летом хорошо пропускает
+                воздух, зимой обеспечивает защиту от холода. По желанию к камуфляжу надеваем защитный жилет, налокотники, наколенники, перчатки и бежим воевать.
+            </div>
             <div class="empty"></div>
         </div>
-    </div>
-    <div class="footer1">
+    </main>
+    <!-- Footer -->
+
+    <footer>
         <div class="subscription">
             <h4>&#9993;ПОДПИСКА</h4>
             <p>Подпишитесь на нас в социальных сетях, оформите рассылку уведомлений, и тогда Вы всегда будете в курсе всех незабываемых и азартных мероприятий!</p>
-            <img src="assets/image/facebook.png">
-            <img src="assets/image/gmail.png">
-            <img src="assets/image/vk.png">
-            <img src="assets/image/twitter.png">
+            <hr>
+            <div><a href="" title="Twitter"><i class="fab fa-twitter-square fa-2x"></i></a>
+                <a href="" title="Facebook"><i class="fab fa-facebook-square fa-2x"></i></a>
+                <a href="" title="Одноклассники"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
+            </div>
         </div>
-
+        <div class="footer_menu">
+            <h4 class="h4">&#9734;МЕНЮ</h4>
+            <a href="index.html">Главная</a>
+            <a href="velo.html">Велотуризм</a>
+            <a href="ball.html">Лазертаг, пейнтбол</a>
+            <a href="rent.html">Прокат снаряжения</a>
+            <a href="review.html">Отзывы</a>
+        </div>
         <div class="contacts">
             <h4>&#9990;КОНТАКТЫ</h4>
             <p>Связь с юридическими лицами по номерам телефонов:
-                <p class="special">+375292004422(МТС)
-                    <br>+375296004422(Велком)</p>
-                <p>Также можете писать нам на почтовый ящик:
-                    <p class="special">shust1111@mail.ru</p>
+                <hr>
+                <p class="white">+375292004422</p>
+                <p class="white">+375296004422</p>
+                <p>Также можете писать нам на почтовый ящик:</p>
+                <hr>
+                <p class="white"><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></p>
         </div>
-        <div class="menu">
-            <h4 class="h4">&#9734;МЕНЮ</h4>
-            <ul>
-                <li><a href="velo.html">Велоспорт, ролики</a></li>
-                <li><a href="snow.html">Лыжи, сноуборд</a></li>
-                <li><a href="boll.html">Лазертаг, пейнтбол</a></li>
-                <li><a href="climbing.html">Скалодром, веревочный город</a></li>
-                <li><a href="climbing.html">Отзывы</a></li>
-                <li><a href="climbing.html">Новости</a></li>
-            </ul>
-        </div>
-        <div class="empty"></div>
-    </div>
-    <div class="footer2">&copy; 2017 Shust Kristina. ALL RIGHTS RESERVED.</div>
+    </footer>
+    <div class="copyright">&copy; 2017 Shust Kristina. ALL RIGHTS RESERVED.</div>
 </body>
 
+
 </html>
+<!-- Scripts -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>

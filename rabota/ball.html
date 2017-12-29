@@ -4,20 +4,22 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1YEQZftkjBaVyO3g-65hkMewjF74XBV8"></script>
-    <script type="text/javascript" src="assets/script/map.js"></script>
+    <script type="text/javascript" src="assets/script/map_lazertag.js"></script>
     <link rel="stylesheet" href="assets/css/header_footer.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/snow.css" type="text/css" />
-    <link rel="shortcut icon" href="assets/image_snow/favicon_snow.png" type="image/png">
-    <title>Зимние виды отдыха</title>
+    <link rel="stylesheet" href="assets/css/ball.css" type="text/css" />
+    <link rel="shortcut icon" href="assets/image_ball/favicon_ball.png" type="image/png">
+    <title>Лазертаг и пейнтбол</title>
 </head>
 
 <body>
 
+
     <header>
 
         <!-- Nav_hamburger -->
-
         <input type="checkbox" id="hmt" class="hidden-menu-ticker">
         <label class="btn-menu" for="hmt">
   <span class="first"></span>
@@ -25,7 +27,7 @@
   <span class="third"></span>
  </label>
         <ul class="hidden-menu">
-            <li><a href="main.1.html">ГЛАВНАЯ</a></li>
+            <li><a href="index.html">ГЛАВНАЯ</a></li>
             <li><a href="velo.html">ВЕЛОТУРИЗМ</a></li>
             <li><a href="snow.html">ЛЫЖИ, СНОУБОРД</a></li>
             <li><a href="ball.html">ЛАЗЕРТАГ, ПЕЙНТБОЛ</a></li>
@@ -34,130 +36,82 @@
             <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
 
         </ul>
-
         <!-- Nav&logo -->
 
         <nav id="menu">
             <ul class="links">
-                <li><a href="main.1.html">Главная</a></li>
+                <li><a href="index.html">Главная</a></li>
                 <li><a href="velo.html">Велотуризм</a></li>
-                <li class="active"><a href="snow.html">Лыжи, сноуборд</a></li>
-                <li><a href="ball.html">Лазертаг, пейнтбол</a></li>
+                <li><a href="snow.html">Лыжи, сноуборд</a></li>
+                <li class="active"><a href="ball.html">Лазертаг, пейнтбол</a></li>
                 <li><a href="rent.html">Прокат снаряжения</a></li>
                 <li><a href="review.html">Отзывы</a></li>
                 <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
                 <li><i class="fa fa-phone  fa-1x " aria-hidden="true"></i></li>
             </ul>
         </nav>
-        <div class="logo"><a href="main.1.html"><span id="big">АКТИВНЫЙ ОТДЫХ</span>
+        <div class="logo"><a href="index.html"><span id="big">АКТИВНЫЙ ОТДЫХ</span>
             <br><span id="little">для каждого</span></a></div>
     </header>
+
+
+
+
 
     <main>
 
         <!-- container -->
-
-        <section id="pl-container">
-            <div>
-                <input id="pl-1" name="place-1" type="radio" checked/>
-                <label for="pl-1">&laquo;СИЛИЧИ&raquo;</label>
-                <div class="place1">
-                    <img src="assets/image_snow/silichi_back.jpg">
-                    <ul>&#10053;Развлечения:
-                        <li>&#10052;Лыжная школа</li>
-                        <li>&#10052;Каток</li>
-                        <li>&#10052;Тюбинг</li>
-                        <li>&#10052;Снегоход</li>
-                        <li>&#10052;Сноуборды</li>
-                    </ul>
-                    <ul>&#11015;Дополнительные услуги:
-                        <li>Прокат снаряжения</li>
-                        <li>Оздоровление и спа</li>
-                        <li>Бани</li>
-                        <li>Гостиницы</li>
-                        <li>Рестораны</li>
-                        <li>Беседки</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <input id="pl-2" name="place-1" type="radio" />
-                <label for="pl-2">&laquo;РАУБИЧИ&raquo;</label>
-                <div class="place2">
-                    <img src="assets/image_snow/raubichi_back.jpg">
-                    <ul>&#10053;Развлечения:
-                        <li>&#10052;Биатлон</li>
-                        <li>&#10052;Лыжные гонки</li>
-                        <li>&#10052;Конькобежный спорт</li>
-                        <li>&#10052;Фристайл</li>
-                    </ul>
-                    <ul>&#11015;Дополнительные услуги:
-                        <li>Прокат снаряжения</li>
-                        <li>Гостиницы</li>
-                        <li>Туристические домики</li>
-                        <li>Бильярд</li>
-                        <li>Конференц-зал</li>
-                        <li>Тренажерный зал</li>
-                    </ul>
+        <div class="wrapper_places">
+            <div class="place p1">
+                <div>
+                    <h5>UFO</h5>
+                    <p>За 15 лет работы накоплен огромный багаж позитивного опыта. В парке отдыхающим бесплатно предоставляются беседки. Рядом находится музей авиационной техники. Широкий спектр развлечений для любого возраста. Воздух соснового леса &ndash;
+                        лучший отдых от городской суеты.</p>
 
                 </div>
+                <p class="learn_more"><a href="http://ufo.by/" target="_blank">Узнайте больше</a></p>
+                <p class="place_back">&#9742; +375(29)323-45-67</p>
             </div>
-            <div>
-                <input id="pl-3" name="place-1" type="radio" />
-                <label for="pl-3">&laquo;ЛОГОЙСК&raquo;</label>
-                <div class="place3">
-                    <img src="assets/image_snow/logoisk_back.jpg">
-                    <ul>&#10053;Развлечения:
-                        <li>&#10052;Лыжная школа</li>
-                        <li>&#10052;Каток</li>
-                        <li>&#10052;Тюбинг</li>
-                        <li>&#10052;Снегоход</li>
-                        <li>&#10052;Сноуборды</li>
-                    </ul>
-                    <ul>&#11015;Дополнительные услуги:
-                        <li>Прокат снаряжения</li>
-                        <li>Конференц-залы</li>
-                        <li>Беседки</li>
-                        <li>Бильярд</li>
-                        <li>Бани</li>
-                    </ul>
-                </div>
-            </div>
-            <div>
-                <input id="pl-4" name="place-1" type="radio" />
-                <label for="pl-4">&laquo;Солнечная долина&raquo;</label>
-                <div class="place4">
-                    <img src="assets/image_snow/sun_back.jpg">
-                    <ul>&#10053;Развлечения:
-                        <li>&#10052;Сноуборды</li>
-                        <li>&#10052;Лыжные гонки</li>
-                        <li>&#10052;Тюбинги</li>
-                    </ul>
-                    <ul>&#11015;Дополнительные услуги:
-                        <li>Прокат снаряжения</li>
-                        <li>Школа инструкторов</li>
-                        <li>Беседки</li>
-                        <li>Катание на лошадях</li>
-                        <li>Проведение детских праздников</li>
-                    </ul>
+            <div class="place p2">
+                <div>
+                    <h5>Клуб 067</h5>
+                    <p>За 15 лет работы накоплен огромный багаж позитивного опыта. В парке отдыхающим бесплатно предоставляются беседки. Рядом находится музей авиационной техники. Широкий спектр развлечений для любого возраста. Воздух соснового леса &ndash;
+                        лучший отдых от городской суеты.</p>
 
                 </div>
+                <p class="learn_more"><a href="https://067.by/" target="_blank">Узнайте больше</a></p>
+                <p class="place_back">&#9742; +375(29)323-45-67</p>
             </div>
-            <div>
-                <input id="pl-5" name="place-1" type="radio" />
-                <label for="pl-5">&laquo;Якутские горы&raquo;</label>
-                <div class="place5">
-                    <img src="assets/image_snow/yakut_back.jpg">
 
-                    <ul>&#10053;Развлечения:
-                        <li>&#10052;Снегоходы</li>
-                        <li>&#10052;Тюбинги</li>
-                        <li>&#10052;Лыжи</li>
-                        <li>&#10052;Сноуборд</li>
-                    </ul>
+            <div class="place p3">
+                <div>
+                    <h5>Colt</h5>
+                    <p>За 15 лет работы накоплен огромный багаж позитивного опыта. В парке отдыхающим бесплатно предоставляются беседки. Рядом находится музей авиационной техники. Широкий спектр развлечений для любого возраста. Воздух соснового леса &ndash;
+                        лучший отдых от городской суеты.</p>
+
                 </div>
+                <p class="learn_more"><a href="http://colt.by/" target="_blank">Узнайте больше</a></p>
+                <p class="place_back">&#9742; +375(29)323-45-67</p>
+
             </div>
-        </section>
+
+
+            <div class="place p4">
+                <div>
+                    <h5>Laser Battle</h5>
+                    <p>За 15 лет работы накоплен огромный багаж позитивного опыта. В парке отдыхающим бесплатно предоставляются беседки. Рядом находится музей авиационной техники. Широкий спектр развлечений для любого возраста. Воздух соснового леса &ndash;
+                        лучший отдых от городской суеты.</p>
+
+
+                </div>
+                <p class="learn_more"><a href="http://laserbattle.by/" target="_blank">Узнайте больше</a></p>
+                <p class="place_back">&#9742; +375(29)323-45-67</p>
+
+            </div>
+
+
+        </div>
+
 
         <!-- map -->
 
@@ -166,22 +120,23 @@
             <div id="address">
                 <ol>
                     <h3>Наши координаты:</h3>
-                    <li><span class="underline">&laquo;Силичи&raquo;:</span> 54°09′24″ с. ш. 27°50′16″ в. д</li>
-                    <li><span class="underline">&laquo;Раубичи&raquo;:</span> 54°03′39″ с. ш. 27°44′12″ в. д.</li>
-                    <li><span class="underline">&laquo;Логойск&raquo;:</span> 54°12′00″ с. ш. 27°51′00″ в. д.</li>
-                    <li><span class="underline">&laquo;Солнечная долина&raquo;:</span> 53.854988, 27.515311</li>
-                    <li><span class="underline">&laquo;Якутские горы&raquo;:</span> 53.822164, 27.019039</li>
+                    <li><span class="underline">&laquo;UFO&raquo;: </span> пос.Боровая</li>
+                    <li><span class="underline">&laquo;Клуб 067&raquo;: </span> 3.5 км от МКАД по Слуцкой трассе</li>
+                    <li><span class="underline">&laquo;Альянс&raquo;: </span> пос.Ратомка, ул.Красивая</li>
+                    <li><span class="underline">&laquo;Laser Battle&raquo;: </span> Минск, ул.Кижеватова</li>
+                    <li><span class="underline">&laquo;Colt&raquo;: </span> пос.Ратомка, ул.Красивая</li>
+
                 </ol>
             </div>
-            <div id="map"></div>
+            <div id="mapLazer"></div>
             <div id="phone">
                 <ol>
                     <h3>Связь с нами:</h3>
-                    <li><span class="underline">&laquo;Силичи&raquo;:</span> +375(29)786-23-33</li>
-                    <li><span class="underline">&laquo;Раубичи&raquo;:</span> +375(33)606-56-56</li>
-                    <li><span class="underline">&laquo;Логойск&raquo;:</span> +375(44)123-12-23</li>
-                    <li><span class="underline">&laquo;Солнечная долина&raquo;:</span> +375(29)308-38-90</li>
-                    <li><span class="underline">&laquo;Якутские горы&raquo;:</span> +375(25)501-76-75</li>
+                    <li><span class="underline">&laquo;UFO&raquo;:</span> +375(29)761-41-29</li>
+                    <li><span class="underline">&laquo;Клуб 067&raquo;:</span> +375(29) 238-62-33</li>
+                    <li><span class="underline">&laquo;Альянс&raquo;:</span> +375(44)123-12-23</li>
+                    <li><span class="underline">&laquo;Laser Battle&raquo;:</span> +375(29)308-38-90</li>
+                    <li><span class="underline">&laquo;Colt&raquo;:</span> +375(25)931-32-33</li>
                 </ol>
             </div>
         </div>
@@ -224,102 +179,102 @@
             <div id="slideshow-inner">
                 <ul>
                     <li id="slide1">
-                        <img src="assets/image_snow/silichi.jpg" />
+                        <img src="assets/image_ball/067.1.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-1" />
                             <label for="show-description-1" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Силичи&raquo; Баня.</p>
+                                <p>&laquo;Клуб 067&raquo; Веселый отдых.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide2">
-                        <img src="assets/image_snow/silichi_one.jpg" />
+                        <img src="assets/image_ball/067.2.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-2" />
                             <label for="show-description-2" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Силичи&raquo;: Трассы, как для профессионалов, так и для новичков.</p>
+                                <p>&laquo;Клуб 067&raquo;: Место для отдыха.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide3">
-                        <img src="assets/image_snow/raubichi.jpg" />
+                        <img src="assets/image_ball/ali1.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-3" />
                             <label for="show-description-3" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Раубичи&raquo;: Общий вид.</p>
+                                <p>&laquo;Альянс&raquo;: Закрытая площадка.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide4">
-                        <img src="assets/image_snow/raubichi_one.jpg" />
+                        <img src="assets/image_ball/ali4.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-4" />
                             <label for="show-description-4" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Раубичи&raquo;: Летние соревнования.</p>
+                                <p>&laquo;Альянс&raquo;: Открытая площадка.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide5">
-                        <img src="assets/image_snow/logoisk.jpg" />
+                        <img src="assets/image_ball/colt6.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-5" />
                             <label for="show-description-5" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Логойск&raquo;: Общий вид.</p>
+                                <p>&laquo;Colt&raquo;: Игры для взрослых.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide6">
-                        <img src="assets/image_snow/logoisk_one.jpg" />
+                        <img src="assets/image_ball/colt2.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-6" />
                             <label for="show-description-6" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Логойск&raquo;: Отель для туристов.</p>
+                                <p>&laquo;Colt&raquo;: Место для отдыха.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide7">
-                        <img src="assets/image_snow/logoisk_two.jpg" />
+                        <img src="assets/image_ball/lb.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-7" />
                             <label for="show-description-7" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Логойск&raquo;: Школа инструкторов для взрослых и детей.</p>
+                                <p>&laquo;Laser Battle&raquo;: Веревочный городок.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide8">
-                        <img src="assets/image_snow/sun.jpg" />
+                        <img src="assets/image_ball/lb3.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-8" />
                             <label for="show-description-8" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Солнечная долина&raquo;: Прыжок с трамплина.</p>
+                                <p>&laquo;Laser Battle&raquo;: Главное в игре &ndash; хороший прицел.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide9">
-                        <img src="assets/image_snow/sun_one.jpg" />
+                        <img src="assets/image_ball/ufo.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-9" />
                             <label for="show-description-9" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Солнечная долина&raquo;: Общий вид.</p>
+                                <p>&laquo;UFO&raquo;: Реалистичная обстановка.</p>
                             </div>
                         </div>
                     </li>
                     <li id="slide10">
-                        <img src="assets/image_snow/yakut.jpg" />
+                        <img src="assets/image_ball/ufo5.jpg" />
                         <div class="description">
                             <input type="checkbox" id="show-description-10" />
                             <label for="show-description-10" class="show-description-label"><i class="fa fa-comments  fa-1x " aria-hidden="true"></i></label>
                             <div class="description-text">
-                                <p>&laquo;Якутские горы&raquo;: Карта парка активного отдыха.</p>
+                                <p>&laquo;UFO&raquo;: Беседки с мангалами.</p>
                             </div>
                         </div>
                     </li>
@@ -330,6 +285,23 @@
 
 
     </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </main>
+
+
+
 
     <!-- Footer -->
 
@@ -345,8 +317,8 @@
         </div>
         <div class="footer_menu">
             <h4 class="h4">&#9734;МЕНЮ</h4>
-            <a href="main.1.html">Главная</a>
             <a href="velo.html">Велотуризм</a>
+            <a href="snow.html">Лыжи, сноуборд</a>
             <a href="ball.html">Лазертаг, пейнтбол</a>
             <a href="rent.html">Прокат снаряжения</a>
             <a href="review.html">Отзывы</a>
@@ -365,7 +337,4 @@
     <div class="copyright">&copy; 2017 Shust Kristina. ALL RIGHTS RESERVED.</div>
 </body>
 
-
 </html>
-<!-- Scripts -->
-<script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>

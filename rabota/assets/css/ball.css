@@ -1,0 +1,22 @@
+body {}
+
+header {
+    height: 55%;
+    background: url('../image_ball/067.4.jpg') no-repeat top;
+    background-size: cover;
+}
+
+#mapLazer {
+    width: 30vw;
+    height: 50vmin;
+    border: 5px solid white;
+
+}
+
+@media screen and (max-width: 800px) {
+    
+    #mapLazer{
+        width: 90vw;
+        order: 1;
+    }
+}
