@@ -1,0 +1,38 @@
+body{
+    color: black;
+}
+.rent {
+    position: relative;
+    font-size: 0.9em;
+}
+
+.rent>img {
+    width: 18vw;
+    height: 30vh;
+    float: left;
+    padding-bottom: 3vh;
+    box-shadow: inset 0 0 5px 5px #20B2AA;
+}
+
+.address {
+    width: 30vw;
+    height: 40vh;
+    font-size: 0.9em;
+    float: right;
+}
+
+h3 {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.text {
+    width: calc(95vw - 20vw - 32vw);
+    margin-left: 20vw;
+    margin-right: -30vw;
+    padding-left: 10px;
+}
+
+.empty {
+    clear: both;
+}

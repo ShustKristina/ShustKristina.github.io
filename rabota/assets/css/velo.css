@@ -1,0 +1,176 @@
+header {
+    height: 55%;
+    background: url('../image_velo/velo_back1.jpg') no-repeat center;
+    background-size: cover;
+}
+
+footer {
+    margin: 0;
+}
+
+.velosport {
+    width: 95%;
+    margin-left: 2.5%;
+    text-align: justify;
+    text-indent: 15px;
+    padding-top: 10px;
+    background: url('../image_velo/velo_backg.jpg') repeat;
+    color: black;
+    
+}
+
+.wrapper_velo h2 {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    text-shadow: 2px 2px 2px darkgray;
+}
+
+.wrapper_velo h2:before,
+.wrapper_velo h2:after {
+    content: "";
+    position: absolute;
+    width: 27%;
+    border: 3px double darkgray;
+    top: 15px;
+    box-shadow: 2px 2px 2px black;
+}
+
+.wrapper_velo h2:before {
+    left: 10px;
+}
+
+.wrapper_velo h2:after {
+    right: 10px;
+}
+
+.velosport p {
+    color: black;
+    padding: 15px;
+    margin: 0;
+}
+
+.velosport ul {
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+     transition: all .8s;
+}
+
+.velosport li {
+    display: inline-block;
+    width: 35%;
+    padding: 4vw 10px 4vw 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(0, 128, 128, 0.5);
+    box-shadow: 0 0 10px 3px black;
+    font-weight: bold;
+    transition: all 1.4s;
+}
+
+.velosport a {
+    padding: 0 10px 0 10px;
+    font-size: 18px;
+    color: white;
+    text-shadow: 1px 0 2px black;
+}
+
+.velosport li:hover {
+    background: rgba(105, 105, 105, 0.5);
+    box-shadow: inset 0 0 5px 3px white;
+}
+
+.wrapper_velo {
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.wrapper_velo h3 {
+    text-align: center;
+    font-size: 19px;
+}
+
+.wrapper_velo img {
+
+    border-top: 17px solid;
+    border-bottom: 17px solid;
+    border-image: url('../image_velo/ramka.png') 17 round round;
+    width: 45vw;
+    height: 30vw;
+}
+
+.wrapper_velo div {
+    width: 45vw;
+}
+
+.wrapper_velo p {
+    padding: 15px;
+    text-indent: 15px;
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper_velo h2:before,
+    .wrapper_velo h2:after {
+        width: 20%;
+    }
+    .velosport {
+        width: 100%;
+        margin: 0;
+
+    }
+    .velosport ul,
+    h2 {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .velosport li {
+        width: 40%;
+    }
+    .wrapper_velo div,
+    .wrapper_velo img {
+        width: 80%;
+    }
+    .wrapper_velo img {
+        margin-left: 10%;
+    }
+    .wrapper_velo h2:before,
+    .wrapper_velo h2:after {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .velosport li {
+        width: 70%;
+    }
+    .wrapper_velo {
+        flex-direction: column;
+    }
+    .wrapper_velo div {
+        width: 100%;
+    }
+    .wrapper_velo img {
+        width: 45vw;
+        height: 30vw;
+        margin-left: 25vw;
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+
+    .wrapper_velo h2 {
+        font-size: 1.2em;
+    }
+
+}

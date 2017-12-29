@@ -1,0 +1,239 @@
+header {
+    height: 55%;
+    background: url('../image_main/slider3.jpg') no-repeat center;
+    background-size: cover;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.review {
+    width: 35vw;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-top: 15px;
+    border: 2px solid lightgray;
+    background-color: lightgray;
+    border-radius: 5px;
+    margin-bottom: 10vh;
+    padding-left: 1vw;
+    box-shadow: 0 0 10px 3px #808080;
+}
+
+.review:first-child {
+    margin-top: 9vmin;
+}
+
+form {
+    width: 35vw;
+    padding-top: 15px;
+}
+
+.review1::before,
+.review2::before,
+.review3::before {
+    content: "";
+    display: block;
+    width: 15vmin;
+    height: 15vmin;
+    border-radius: 50%;
+    background: url(../image_review/man1.jpg);
+    background-size: cover;
+    position: absolute;
+    top: -7.5vmin;
+    border: 10px solid #F0FFF0;
+
+}
+
+.review2::before {
+    background: url(../image_review/women1.jpg);
+    background-size: cover;
+}
+
+.review3::before {
+    background: url(../image_review/kate.jpg);
+    background-size: cover;
+}
+
+.review>.name,
+.review>.place {
+    margin: 0;
+    text-align: center;
+}
+
+.review>.name {
+    margin-top: 7.5vmin;
+}
+
+.rev {
+    color: #20B2AA;
+    font-family: Pacifico;
+    text-shadow: 0 2px 3px white;
+    padding: 10px 10px 10px 0;
+    margin: 0;
+}
+
+.review_all>a {
+    align-items: flex-end;
+    text-decoration: none;
+    color: dimgray;
+}
+
+.name,
+.place {
+    color: black;
+    text-shadow: 1px 2px 3px white;
+    font-weight: bold;
+}
+
+.place {
+    font-style: italic;
+}
+
+
+
+form>h3 {
+    text-shadow: 1px 2px 3px gray;
+    color: black;
+    text-align: center;
+}
+
+
+input,
+label,
+textarea,
+select {
+
+    width: 20vw;
+    border: 2px solid #008080;
+    padding-left: 5px;
+}
+
+select {
+    width: 20.9vw;
+}
+
+input:last-child {
+    width: 10vw;
+    margin-left: 13vw;
+    background: linear-gradient(#008B8B, #66CDAA, #008B8B);
+    color: white;
+    cursor: pointer;
+}
+
+textarea {
+    height: 12vw;
+    width: 30vw;
+}
+
+fieldset {
+    color: black;
+    width: 30vw;
+    border: 4px outset;
+    position: relative;
+}
+
+fieldset svg {
+    position: absolute;
+    left: 73%;
+    top: 25%;
+}
+
+#svg_58 {
+    animation: animationLetter 2s infinite linear;
+    animation-direction: alternate;
+}
+
+@keyframes animationLetter {
+    from {
+        y: 30;
+
+    }
+    to {
+        y: 10;
+    }
+}
+
+main {
+    padding-bottom: 20px;
+}
+
+
+@media screen and (max-width: 640px) {
+    .main {
+        flex-direction: column;
+        margin-left: 10vw;
+    }
+    form {
+        order: 1;
+        width: 90%;
+    }
+    fieldset {
+        width: 78vw;
+    }
+    input,
+    label {
+        width: 50vw;
+    }
+
+    select {
+        width: 52.5vw;
+    }
+    textarea {
+        width: 58vw;
+    }
+    input:last-child {
+        width: 40vw;
+        margin-left: 20vw;
+    }
+    .review_all {
+        width: 90%;
+        order: 2;
+    }
+    .review {
+        margin-left: 20%;
+        width: 50vw;
+    }
+}
+
+@media screen and (max-width: 375px) {
+
+    fieldset {
+        width: 90vw;
+        margin: 0;
+        padding: 0;
+        margin-left: -15px;
+    }
+    fieldset svg {
+        display: none;
+    }
+    input,
+    label {
+        width: 70vw;
+    }
+
+    textarea {
+        width: 70vw;
+    }
+    input:last-child {
+        width: 40vw;
+        margin-left: 15vw;
+    }
+    .review_all {
+        width: 90vw;
+        order: 2;
+    }
+    .review {
+        margin-left: 5px;
+        width: 80vw;
+    }
+    .review3 {
+        margin-bottom: 10px;
+    }
+}
