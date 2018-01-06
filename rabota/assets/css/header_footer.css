@@ -186,16 +186,17 @@ a {
 }
 
 .links>li>a {
+	width: 100%;
 	font-family: 'EXO 2', sans-serif;
 	font-size: 17px;
-	padding-bottom: 10px;
+	padding-bottom: 12px;
 	color: white;
 	text-align: center;
 	text-shadow: 2px 3px 3px gray;
 	text-indent: 0;
 }
 
-.links>li:hover {
+.links>li:hover>a {
 	border-bottom: 3px solid white;
 	font-weight: bolder;
 }
@@ -339,7 +340,7 @@ footer hr {
 	margin: 0;
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
-	width: 30vw;
+	width: 40vw;
 	background-color: rgba(0, 128, 128, 0.8);
 	height: 100%;
 	top: 0;
@@ -356,19 +357,15 @@ footer hr {
 	margin-top: 20vmin;
 }
 
-.hidden-menu>li {
-	padding: 10px 0 10px 10px;
-
+.hidden-menu a {
+	padding: 15px;
+	display: block;
 }
 
-.hidden-menu>li:hover {
+.hidden-menu>li>a:hover {
+	color: white;
+	width: 100%;
 	background-color: rgba(0, 0, 0, 0.8);
-	border-bottom: 1px solid white;
-	color: white;
-}
-
-.hidden-menu a:hover {
-	color: white;
 }
 
 .hidden-menu-ticker {
