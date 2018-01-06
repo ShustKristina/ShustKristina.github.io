@@ -1,8 +1,10 @@
-.tp-grid {
+.tp-grid {width: 100% !important;
 	position: relative;
-	display: block;
-	margin: 0;
+	top: 20px;
+	left: 0;
+	margin: 0 !important;
 	padding-bottom: 15px;
+	overflow: hidden;
 }
 
 .tp-grid li {

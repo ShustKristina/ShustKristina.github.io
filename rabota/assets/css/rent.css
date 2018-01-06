@@ -17,6 +17,7 @@ header {
 }
 
 .rent {
+    overflow: hidden;
     width: 33.3%;
     display: -webkit-box;
     display: -ms-flexbox;
