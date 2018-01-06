@@ -3,13 +3,12 @@ function initMap() {
     var centerLatLng = new google.maps.LatLng(53.904390, 27.559782);
     var mapOptions = {
         center: centerLatLng,
-        zoom: 8
+        zoom: 7
     };  
-    var myLatLng1 = { lat:53.964113, lng: 27.653549 };
+    var myLatLng = { lat:53.964113, lng: 27.653549 };
     var myLatLng2 = { lat: 53.789416, lng: 27.505395 };
-    var myLatLng3 = { lat: 53.943102, lng: 27.330802 };
-    var myLatLng4 = {lat: 53.975386, lng: 27.288496 };
-    var myLatLng5 = { lat: 53.944000,   lng: 27.328435};
+    var myLatLng3 = {lat: 53.975386, lng: 27.288496 };
+    var myLatLng4 = { lat: 53.944000,   lng: 27.328435};
 
     var map2 = new google.maps.Map(document.getElementById("mapLazer"), mapOptions);
 
@@ -30,24 +29,18 @@ function initMap() {
         animation: google.maps.Animation.DROP,
         title: 'Клуб 067'
     });
-    var marker3 = new google.maps.Marker({
+ 
+    var marker4 = new google.maps.Marker({
         position: myLatLng3,
         map: map2,
         label: '3',
         animation: google.maps.Animation.DROP,
-        title: 'Альянс'
-    });
-    var marker4 = new google.maps.Marker({
-        position: myLatLng4,
-        map: map2,
-        label: '4',
-        animation: google.maps.Animation.DROP,
         title: 'Laser Battle'
     });
     var marker5 = new google.maps.Marker({
-        position: myLatLng5,
+        position: myLatLng4,
         map: map2,
-        label: '5',
+        label: '4',
         animation: google.maps.Animation.DROP,
         title: 'Colt'
     });
