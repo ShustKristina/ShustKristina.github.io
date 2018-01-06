@@ -4,20 +4,24 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, target-densitydpi=device-dpi, initial-scale=1">
-
-    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
-
-    <link rel="stylesheet" href="assets/css/review.css" type="text/css" />
     <link rel="stylesheet" href="assets/css/header_footer.css" type="text/css" />
+    <link rel="stylesheet" href="assets/css/review.css" type="text/css" />
     <link rel="shortcut icon" href="assets/image_review/favicon_review.png" type="image/png">
+
     <title>Отзывы клиентов</title>
 </head>
 
 <body>
+    <div id="preloader">
+        <div id="preloadHola">
+            <p> Loading...</p>
+        </div>
+    </div>
 
     <header>
 
         <!-- Nav_hamburger -->
+
         <input type="checkbox" id="hmt" class="hidden-menu-ticker">
         <label class="btn-menu" for="hmt">
   <span class="first"></span>
@@ -25,63 +29,63 @@
   <span class="third"></span>
  </label>
         <ul class="hidden-menu">
-            <li><a href="index.html">ГЛАВНАЯ</a></li>
-            <li><a href="velo.html">ВЕЛОТУРИЗМ</a></li>
-            <li><a href="snow.html">ЛЫЖИ, СНОУБОРД</a></li>
-            <li><a href="ball.html">ЛАЗЕРТАГ, ПЕЙНТБОЛ</a></li>
-            <li><a href="rent.html">ПРОКАТ СНАРЯЖЕНИЯ</a></li>
-            <li><a href="review.html">ОТЗЫВЫ</a></li>
+            <li><a href="index.html" title="Домашняя страница">ГЛАВНАЯ</a></li>
+            <li><a href="velo.html" title="Веломаршруты">ВЕЛОТУРИЗМ</a></li>
+            <li><a href="snow.html" title="Места катания на лыжах и сноуборде">ЛЫЖИ, СНОУБОРД</a></li>
+            <li><a href="ball.html" title="Места игры в лазертаг и пейнтбол">ЛАЗЕРТАГ, ПЕЙНТБОЛ</a></li>
+            <li><a href="rent.html" title="Пункты проката">ПРОКАТ СНАРЯЖЕНИЯ</a></li>
+            <li><a href="review.html" title="Оставьте свой отзыв">ОТЗЫВЫ</a></li>
             <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
-
         </ul>
+
         <!-- Nav&logo -->
 
         <nav id="menu">
             <ul class="links">
-                <li><a href="index.html">Главная</a></li>
-                <li><a href="velo.html">Велотуризм</a></li>
-                <li><a href="snow.html">Лыжи, сноуборд</a></li>
-                <li><a href="ball.html">Лазертаг, пейнтбол</a></li>
-                <li><a href="rent.html">Прокат снаряжения</a></li>
-                <li class="active"><a href="review.html">Отзывы</a></li>
+                <li><a href="index.html" title="Домашняя страница">Главная</a></li>
+                <li><a href="velo.html" title="Веломаршруты">Велотуризм</a></li>
+                <li><a href="snow.html" title="Места катания на лыжах и сноуборде">Лыжи, сноуборд</a></li>
+                <li><a href="ball.html" title="Места игры в лазертаг и пейнтбол">Лазертаг, пейнтбол</a></li>
+                <li><a href="rent.html" title="Пункты проката">Прокат снаряжения</a></li>
+                <li class="active"><a href="review.html" title="Оставьте свой отзыв">Отзывы</a></li>
                 <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
                 <li><i class="fa fa-phone  fa-1x " aria-hidden="true"></i></li>
             </ul>
         </nav>
-        <div class="logo"><a href="index.html"><span id="big">АКТИВНЫЙ ОТДЫХ</span>
+        <div class="logo"><a href="index.html" title="Домашняя страница"><span id="big">АКТИВНЫЙ ОТДЫХ</span>
             <br><span id="little">для каждого</span></a></div>
     </header>
 
     <main>
-
-
         <div class="main">
+
+            <!-- reviews -->
+
             <div class="review_all">
                 <div class="review review1">
-
                     <p class="name">Николай</p>
                     <p class="place">&laquo;Клуб 067&raquo;</p>
                     <p class="rev">Слаженная работа инструкторов и команды, продуманная организация, понравилось оборудование и хорошее состояние игровой зоны. Спасибо за отличную работу! Вы просто КОСМОС! </p>
                 </div>
                 <div class="review review2">
-
                     <p class="name">Дарья</p>
                     <p class="place">&laquo;Якутские горы&raquo;</p>
-                    <p class="rev">Никакого шума, посетителей немного, очередей почти нет, вокруг – одна природа, спокойствие, самый чистый воздух… В общем, приятное местечко и с пользой проведенное время.
+                    <p class="rev">Никакого шума, посетителей немного, очередей почти нет, вокруг &ndash; одна природа, спокойствие, самый чистый воздух&hellip; В общем, приятное местечко и с пользой проведенное время.
                     </p>
                 </div>
                 <div class="review review3">
-
                     <p class="name">Катя&Алена</p>
                     <p class="place">&laquo;Солнечная долина&raquo;</p>
                     <p class="rev">Прекрасное место для активного отдыха, которое расположено в черте Минска. Цена на отдых в Солнечной долине меньше чем в других подобных местах, которые расположены недалеко от города. Для проголодавшихся есть пункты общественного
                         питания, цены также не очень большие. В целом, нам нравится это место и уверены, что побываем там еще не раз. Удачи и приятного отдыха.
                     </p>
                 </div>
-                <a href="">Читать остальные отзывы &rArr;</a>
+                <a href="" title='Больше отзывов'>Читать остальные отзывы &rArr;</a>
             </div>
-            <form>
 
+            <!-- form -->
+
+            <form id="contact-form" name="contact-form">
                 <h3>Для нас важен каждый отзыв!</h3>
                 <fieldset>
                     <svg width="60.00000000000001" height="60.00000000000001" xmlns="http://www.w3.org/2000/svg">
@@ -98,29 +102,25 @@
  </g>
 </svg>
                     <br> Bаше имя:
-                    <br><input type="text" required name="name" placeholder="Иванов Иван Иванович" id="name">
+                    <br><input type="text" required name="nameFF" placeholder="Иванов Иван Иванович" id="name">
                     <br>Bаша почта:
-                    <br><input type="text" name="mail" placeholder="ivanov@mail.ru" id="name">
+                    <br><input type="text" required name="mailFF" placeholder="ivanov@mail.ru" id="name">
                     <br> Место отдыха:
-                    <br><select name="place" size=1>
+                    <br><select name="placeFF" size=1>
         <option value=1>&laquo;Силичи&raquo;</option>
-            <option value=2>&laquo;Раубичи&raquo;</option>
                 <option value=3>&laquo;Логойск&raquo;</option>
                     <option value=4>&laquo;Солнечная долина&raquo;</option>
                         <option value=5>&laquo;Якутские горы&raquo;</option>
                             <option value=6>&laquo;UFO&raquo;</option>
                                 <option value=7>&laquo;Клуб 067&raquo;</option>
-                                    <option value=8>&laquo;Альянс&raquo;</option>
                                         <option value=9>&laquo;Laser Battle&raquo;</option>
                                             <option value=10>&laquo;Colt&raquo;</option>
                                                                                         </select>
 
                     <br>Ваши впечатления:
-                    <br><textarea name="review"></textarea>
+                    <br><textarea name="reviewFF"></textarea>
                 </fieldset>
-                <br><input type="submit" value="Отправить">
-
-
+                <br><input type="submit" title="Cпасибо за отзыв" value="Отправить">
             </form>
         </div>
     </main>
@@ -132,18 +132,18 @@
             <h4>&#9993;ПОДПИСКА</h4>
             <p>Подпишитесь на нас в социальных сетях, оформите рассылку уведомлений, и тогда Вы всегда будете в курсе всех незабываемых и азартных мероприятий!</p>
             <hr>
-            <div><a href="" title="Twitter"><i class="fab fa-twitter-square fa-2x"></i></a>
-                <a href="" title="Facebook"><i class="fab fa-facebook-square fa-2x"></i></a>
-                <a href="" title="Одноклассники"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
+            <div><a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter-square fa-2x"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-square fa-2x"></i></a>
+                <a href="https://ok.ru/" target="_blank" title="Одноклассники"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
             </div>
         </div>
         <div class="footer_menu">
             <h4 class="h4">&#9734;МЕНЮ</h4>
-            <a href="velo.html">Велотуризм</a>
-            <a href="snow.html">Лыжи, сноуборд</a>
-            <a href="ball.html">Лазертаг, пейнтбол</a>
-            <a href="rent.html">Прокат снаряжения</a>
-            <a href="review.html">Отзывы</a>
+            <a href="index.html" title="Домашняя страница">Главная</a>
+            <hr><a href="velo.html" title="Веломаршруты">Велотуризм</a>
+            <hr><a href="snow.html" title="Катание на лыжах и сноуборде">Лыжи, сноуборд</a>
+            <hr><a href="ball.html" title="Места игры в лазертаг и пейнтбол">Лазертаг, пейнтбол</a>
+            <hr><a href="rent.html" title="Прокат снаряжения">Прокат снаряжения</a>
         </div>
         <div class="contacts">
             <h4>&#9990;КОНТАКТЫ</h4>
@@ -151,9 +151,8 @@
                 <hr>
                 <p class="white">+375292004422</p>
                 <p class="white">+375296004422</p>
-                <p>Также можете писать нам на почтовый ящик:</p>
+                <p>Также можете писать нам на <a href="mailto:shust1991@gmail.com" title="Напишите нам">электронный ящик.</a></p>
                 <hr>
-                <p class="white"><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></p>
         </div>
     </footer>
     <div class="copyright">&copy; 2017 Shust Kristina. ALL RIGHTS RESERVED.</div>
@@ -162,4 +161,6 @@
 
 </html>
 <!-- Scripts -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="assets/script/main.js"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>

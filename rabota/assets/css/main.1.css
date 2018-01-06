@@ -1,5 +1,3 @@
-
-
 header {
 	height: 85%;
 	background: url('../image_main/slider3.jpg') no-repeat center;
@@ -7,22 +5,27 @@ header {
 }
 
 .scroller {
+	width: 100%;
 	font-size: 17px;
 	font-weight: bolder;
 	height: 15%;
 	color: #008080;
-	display: block;
-	width: 50vw;
+	display: inline-block;
 	padding: 20px 0 20px 0;
-	margin-left: 43vw;
+	text-align: center;
 }
 
 .section_flex {
+	display: -webkit-box;
+	display: -ms-flexbox;
 	display: flex;
+	-ms-flex-wrap: wrap;
 	flex-wrap: wrap;
+	-webkit-box-align: stretch;
+	-ms-flex-align: stretch;
 	align-items: stretch;
+	-ms-flex-pack: distribute;
 	justify-content: space-around;
-	min-height: 80vmin;
 	padding-top: 60px;
 }
 
@@ -32,15 +35,19 @@ header {
 	font-weight: bolder;
 }
 
+/* 1ая скролл-секция */
+
 #one_scroll {
-	background: url('../image_main/banner_two.png') no-repeat center;
+	height: 85%;
+	background: url('../image_main/banner_two.jpg') no-repeat center;
 	background-size: cover;
 }
 
 section {
-	width: 45vw;
-	padding: 1vw;
+	width: 45%;
+	padding: 1vmin;
 	border-radius: 5px;
+	-webkit-box-shadow: 0 0 3px 3px dimgray;
 	box-shadow: 0 0 3px 3px dimgray;
 	background-color: rgba(95, 158, 160, 0.8);
 	margin-bottom: 20px;
@@ -49,7 +56,7 @@ section {
 }
 
 .section_about_us_one>hr {
-	width: 30vw;
+	width: 35%;
 }
 
 .section_about_us_one {
@@ -68,9 +75,10 @@ section {
 
 .section_about_us_three,
 .section_about_us_four {
-	height: fit-content;
 	text-shadow: 1px 0 2px black;
 	text-align: center;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
 	transition: all 0.5s;
 }
 
@@ -88,10 +96,13 @@ section {
 .section_about_us_three>iframe,
 .section_about_us_four>iframe {
 	opacity: 0.8;
+	-webkit-box-shadow: 0 0 1px 2px white;
 	box-shadow: 0 0 1px 2px white;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
 	transition: all 0.5s;
 	margin-bottom: 10px;
-	width: 50%;
+	width: 60%;
 }
 
 .section_about_us_three>iframe:hover,
@@ -99,17 +110,24 @@ section {
 	opacity: 1;
 }
 
+/* 2ая скролл-секция */
+
 #two_scroll {
+	-webkit-box-pack: start;
+	-ms-flex-pack: start;
 	justify-content: flex-start;
-	background: url('../image_main/banner_three.png') no-repeat center;
+	background: url('../image_main/banner_three.jpg') no-repeat center;
 	background-size: cover;
 }
+
+/* 2ая скролл-секция: планшет*/
 
 #review {
 	width: 380px;
 	height: 530px;
 	border-radius: 20px;
 	border: 3px solid gray;
+	-webkit-box-shadow: 0 0 3px 3px;
 	box-shadow: 0 0 3px 3px;
 	background-color: black;
 	position: relative;
@@ -121,11 +139,14 @@ section {
 	width: 25px;
 	height: 25px;
 	border: 1px solid #808080;
+	-webkit-box-shadow: 0 0 2px 1px #808080;
 	box-shadow: 0 0 2px 1px #808080;
 	border-radius: 50%;
 	position: relative;
 	left: 48%;
 	top: 470px;
+	-webkit-transition: all 5s;
+	-o-transition: all 5s;
 	transition: all 5s;
 }
 
@@ -139,20 +160,24 @@ section {
 	left: 10px;
 }
 
+
 #section_review,
 #shape {
 	position: absolute;
 	width: 278px;
 	margin: 30px;
+	padding: 10px;
 }
 
 #shape {
 	border-radius: 5px;
-	padding: 10px;
 	text-align: center;
 	background-color: rgba(95, 158, 160, 0.6);
+	-webkit-box-shadow: 1px -1px 3px 3px dimgray;
 	box-shadow: 1px -1px 3px 3px dimgray;
 	top: 50%;
+	-webkit-transition: all 0.5s;
+	-o-transition: all 0.5s;
 	transition: all 0.5s;
 }
 
@@ -162,11 +187,20 @@ section {
 	height: 30px;
 	border-color: darkred;
 	background: red;
+	background: -webkit-gradient(linear, left top, right top, from(darkred),
+	color-stop(33.33%, darkred), color-stop(33.33%, red), color-stop(66.67%, red), color-stop(66.67%, darkred), to(darkred));
+	background: -webkit-linear-gradient(left, darkred 0%,
+	darkred 33.33%, red 33.33%, red 66.67%, darkred 66.67%, darkred 100%);
+	background: -o-linear-gradient(left, darkred 0%,
+	darkred 33.33%, red 33.33%, red 66.67%, darkred 66.67%, darkred 100%);
 	background: linear-gradient(to right, darkred 0%,
 	darkred 33.33%, red 33.33%, red 66.67%, darkred 66.67%, darkred 100%);
+	-webkit-box-shadow: -1px 0 1px 0.7px dimgray;
 	box-shadow: -1px 0 1px 0.7px dimgray;
 	top: 72%;
+	-webkit-animation: animationPen 5s infinite linear;
 	animation: animationPen 5s infinite linear;
+	-webkit-animation-direction: alternate;
 	animation-direction: alternate;
 }
 
@@ -183,43 +217,95 @@ section {
 }
 
 
-@keyframes animationPen {
+@-webkit-keyframes animationPen {
 	0% {
 		margin-left: 25%;
 		margin-top: -1.8%;
+		-webkit-transform: rotate(-15deg);
 		transform: rotate(-15deg);
 
 	}
 	20% {
 		margin-left: 35%;
 		margin-top: -2.5%;
+		-webkit-transform: rotate(-7deg);
 		transform: rotate(-7deg);
 
 	}
 	40% {
 		margin-left: 45%;
 		margin-top: -1.8%;
+		-webkit-transform: rotate(-15deg);
 		transform: rotate(-15deg);
 
 	}
 	60% {
 		margin-left: 55%;
 		margin-top: -2.5%;
+		-webkit-transform: rotate(-7deg);
 		transform: rotate(-7deg);
 
 	}
 	80% {
 		margin-left: 65%;
 		margin-top: -1.8%;
+		-webkit-transform: rotate(-15deg);
 		transform: rotate(-15deg);
 
 	}
 	100% {
 		margin-left: 75%;
 		margin-top: -2.5%;
+		-webkit-transform: rotate(-7deg);
 		transform: rotate(-7deg);
 	}
 }
+
+@keyframes animationPen {
+	0% {
+		margin-left: 25%;
+		margin-top: -1.8%;
+		-webkit-transform: rotate(-15deg);
+		transform: rotate(-15deg);
+
+	}
+	20% {
+		margin-left: 35%;
+		margin-top: -2.5%;
+		-webkit-transform: rotate(-7deg);
+		transform: rotate(-7deg);
+
+	}
+	40% {
+		margin-left: 45%;
+		margin-top: -1.8%;
+		-webkit-transform: rotate(-15deg);
+		transform: rotate(-15deg);
+
+	}
+	60% {
+		margin-left: 55%;
+		margin-top: -2.5%;
+		-webkit-transform: rotate(-7deg);
+		transform: rotate(-7deg);
+
+	}
+	80% {
+		margin-left: 65%;
+		margin-top: -1.8%;
+		-webkit-transform: rotate(-15deg);
+		transform: rotate(-15deg);
+
+	}
+	100% {
+		margin-left: 75%;
+		margin-top: -2.5%;
+		-webkit-transform: rotate(-7deg);
+		transform: rotate(-7deg);
+	}
+}
+
+/* 3ья скролл-секция */
 
 #three_scroll {
 	background: url('../image_main/banner.png') no-repeat center;
@@ -246,9 +332,12 @@ section {
 	color: #20B2AA;
 }
 
+/* 4ая скролл-секция */
+
 #four_scroll {
-	padding-bottom: 10px;
-	background: url('../image_main/banner_four.png') no-repeat center;
+
+	padding-bottom: 40px;
+	background: url('../image_main/banner_four.jpg') no-repeat center;
 	background-size: cover;
 }
 
@@ -258,16 +347,22 @@ section {
 	text-shadow: 0 0 1px white;
 }
 
+#read_more {
+	width: 45vw;
+	text-align: center;
+}
+
 #read_more>a {
-	width: 18%;
-	height: 4vmin;
-	padding: 10px;
+	display: block;
+	padding: 15px;
 	margin-top: 0;
 	background: rgba(128, 128, 128, 0.7);
 	border-radius: 5px;
+	-webkit-box-shadow: 0 0 2px 3px lightgray;
 	box-shadow: 0 0 2px 3px lightgray;
 }
 
+/* медиаусловия */
 
 @media screen and (min-width: 640px) and (max-width: 1100px) {
 	#one_scroll,
@@ -278,8 +373,7 @@ section {
 		padding-top: 35px;
 	}
 
-	#four_scroll>section>p,
-	#read_more {
+	#four_scroll>section>p {
 		margin: 0;
 	}
 }
@@ -302,29 +396,22 @@ section {
 	}
 	#shape,
 	#section_review {
-		width: 200px;
+		width: 190px;
 		left: -20px;
 		top: -12px;
+		padding: 7px;
 	}
 	#shape {
 		top: 60%;
-		padding: 7px;
+
 	}
 	#pen {
 		top: 87%;
 	}
-}
 
-@media screen and (max-width: 475px) {
-
-	#review {
-
-		margin-left: -25px;
+	#one_scroll iframe {
+		width: 80%;
 	}
-	#pen {
-		display: none;
-	}
-
 }
 
 @media screen and (max-width: 640px) {
@@ -332,23 +419,32 @@ section {
 	#one_scroll,
 	#four_scroll {
 		padding-top: 10px;
+		-webkit-box-orient: vertical;
+		-webkit-box-direction: normal;
+		-ms-flex-direction: column;
 		flex-direction: column;
 	}
 
 	#one_scroll>section,
 	#four_scroll>section,
-	#section_rent {
-		width: 90vw;
-		margin-left: 3vw;
+	#section_rent,
+	#read_more {
+		width: 90%;
+		margin-left: 5%;
 		padding: 3px;
 	}
-	#read_more {
-		padding-bottom: 10px;
-		position: relative;
-		left: 10px;
-		margin: 10px;
-		font-size: smaller;
+}
+
+@media screen and (max-width: 475px) {
+
+	#review {
+
+		margin-left: 0;
 	}
+	#pen {
+		display: none;
+	}
+
 }
 
 @media screen and (max-width: 375px) {
@@ -356,22 +452,51 @@ section {
 	#two_scroll,
 	#three_scroll,
 	#four_scroll {
-		background: #F0FFF0;
+		background: url('../image_velo/velo_backg.jpg') repeat;
 	}
-	section {
-		margin: 10px;
-	}
+
 	#two_scroll {
 		padding-top: 0;
+		overflow: hidden;
 	}
 	#three_scroll,
 	#section_rent {
 		padding: 0px;
 		margin: 0;
-
 	}
+	#shape_pen {
+		width: 200px;
+		height: 280px;
+		top: 5px;
+	}
+
+	#section_review,
+	#shape {
+		width: 170px;
+	}
+
 	#review {
+		width: 220px;
+		height: 300px;
+		left: 20%;
 		margin-top: 0;
 		margin-left: 0;
 	}
+	#read_more {
+		margin-top: 0;
+		margin-bottom: 0;
+	}
+	#four_scroll {
+		padding-bottom: 10px;
+	}
+}
+
+@media screen and (max-width: 290px) {
+	#review {
+		left: 5vw;
+	}
+	.section_flex {
+		overflow: hidden;
+	}
+
 }
