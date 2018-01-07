@@ -1,11 +1,194 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>Выпускной проект</title>
-    </head>
-    <body>
-        <h1>Выпускной проект</h1>
-    </body>
-    
+
+<head>
+    <title>Активный отдых для каждого</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="assets/css/main.1.css" />
+    <link rel="stylesheet" href="assets/css/header_footer.css" type="text/css" />
+    <link rel="shortcut icon" href="assets/image_main/favicon.png" type="image/png">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+
+<body>
+
+    <!-- preLoader -->
+
+    <div id="preloader">
+        <div class="circ">
+            <div class="hands"></div>
+            <div class="body"></div>
+            <div class="head">
+                <div class="eye"></div>
+            </div>
+        </div>
+    </div>
+
+    <header>
+
+        <!-- Nav_hamburger -->
+
+        <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+        <label class="btn-menu" for="hmt">
+  <span class="first"></span>
+  <span class="second"></span>
+  <span class="third"></span></label>
+        <ul class="hidden-menu">
+            <li><a href="index.html" title="Домашняя страница">ГЛАВНАЯ</a></li>
+            <li><a href="velo.html" title="Веломаршруты">ВЕЛОТУРИЗМ</a></li>
+            <li><a href="snow.html" title="Места катания на лыжах и сноуборде">ЛЫЖИ, СНОУБОРД</a></li>
+            <li><a href="ball.html" title="Места игры в лазертаг и пейнтбол">ЛАЗЕРТАГ, ПЕЙНТБОЛ</a></li>
+            <li><a href="rent.html" title="Пункты проката">ПРОКАТ СНАРЯЖЕНИЯ</a></li>
+            <li><a href="review.html" title="Оставьте свой отзыв">ОТЗЫВЫ</a></li>
+            <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
+        </ul>
+
+        <!-- Nav&logo -->
+
+        <nav id="menu">
+            <ul class="links">
+                <li class="active"><a href="index.html" title="Домашняя страница">Главная</a></li>
+                <li><a href="velo.html" title="Веломаршруты">Велотуризм</a></li>
+                <li><a href="snow.html" title="Места катания на лыжах и сноуборде">Лыжи, сноуборд</a></li>
+                <li><a href="ball.html" title="Места игры в лазертаг и пейнтбол">Лазертаг, пейнтбол</a></li>
+                <li><a href="rent.html" title="Пункты проката">Прокат снаряжения</a></li>
+                <li><a href="review.html" title="Оставьте свой отзыв">Отзывы</a></li>
+                <li><a href="mailto:shust1991@gmail.com" title="Напишите нам"><i class="fa fa-envelope  fa-1x " aria-hidden="true"></i></a></li>
+                <li><i class="fa fa-phone  fa-1x " aria-hidden="true"></i></li>
+            </ul>
+        </nav>
+        <div class="logo"><a href="index.html" title="Домашняя страница"><span id="big">АКТИВНЫЙ ОТДЫХ</span>
+            <br><span id="little">для каждого</span></a></div>
+    </header>
+    <main>
+        <!-- hidden scroll -->
+
+        <!-- One -->
+
+        <a class="scroller" href="#one_scroll" title="О нас"><i class="fa fa-arrow-circle-down  fa-2x " aria-hidden="true"></i>О нас</a>
+        <div class="section_flex" id="one_scroll">
+            <section class="section_about_us_one">
+                Любите спорт?
+                <span><hr>Посиделкам в кафе предпочитаете активное движение?
+                        <hr>Нравится взрыв адреналина и зашкаливающие эмоции?
+                        <hr>Не знаете, чем заняться в свободное время или как провести Ваш праздник?
+                        <hr>Любите свежий воздух?</span>
+            </section>
+            <section class="section_about_us_two">
+                <p>Наш проект создан специально для Вас! Здесь собраны места активного отдыха, которые находятся рядом с Минском либо в самой столице. Для велопутешественников мы также подобрали маршруты, выходящие за пределы Минской области.</p>
+
+                <div><a href="velo.html" title="Веломаршруты">Лучшие веломаршруты <i class="fa fa-arrow-circle-right  fa-1x " aria-hidden="true"></i></a>
+                    <a href="snow.html" title="Лыжи и сноуборд">Для покорителей вершин <i class="fa fa-arrow-circle-right  fa-1x " aria-hidden="true"></i></a>
+                    <a href="velo.html" title="Лазертаг и пейнтбол">Игрушечные войны <i class="fa fa-arrow-circle-right  fa-1x " aria-hidden="true"></i></a></div>
+            </section>
+            <section class="section_about_us_three">
+                <h3>Помните, что скучно жить скучно!</h3>
+                <iframe src="https://www.youtube.com/embed/4EgFAAZLPWQ" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </section>
+            <section class="section_about_us_four">
+                <h3>Движение &mdash; это жизнь!</h3>
+                <iframe src="https://www.youtube.com/embed/vr0qNXmkUJ8" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
+            </section>
+        </div>
+
+        <!-- Two -->
+
+        <a class="scroller" href="#two_scroll" title="Отзывы"><i class="fa fa-arrow-circle-down  fa-2x " aria-hidden="true"></i>Отзывы</a>
+        <div class="section_flex" id="two_scroll">
+            <div id="review">
+                <div class="button"></div>
+                <div id="shape_pen" class="shape_pen">
+                    <section id="section_review">Вы всегда можете ознакомиться с отзывами о местах развлечений у нас на сайте. А также будем благодарны, если Вы поделитесь своими впечатлениями.</section>
+
+                    <div id="shape"><a href="review.html" title="Отзывы">Оставьте свой отзыв <br>здесь! <i class="fa fa-arrow-circle-right  fa-1x " aria-hidden="true"></i></a></div>
+                    <div id="pen"></div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Three -->
+
+        <a class="scroller" href="#three_scroll" title="Прокат снаряжения"><i class="fa fa-arrow-circle-down  fa-2x " aria-hidden="true"></i>Прокат снаряжения</a>
+        <div class="section_flex" id="three_scroll">
+            <section id="section_rent">
+                <p>Немаловажной составляющей активного отдыха является правильно подобранное снаряжение. Во многих парках развлечений есть свои собственные пункты проката, но если Вы хотите сами позаботиться о своей экипировке, то мы в этом поможем.</p>
+                <div><a href="rent.html" title="Прокат снаряжения">Пункты проката снаряжения <i class="fa fa-arrow-circle-right  fa-1x " aria-hidden="true"></i></a></div>
+
+            </section>
+        </div>
+
+        <!-- Four -->
+
+        <a class="scroller" href="#four_scroll" title="Новости"><i class="fa fa-arrow-circle-down  fa-2x " aria-hidden="true"></i>Новости</a>
+        <div class="section_flex" id="four_scroll">
+            <section class="section_067">
+                <span class="new">&#9998; 13.12.2017 </span><span class="new">Клуб 067: Кидбол для самых маленьких</span>
+                <hr>
+                <p>Кидбол в Парке 0,67 &mdash; новая увлекательная игра для ваших детей! Мы предлагаем вам абсолютно безопасную игру, которая подходит как мальчикам так и девочкам. Кидбол &mdash; ответ на самый волнующий родителей вопрос: как отметить детский
+                    день рождения необычно и весело? Подходит для детей от 5 лет!</p>
+
+            </section>
+            <section class="section_velo">
+                <span class="new">&#9998; 01.12.2017 Логойск: Новогодний корпоратив</span>
+                <hr>
+                <p> Горнолыжный курорт &laquo;Логойск&raquo; предлагает свои услуги по организации корпоративов! Они подготовят для Вашей компании настоящий зимний праздник с конкурсами, шуточными эстафетами и турнирами, опытные инструктора научат Вас кататься
+                    на горных лыжах и сноубордах, а отменные повара устроят настоящий пир в ресторане &laquo;Гасцiны маентак&raquo;.</p>
+            </section>
+            <section class="section_silichi"><span class="new">&#9998; 05.11.2017 СИЛИЧИ: Открытие ледового сезона-2018</span>
+                <hr>
+                <p>Республиканский горнолыжный центр &laquo;Силичи&raquo; приглашает всех посетить крытый ледовый каток. У нас Вы насладитесь катанием при любой погоде, согреетесь в уютном кафе. К Вашим услугам качественный лед, прокат снаряжения и профессиональная
+                    заточка коньков! В будние дни каток работает с 12.00 до 20.00.</p>
+            </section>
+            <section class="section_August_channel"><span class="new">&#9998; 10.10.2017 Августовкий канал: Новые велодорожки</span>
+                <hr>
+                <p>Гродненцы и гости региона смогут прокатиться среди архитектурных достопримечательностей и живописной природы. Общая протяжённость маршрутов в районе Августовского канала достигнет почти 50 километров. Пункт пропуска &laquo;Лесная&raquo;&ndash;&laquo;Рудавка&raquo;
+                    позволит пересекать границу не только по воде, a также пешком и на велосипеде.</p>
+            </section>
+            <p id="read_more"><a href="" title="Больше новостей">Узнайте больше информации <i class="fa fa-arrow-circle-right  fa-1x " aria-hidden="true"></i></a></p>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+
+    <footer>
+        <div class="subscription">
+            <h4>&#9993;ПОДПИСКА</h4>
+            <p>Подпишитесь на нас в социальных сетях, оформите рассылку уведомлений, и тогда Вы всегда будете в курсе всех незабываемых и азартных мероприятий!</p>
+            <hr>
+            <div><a href="https://twitter.com/" target="_blank" title="Twitter"><i class="fab fa-twitter-square fa-2x"></i></a>
+                <a href="https://www.facebook.com/" target="_blank" title="Facebook"><i class="fab fa-facebook-square fa-2x"></i></a>
+                <a href="https://ok.ru/" target="_blank" title="Одноклассники"><i class="fab fa-odnoklassniki-square fa-2x"></i></a>
+            </div>
+        </div>
+        <div class="footer_menu">
+            <h4 class="h4">&#9734;МЕНЮ</h4>
+            <a href="velo.html" title="Веломаршруты">Велотуризм</a>
+            <hr><a href="snow.html" title="Катание на лыжах и сноуборде">Лыжи, сноуборд</a>
+            <hr><a href="ball.html" title="Места игры в лазертаг и пейнтбол">Лазертаг, пейнтбол</a>
+            <hr><a href="rent.html" title="Прокат снаряжения">Прокат снаряжения</a>
+            <hr><a href="review.html" title="Отзывы">Отзывы</a>
+        </div>
+        <div class="contacts">
+            <h4>&#9990;КОНТАКТЫ</h4>
+            <p>Связь с юридическими лицами по номерам телефонов:
+                <hr>
+                <p class="white">+375292004422</p>
+                <p class="white">+375296004422</p>
+                <p>Также можете писать нам на <a href="mailto:shust1991@gmail.com" title="Напишите нам">электронный ящик.</a></p>
+                <hr>
+        </div>
+    </footer>
+    <div class="copyright">&copy; 2017 Shust Kristina. ALL RIGHTS RESERVED.</div>
+    <!-- Scripts -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.1/js/all.js"></script>
+    <script type="text/javascript" src="assets/script/jquery.scroller.js"></script>
+    <script type="text/javascript" src="assets/script/main.js"></script>
+
+</body>
+
+
 </html>
+<!-- Scripts -->
