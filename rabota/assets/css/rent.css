@@ -203,11 +203,11 @@ header {
     transform: scale(0.95);
 }
 
-#region_address {
+.region_address {
     display: none;
 }
 
-.region>li:hover>#region_address {
+.region>li:hover>.region_address {
     display: block;
     margin-left: -20%;
 }
@@ -223,7 +223,7 @@ header {
     padding-left: 50px;
 }
 
-#region_address>li:hover {
+.region_address>li:hover {
     -webkit-transform: translateX(15px);
     -ms-transform: translateX(15px);
     transform: translateX(15px);
@@ -251,7 +251,7 @@ input {
         width: 80%;
         padding-left: 10%;
     }
-    .region>li:hover>#region_address {
+    .region>li:hover>.region_address {
         margin-left: -50%;
     }
     .address {
@@ -267,7 +267,7 @@ input {
     .phone_rent {
         display: none;
     }
-    .region>li:hover>#region_address {
+    .region>li:hover>.region_address {
         margin-left: 0%;
     }
     .address {
