@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+# ShustKristina.github.io
+
+>>>>>>> 0035a912185eda674ec1fb23c6f62e98ac08bdd6
 ТЕМА сайта: АКТИВНЫЙ ОТДЫХ
 
 
