@@ -38,7 +38,7 @@ header {
 /* 1ая скролл-секция */
 
 #one_scroll {
-	height: 85%;
+	min-height: 85%;
 	background: url('../image_main/banner_two.jpg') no-repeat center;
 	background-size: cover;
 }

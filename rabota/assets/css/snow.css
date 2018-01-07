@@ -10,9 +10,11 @@ header {
 main {
     padding-bottom: 5vmin;
 }
-
+h2{
+    background: url('../image_velo/velo_backg.jpg') repeat;
+}
 .wrapper_places {
-    height: 100%;
+    min-height: 100%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
