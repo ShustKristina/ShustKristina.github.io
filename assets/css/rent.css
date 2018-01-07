@@ -39,16 +39,16 @@ header {
     border-bottom: 8px double gray;
     border-top: 8px double gray;
     position: relative;
-    -webkit-transition: all 0.8s;
-    -o-transition: all 0.8s;
-    transition: all 0.8s;
+    -webkit-transition: transform 0.8s, border 0.8s;
+    -o-transition: transform 0.8s, border 0.8s;
+    transition: transform 0.8s, border 0.8s;
 }
 
 .rent h3:hover {
     -webkit-transform: scale(0.95);
     -ms-transform: scale(0.95);
     transform: scale(0.95);
-    outline: 8px solid gray;
+    border: 8px solid gray;
 }
 
 /* силуэты-перевертыши */
@@ -101,26 +101,32 @@ header {
 
 .back1 {
     background: url(../image_rent/velosiped.png) center no-repeat;
+    background-size: contain;
 }
 
 .front1 {
     background: url(../image_rent/velosiped2.png) center no-repeat;
+    background-size: contain;
 }
 
 .back2 {
     background: url(../image_rent/snow1.png) center no-repeat;
+    background-size: contain;
 }
 
 .front2 {
     background: url(../image_rent/snow2.png) center no-repeat;
+    background-size: contain;
 }
 
 .back3 {
     background: url(../image_rent/laz1.png) center no-repeat;
+    background-size: contain;
 }
 
 .front3 {
     background: url(../image_rent/laz2.png) center no-repeat;
+    background-size: contain;
 }
 
 .backfaces .back {
@@ -245,6 +251,19 @@ input {
 }
 
 /* media conditions */
+
+@media screen and (min-width: 660px) and (max-width: 856px) {
+    .rent1 h3,
+    .rent3 h3 {
+        padding-bottom: 33px;
+    }
+}
+
+@media screen and (max-width: 729px) {
+    .rent3 h3 {
+        padding-bottom: 10px;
+    }
+}
 
 @media screen and (max-width: 640px) {
     .rent {
