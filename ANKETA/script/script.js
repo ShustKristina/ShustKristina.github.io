@@ -1,9 +1,29 @@
 var surname = prompt("Введите свою фамилию");
+while (surname === null) {
+    var surname = prompt("ВВЕДИТЕ фамилию!");
+}
+while (surname == '') {
+    var surname = prompt("ВВЕДИТЕ фамилию!");
+}
 var name = prompt("Введите свое имя");
+while (name === null) {
+    var name = prompt("ВВЕДИТЕ имя!");
+}
+while (name == '') {
+    var name = prompt("ВВЕДИТЕ имя!");
+}
 var patronymic = prompt("Введите свое отчество");
+while (patronymic === null) {
+    var patronymic = prompt("ВВЕДИТЕ отчество!");
+}
+while (patronymic == '') {
+    var patronymic = prompt("ВВЕДИТЕ отчество!");
+}
 var age = prompt("Сколько Вам лет?", "20");
+while (age.replace(/\d/g, '').length) {
+    var age = prompt("Введите КОРРЕКТНОЕ число!");
+}
 var ageConvert = +age + 5;
-
 while ((+age > 100)) {
     var age = prompt("Возраст не может быть более 100 лет! Введите КОРРЕКТНОЕ число!", "20");
 }
