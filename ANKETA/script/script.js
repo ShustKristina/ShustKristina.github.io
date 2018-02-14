@@ -19,15 +19,22 @@ while (patronymic === null) {
 while (patronymic == '') {
     var patronymic = prompt("ВВЕДИТЕ отчество!");
 }
-var age = prompt("Сколько Вам лет?", "20");
-while (age.replace(/\d/g, '').length) {
-    var age = prompt("Введите КОРРЕКТНОЕ число!");
+
+do {
+   var age = prompt("Введите свой возраст", "20");
 }
+while 
+    (age != null && age.replace(/\d/g, '').length);
+
+while (age === null){
+     var age = prompt("Введите возраст!");
+}
+     
 var ageConvert = +age + 5;
-while ((+age > 100)) {
+while ((+age > 100 && age.replace(/\d/g, '').length)) {
     var age = prompt("Возраст не может быть более 100 лет! Введите КОРРЕКТНОЕ число!", "20");
 }
-while ((+age < 6)) {
+while ((+age < 6 && age.replace(/\d/g, '').length)) {
     var age = prompt("Возраст не может быть менее 6 лет! Введите КОРРЕКТНОЕ число!", "20");
 }
 
