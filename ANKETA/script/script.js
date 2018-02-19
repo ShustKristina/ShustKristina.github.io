@@ -1,42 +1,25 @@
 var surname = prompt("Введите свою фамилию");
-while (surname === null) {
-    var surname = prompt("ВВЕДИТЕ фамилию!");
+while (surname === null || surname == '') {
+    surname = prompt("ВВЕДИТЕ фамилию!");
 }
-while (surname == '') {
-    var surname = prompt("ВВЕДИТЕ фамилию!");
-}
+
 var name = prompt("Введите свое имя");
-while (name === null) {
-    var name = prompt("ВВЕДИТЕ имя!");
+while (name === null || name == '') {
+    name = prompt("ВВЕДИТЕ имя!");
 }
-while (name == '') {
-    var name = prompt("ВВЕДИТЕ имя!");
-}
+
 var patronymic = prompt("Введите свое отчество");
-while (patronymic === null) {
-    var patronymic = prompt("ВВЕДИТЕ отчество!");
-}
-while (patronymic == '') {
-    var patronymic = prompt("ВВЕДИТЕ отчество!");
+while (patronymic === null || patronymic == '') {
+     patronymic = prompt("ВВЕДИТЕ отчество!");
 }
 
-do {
-   var age = prompt("Введите свой возраст", "20");
-}
-while 
-    (age != null && age.replace(/\d/g, '').length);
+var age = prompt("Введите свой возраст", "20");
 
-while (age === null){
-     var age = prompt("Введите возраст!");
+while (age === null || age.replace(/\d/g, '').length || age > 100 || age < 5) {
+    age = prompt("Введите возраст (5-100лет)!");
 }
-     
+
 var ageConvert = +age + 5;
-while ((+age > 100 && age.replace(/\d/g, '').length)) {
-    var age = prompt("Возраст не может быть более 100 лет! Введите КОРРЕКТНОЕ число!", "20");
-}
-while ((+age < 6 && age.replace(/\d/g, '').length)) {
-    var age = prompt("Возраст не может быть менее 6 лет! Введите КОРРЕКТНОЕ число!", "20");
-}
 
 if (confirm("Если Ваш пол мужской - нажмите ОК, если женский - ОТМЕНА")) {
     var gender = "мужской";
