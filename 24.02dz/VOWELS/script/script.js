@@ -30,15 +30,13 @@ console.log("Количество русских гласных в строке:
 
 function countVowels3(arg) {
     var vowels = ["а", "я", "е", "э", "о", "ё", "у", "ю", "ы", "и"];
-    var counter=0;
-    var result = arg.reduce(function(prevValue, curValue) {
+     var result = arg.reduce(function (vowelsCounter, curValue) {
         if (vowels.includes(curValue)) {
-            counter++;
+            vowelsCounter++;
+        } else {
+            vowelsCounter;
         }
-        else {
-            counter = prevValue;
-        }
-        return counter;
+        return vowelsCounter;
     }, 0);
 
     return result;
