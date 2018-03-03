@@ -9,13 +9,12 @@
 
 <body>
 
-
-    <script>
+     <script>
         function buildWrapper(arg) {
             return (function buildWrapper(arg2) {
-                var element = document.createElement(arg); //create tag
-                element.innerHTML = arg2; //paste the text
-                var result = document.body.appendChild(element); //text+tag
+                var tag = arg; //create tag
+                var text = arg2.split("'").join("&apos;").split('"').join("&quot;").split('<').join("&quot;").split('<').join("&lsaquo;").split('>').join("&rsaquo;").split('&').join("&amp;"); //paste the text
+                var result = "<"+tag+">"+text+"<"+"/"+tag+">"; //text+tag
                 return result;
             });
         }
