@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Оборачивание текста в тег</title>
-    <script src="script/script.js"></script>
+    <script defer src="script/script.js"></script>
 </head>
 
 <body>
@@ -13,7 +13,7 @@
         function buildWrapper(arg) {
             return (function buildWrapper(arg2) {
                 var tag = arg; //create tag
-                var text = arg2.split('&').join("&amp;").split("'").join("&apos;").split('"').join("&quot;").split('<').join("&quot;").split('<').join("&lsaquo;").split('>').join("&rsaquo;"); //paste the text
+                var text = arg2.split('&').join("&amp;").split("'").join("&apos;").split('"').join("&quot;").split('<').join("&lt;").split('>').join("&gt;"); //paste the text
                 var result = "<"+tag+">"+text+"<"+"/"+tag+">"; //text+tag
                 return result;
             });
