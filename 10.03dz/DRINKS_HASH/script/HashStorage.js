@@ -1,44 +1,38 @@
 //создание класса HashStorage
-//Что-то подсказывает, что я здесь ерунду написала
-class HashStorage {
 
-    constructor(drinks) {
-        this.name = drinks;
+function HashStorage() {
+
+    //метод добавляет ключ+значение
+    var storage = {}; // хэш, в котором хранилище будет сохранять всё что нужно
+
+    this.addValue = function (key, value) {
+        storage[key] = value; // сохраняем в хэше значение value под именем key
     }
-//метод добавляет ключ+значение
-    addValue(key, value) {
-        this.key = key;
-        this.value = value;
+
+    this.getValue = function (key) {
+        console.log(storage[key]); //вывод значения
     }
-//вывод пары ключ:значение
-    getValue(key) {
-       console.log(this.key + ": " + this.value);
+
+    this.deleteValue = function (key) {
+        console.log(delete storage[key]); //  удаление  ключа
     }
-//  удаление  ключа
-    deleteValue(key) {
-        delete this.key;
-    }
-//добавление ключа в массив
-    getKeys() {
-        var arr=[];
-        arr.push(this.key);
-        alert(arr);
+
+    var arrKeys = [];
+    this.getKeys = function () {
+        for (key in storage) { //добавление ключа в массив
+            arrKeys.push(key);
+            console.log(arrKeys);
+        }
     }
 }
 
-
 //создание объекта 
 
-var drinkStorage = new HashStorage(inputInformation().nameDrink);
-console.log(drinkStorage.name);
-
-
-//!!не понимаю, как добавить ВСЕ значения 
-drinkStorage.addValue(inputInformation().nameDrink, inputInformation().receptDrink); 
-
-drinkStorage.getValue();
-drinkStorage.deleteValue();
+var drinkStorage = new HashStorage();
+drinkStorage.addValue(inputInformation().nameDrink, inputInformation().receptDrink);
+drinkStorage.getValue(receivingInformation());
 drinkStorage.getKeys();
+drinkStorage.deleteValue(deleteInformation());
 
 
 //спрашиваем инф-цию о напитке
@@ -52,26 +46,33 @@ function inputInformation() {
 
     var time = prompt("Время приготовления напитка", "20мин");
     return {
-        nameDrink,
-        alkogolDrink,
-        receptDrink,
-        time         //!!ничего не придумала, как вывести все значения, чтобы их в дальнейшем занести в объект
+        nameDrink: nameDrink,
+        alkogolDrink: alkogolDrink,
+        receptDrink: receptDrink,
+        time: time //!!ничего не придумала, как вывести все значения, чтобы их в дальнейшем занести в объект
     };
 }
 
 //вывод инф-ции о напитке
 function receivingInformation() {
     var drink = prompt("Введите название напитка", "Махито");
-    
+    return drink;
     //как я понимаю, здесь должно быть условие drink=ключу и если true, то выводится ф-ция getValue, если false, то сообщение, что такого напитка нет
-    
+
 }
 
 function deleteInformation() {
-    var drink=prompt("Введите название напитка, который хотите удалить", "Махито");
-    //как я понимаю, здесь должно быть условие drink=ключу и если true, то выводится ф-ция deleteValue
+    var drink = prompt("Введите название напитка, который хотите удалить", "Махито");
+if (drinkStorage.getKeys()==true){
+    alert("Рецепт данного напитка удален из хранилища")
 }
+    else{
+         alert("Данного напитка нет в хранилище")
+    }
+    return drink;
+}
+
 function allDrinks() {
-   
+
     // выводится ф-ция getKeys
 }
