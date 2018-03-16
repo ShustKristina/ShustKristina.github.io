@@ -1,5 +1,5 @@
 function convertYearInCentury(arg) {
-    return +arg.substring(0, 2) + 1;
+    return Math.floor(arg/100+1);
 }
-var test = prompt("Введите любой год", "1789");
+var test = 1875;
 alert("Это " + convertYearInCentury(test) + " век");
