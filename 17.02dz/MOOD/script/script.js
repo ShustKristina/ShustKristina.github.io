@@ -12,7 +12,7 @@
           var n = randomDiap(1, 7);
           var colorName = colors[n];
 
-          for (var i = 1; i <= colorsCount; i++) {
+         
               if (colorName in colorHash) {
                   continue;
               }
@@ -21,7 +21,7 @@
 
               }
               console.log(colorName);
-          }
+          
       }
   }
 

@@ -1,5 +1,5 @@
 header {
-    height: 55%;
+    min-height: 55%;
     background: url('../image_main/slider3.jpg') no-repeat center;
     background-size: cover;
 }

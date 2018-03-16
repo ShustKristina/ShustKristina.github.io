@@ -6,11 +6,16 @@ function palindrom(str) {
         .split('.').join('').split('!').join('').split('?').join('').split(';').join('').split('"').join('').split(':').join('').split('-').join('');
     var strReverse = str.split('').reverse().join('');
     if (str == strReverse) {
-        return 'Это палиндром';
+        return true;
     }
     else {
-        return 'Это не палиндром';
+        return false;
     }
 }
 
-alert(palindrom(test));
+if (palindrom(test) == true) {
+    alert("Это палиндром");
+}
+if (palindrom(test) != true) {
+    alert("Это не палиндром");
+}

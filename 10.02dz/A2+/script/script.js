@@ -1,24 +1,45 @@
 var test = prompt('Введите текст');
 
 function removeSpace(arg) {
-
- var strRemoveSpace = ''; 
+ var l = arg.length;
+ var strRemoveSpace = '';
  var c, c0 = ' ';
 
- for (var i = 0; i < arg.length; i++) { 
-  c = arg.substring(i, i + 1); 
+ for (var i = 0; i < l; i++) {
+  c = arg.substring(i, i + 1);
   if (c == ' ') {
-   if (c0 == ' ') continue;
+   if (c0 == ' ')
+    continue;
   }
   c0 = c;
   strRemoveSpace += c;
  }
-
- if (strRemoveSpace.substring(strRemoveSpace.length - 1, strRemoveSpace.length) == ' ') {
-  strRemoveSpace.substring(0, strRemoveSpace.length - 1);
- } 
- else{
+l = strRemoveSpace.length;
+ if (strRemoveSpace.substring(l - 1, l) == ' ') {
+  strRemoveSpace = strRemoveSpace.substring(0, l - 1);
+ }
+ else {
   return strRemoveSpace;
  }
 }
-console.log(removeSpace(test));
+console.log("<" + removeSpace(test) + ">");
+
+function trim(s) {
+ var l = s.length;
+ var t = '',
+  c, c0 = ' ';
+ for (var i = 0; i < l; i++) {
+  c = s.substring(i, i + 1);
+  if (c == ' ') {
+   if (c0 == ' ')
+    continue;
+  }
+  c0 = c;
+  t += c;
+ }
+ l = t.length;
+ if (t.substring(l - 1, l) == ' ') t = t.substring(0, l - 1);
+ return t;
+}
+
+console.log("<" + trim(test) + ">");

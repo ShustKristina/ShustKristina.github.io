@@ -53,7 +53,7 @@ a {
 /* preloader */
 
 #preloader {
-	z-index: 100000;
+	z-index: 100000000;
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -212,7 +212,7 @@ a {
 	position: fixed;
 	background: rgba(0, 128, 128, 0.6);
 	font-weight: bold;
-	z-index: 24;
+	z-index: 11111111;
 }
 
 .links {
@@ -438,7 +438,7 @@ footer hr {
 	-webkit-transition: right 1s;
 	-o-transition: right 1s;
 	transition: right 1s;
-	z-index: 11111111;
+	z-index: 1000000;
 	-webkit-transform: translateZ(0);
 	-webkit-backface-visibility: hidden;
 }
@@ -473,7 +473,7 @@ footer hr {
 	-webkit-transition: right 1s;
 	-o-transition: right 1s;
 	transition: right 1s;
-	z-index: 111111111;
+	z-index: 10000000;
 	width: 25px;
 	border-radius: 50%;
 	-webkit-transform: translateZ(0);
