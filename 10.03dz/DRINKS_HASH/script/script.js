@@ -21,7 +21,6 @@ function inputInformation() {
 function receivingInformation() {
     var drink = prompt("Введите название напитка, о котором хотите получить информацию", "Махито");
     console.log("напиток " + drink, drinkStorage.getValue(drink));
-    return drink;
 }
 
 function deleteInformation() {
