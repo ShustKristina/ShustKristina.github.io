@@ -67,6 +67,7 @@ function calcFragment(arr) {
     return arr[0];
 }
 
+//Функция, которая находит скобки, рассчитывает значение в скобках либо, если их нет, сразу рассчитывает выражение
 function brackets(arr) {
     for (var k = 0; k <= arr.length; k++) {
         if (arr.includes("(") && arr.includes(")")) {
@@ -76,7 +77,7 @@ function brackets(arr) {
             fragment = arr.slice(leftBracket + 1, rightBracket);
             arr.splice(leftBracket, fragment.length + 2, calcFragment(fragment));
         } else {
-            return calcFragment(arr)
+            return calcFragment(arr);
         }
     }
 }
@@ -84,9 +85,9 @@ function brackets(arr) {
 var test = "(5+7)*8";
 var test2 = "((3*-2)*(5-2))/1";
 var test3 = "3+4*5-2/1";
-var test4 = prompt("Введите выражение, которое надо вычислить")
+var test4 = prompt("Введите выражение, которое надо вычислить");
 
-console.log("Pезультат вычисления выражения " + test + ": " + brackets(parseString(test)))
-console.log("Pезультат вычисления выражения " + test2 + ": " + brackets(parseString(test2)))
-console.log("Pезультат вычисления выражения " + test3 + ": " + brackets(parseString(test3)))
-console.log("Pезультат вычисления выражения " + test4 + ": " + brackets(parseString(test4)))
+console.log("Pезультат вычисления выражения " + test + ": " + brackets(parseString(test)));
+console.log("Pезультат вычисления выражения " + test2 + ": " + brackets(parseString(test2)));
+console.log("Pезультат вычисления выражения " + test3 + ": " + brackets(parseString(test3)));
+console.log("Pезультат вычисления выражения " + test4 + ": " + brackets(parseString(test4)));
