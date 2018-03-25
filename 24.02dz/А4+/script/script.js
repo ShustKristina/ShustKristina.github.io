@@ -1,19 +1,17 @@
 function palindrome(str) {
-   str = str.toLowerCase().replace(".", "").replace(",", "").replace(":", "").replace(";", "").replace("!", "").replace("?", "").replace("ё", "е").replace("ъ", "ь").replace("-", "").replace(/\s/g,"");
- return str;
+    var strNew = str.toLowerCase().replace(".", "").replace(",", "").replace(":", "").replace(";", "").replace("!", "").replace("?", "").replace("ё", "е").replace("ъ", "ь").replace("-", "").replace(/\s/g, "");
+
+    function palindrome2(abc) {
+
+        if (abc.length <= 1) {
+            return true;
+        }
+        if (abc.slice(0, 1) != abc.slice(-1)) {
+            return false;
+        }
+        return palindrome2(abc.slice(1, -1));
+    }
+    return palindrome2(strNew);
 }
-
-function palindrome2(str){
-       
-    if (str.length <= 1) {
-        return "Это палиндром";
-    }
-    if (str.slice(0, 1) != str.slice(-1)) {
-        return "Это не палиндром";
-    }
-
-    return palindrome2(str.slice(1, -1));
-    }
-   
-var test = prompt("Введите строку");
-alert(palindrome2(palindrome(test)));
+var test = "А роза упала на лапу Азора.";
+console.log(palindrome(test));
