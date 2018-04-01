@@ -1,0 +1,24 @@
+form {
+    margin-bottom: 60px;
+}
+
+input[class="longtext"] {
+    width: 453px;
+}
+
+input[class="shorttext"] {
+    width: 200px;
+}
+
+input[class="number"] {
+    width: 80px;
+}
+
+select[name="division"] {
+    width: 204px;
+}
+
+textarea[name="description"] {
+    width: 608px;
+    height: 50px;
+}
