@@ -1,21 +1,19 @@
 function createForms(arr) {
-    
     var form = document.createElement("form");
     var table = document.createElement("table");
+
     form.action = "http://fe.it-academy.by/TestForm.php";
-   
     document.body.appendChild(form);
     form.appendChild(table);
 
     for (var i = 0; i < arr.length; i++) {
-        
         var row = document.createElement("tr");
         var cell1 = document.createElement("td");
         var cell2 = document.createElement("td");
         var label = document.createElement("label");
         var input = document.createElement("input");
 
-        label.innerHTML = arr[i].label; 
+        label.innerHTML = arr[i].label;
         table.appendChild(row);
         row.appendChild(cell1);
         row.appendChild(cell2);
@@ -41,9 +39,9 @@ function createForms(arr) {
                 var option = document.createElement("option");
                 option.value = arr[i].variants[j].value;
                 option.innerHTML = arr[i].variants[j].text;
-                option.selected = 3;
                 select.appendChild(option);
             }
+            document.querySelectorAll("option")[2].setAttribute("selected", true);
         }
         if (arr[i].kind == "radio") {
             for (var k = 0; k < arr[i].variants.length; k++) {
@@ -51,8 +49,8 @@ function createForms(arr) {
                 input.type = "radio";
                 input.name = arr[i].name;
                 input.value = arr[i].variants[k].value;
-                input.innerHTML = arr[i].variants[k].text; 
                 cell2.appendChild(input);
+                cell2.appendChild(document.createTextNode(arr[i].variants[k].text));
             }
         }
         if (arr[i].kind == "check") {
