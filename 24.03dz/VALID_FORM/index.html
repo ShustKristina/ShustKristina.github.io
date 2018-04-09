@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Валидация формы</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script async src="script/script.js"></script>
+</head>
+
+<body>
+    <p></p>
+    <form name="validform" action="http://fe.it-academy.by/TestForm.php">
+       <p>Для внесения вашего сайта в каталог, заполните форму:</p>
+        <table>
+            <tr>
+                <td>Разработчики:</td>
+                <td><input placeholder="Петров, Новиков" type="text"  class="data" name="developers"></td>
+            </tr>
+            <tr>
+                <td>Название сайта:</td>
+                <td><input placeholder="АмиМебель" type="text" class="nameSite data" name="nameSite"></td>
+            </tr>
+            <tr>
+                <td>URL сайта:</td>
+                <td><input placeholder="https://habrahabr.ru" type="text" name="addressSite" class="address_site data"></td>
+            </tr>
+            <tr>
+                <td>Дата запуска сайта:</td>
+                <td><input placeholder="13.02.2017" type="text" class="date data" name="date"></td>
+            </tr>
+            <tr>
+                <td>Посетителей в сутки:</td>
+                <td><input placeholder="500" type="text" class="visitors data" name="visitors"></td>
+            </tr>
+            <tr>
+                <td>E-mail для связи:</td>
+                <td><input placeholder="ivanov@gmail.com" type="text" class="email data" name="email"></td>
+            </tr>
+            <tr>
+                <td>Рубрика каталога:</td>
+                <td><select name="catalog" class="catalog data">
+        <option value="1">бытовая техника</option>
+        <option value="2">одежда</option>
+        <option value="3">спортовары</option>
+        <option value="4">все для дома</option>
+        <option value="5">еда</option>
+    </select></td>
+            </tr>
+            <tr>
+                <td>Размещение:</td>
+                <td><input type="radio" class="cost1 data" name="cost">бесплатное <input type="radio" name="cost" class="cost2">платное<input type="radio" name="cost" class="cost3">VIP</td>
+            </tr>
+            <tr>
+                <td>Разрешить отзывы:</td>
+                <td><input type="checkbox" name="review" class="data"></td>
+            </tr>
+            <tr>
+                <td colspan="2">Описание сайта:</td>
+            </tr>
+            <tr>
+                <td colspan="2"><textarea name="description" class="descriptionSite data"></textarea></td>
+            </tr>
+            <tr><td><input type="submit" name="validButton" class="validButton" value="Опубликовать"></td></tr>
+        </table>
+    </form>
+</body>
+
+</html>
