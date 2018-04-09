@@ -182,7 +182,6 @@ function validCost(autoFocus) {
     } else {
         error.style.color = 'green';
         error.innerHTML = "&#10004;";
-        date.style.border = "1px solid green";
         return false;
     }
 }
