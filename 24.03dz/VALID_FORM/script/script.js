@@ -13,11 +13,8 @@ var description = form.elements["description"];
 function validDevelopers(autoFocus) {
     var developValue = develop.value;
     var reg1 = /[а-яА-Я]/;
-    var error = document.createElement('div');
-    develop.parentElement.insertBefore(error, develop);
-
+    var error = document.querySelector('.errorDev');
     if (developValue == "" || !reg1.test(developValue)) { //регулярные выражения знаю плохо, поэтому записала условие так, как смогла
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Поле не может быть пустым, содержать цифры и латинские буквы!';
         if (autoFocus) {
@@ -25,6 +22,7 @@ function validDevelopers(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green'
         error.innerHTML = "&#10004;"
         develop.style.border = "1px solid green";
         return false;
@@ -38,11 +36,8 @@ develop.addEventListener("blur", function () {
 function validNameSite(autoFocus) {
     var nameSiteValue = nameSite.value;
     var reg1 = /[а-яА-Я]/;
-    var error = document.createElement('div');
-    nameSite.parentElement.insertBefore(error, nameSite);
-
+    var error = document.querySelector('.errorName');
     if (nameSiteValue == "" || !reg1.test(nameSiteValue)) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Поле не может быть пустым, содержать цифры и латинские буквы!';
         if (autoFocus) {
@@ -50,6 +45,7 @@ function validNameSite(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         nameSite.style.border = "1px solid green";
         return false;
@@ -62,11 +58,8 @@ nameSite.addEventListener("blur", function () {
 function validAddressSite(autoFocus) {
     var addressSiteValue = addressSite.value;
     var reg3 = /^https:/;
-    var error = document.createElement('div');
-    addressSite.parentElement.insertBefore(error, addressSite);
-
+    var error = document.querySelector('.errorURL');
     if (addressSiteValue == "" || !reg3.test(addressSiteValue)) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Поле не может быть пустым и URL начинается с https:!';
         if (autoFocus) {
@@ -74,6 +67,7 @@ function validAddressSite(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         addressSite.style.border = "1px solid green";
         return false;
@@ -87,11 +81,9 @@ addressSite.addEventListener("blur", function () {
 function validDate(autoFocus) {
     var dateValue = date.value;
     var reg4 = /[0-9]/;
-    var error = document.createElement('div');
-    date.parentElement.insertBefore(error, date);
+    var error = document.querySelector('.errorDate');
 
     if (dateValue == "" || !reg4.test(dateValue)) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Поле не может быть пустым, введите число!';
         if (autoFocus) {
@@ -99,6 +91,7 @@ function validDate(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         date.style.border = "1px solid green";
         return false;
@@ -111,11 +104,9 @@ date.addEventListener("blur", function () {
 function validVisitors(autoFocus) {
     var visitorsValue = visitors.value;
     var reg4 = /[0-9]/;
-    var error = document.createElement('div');
-    visitors.parentElement.insertBefore(error, visitors);
+    var error = document.querySelector('.errorVisitors');
 
     if (visitorsValue == "" || !reg4.test(visitorsValue)) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Поле не может быть пустым, введите цифры!';
         if (autoFocus) {
@@ -123,6 +114,7 @@ function validVisitors(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         visitors.style.border = "1px solid green";
         return false;
@@ -135,11 +127,9 @@ visitors.addEventListener("blur", function () {
 function validEmail(autoFocus) {
     var emailValue = email.value;
     var reg5 = /@gmail.com/;
-    var error = document.createElement('div');
-    email.parentElement.insertBefore(error, email);
+    var error = document.querySelector('.errorEmail');
 
     if (emailValue == "" || !reg5.test(emailValue)) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Поле не может быть пустым, название почты должно оканчиваться на @gmail.com!';
         if (autoFocus) {
@@ -147,6 +137,7 @@ function validEmail(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         email.style.border = "1px solid green";
         return false;
@@ -159,11 +150,9 @@ email.addEventListener("blur", function () {
 function validCatalog(autoFocus) {
     var catalogValue = catalog.value;
     var reg4 = /[0-9]/;
-    var error = document.createElement('div');
-    catalog.parentElement.insertBefore(error, catalog);
+    var error = document.querySelector('.errorCatalog');
 
     if (catalogValue == 1) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Выберите другой вариант!';
         if (autoFocus) {
@@ -171,6 +160,7 @@ function validCatalog(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         catalog.style.border = "1px solid green";
         return false;
@@ -181,11 +171,9 @@ catalog.addEventListener("change", function () {
 });
 
 function validCost(autoFocus) {
-    var error = document.createElement('div');
-    cost[0].parentElement.insertBefore(error, cost[0]);
+    var error = document.querySelector('.errorCost');
 
     if (cost.value == "") {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Выберите тип размещения!';
         if (autoFocus) {
@@ -193,6 +181,7 @@ function validCost(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         date.style.border = "1px solid green";
         return false;
@@ -204,11 +193,9 @@ cost[0].addEventListener("change", function () {
 });
 
 function validReview(autoFocus) {
-    var error = document.createElement('div');
-    review.parentElement.insertBefore(error, review);
+    var error = document.querySelector('.errorReview');
 
     if (!review.checked) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Разрешите оставлять отзывы!';
         if (autoFocus) {
@@ -216,6 +203,7 @@ function validReview(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         review.style.border = "1px solid green";
         return false;
@@ -227,11 +215,9 @@ review.addEventListener("change", function () {
 
 function validDescription(autoFocus) {
     var descriptionValue = description.value;
-    var error = document.createElement('div');
-    description.parentElement.insertBefore(error, description);
+    var error = document.querySelector('.errorDescription');
 
     if (!descriptionValue || descriptionValue.length > 1200) {
-        error.className = 'error'
         error.style.color = 'red'
         error.innerHTML = 'Опишите сайт (допустимо не более 1200 символов)!';
         if (autoFocus) {
@@ -239,6 +225,7 @@ function validDescription(autoFocus) {
         }
         return true;
     } else {
+        error.style.color = 'green';
         error.innerHTML = "&#10004;"
         description.style.border = "1px solid green";
         return false;
@@ -272,22 +259,3 @@ function validAllFields(EO) {
         EO.preventDefault(); // что-то пошло не так - отменяем отправку формы на сервер
     }
 }
-
-/* Пыталась таким образом удалить дублирующиеся ошибки, не получилось!
-
-form.addEventListener("submit", removeErrors);
-function removeErrors() {
-    var errors = form.querySelectorAll('.error')
-    for (var i = 1; i < errors.length; i++) {
-        errors[i].remove()
-    }
-}
-
-addressSite.addEventListener('blur', removeErrors); //и так для каждого поля
-function removeErrors() {
-    var errors = form.querySelectorAll('.error')
-    for (var i = 1; i < errors.length; i++) {
-        errors[i].remove()
-    }
-}
-*/

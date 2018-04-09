@@ -11,35 +11,42 @@
 <body>
     <p></p>
     <form name="validform" action="http://fe.it-academy.by/TestForm.php">
-       <p>Для внесения вашего сайта в каталог, заполните форму:</p>
+        <p>Для внесения вашего сайта в каталог, заполните форму:</p>
         <table>
             <tr>
                 <td>Разработчики:</td>
-                <td><input placeholder="Петров, Новиков" type="text"  class="data" name="developers"></td>
+                <td>
+                    <div class="errorDev"></div><input placeholder="Петров, Новиков" type="text" class="data" name="developers"></td>
             </tr>
             <tr>
                 <td>Название сайта:</td>
-                <td><input placeholder="АмиМебель" type="text" class="nameSite data" name="nameSite"></td>
+                <td>
+                    <div class="errorName"></div><input placeholder="АмиМебель" type="text" name="nameSite"></td>
             </tr>
             <tr>
                 <td>URL сайта:</td>
-                <td><input placeholder="https://habrahabr.ru" type="text" name="addressSite" class="address_site data"></td>
+                <td>
+                    <div class="errorURL"></div><input placeholder="https://habrahabr.ru" type="text" name="addressSite"></td>
             </tr>
             <tr>
                 <td>Дата запуска сайта:</td>
-                <td><input placeholder="13.02.2017" type="text" class="date data" name="date"></td>
+                <td>
+                    <div class="errorDate"></div><input placeholder="13.02.2017" type="text" name="date"></td>
             </tr>
             <tr>
                 <td>Посетителей в сутки:</td>
-                <td><input placeholder="500" type="text" class="visitors data" name="visitors"></td>
+                <td>
+                    <div class="errorVisitors"></div><input placeholder="500" type="text" name="visitors"></td>
             </tr>
             <tr>
                 <td>E-mail для связи:</td>
-                <td><input placeholder="ivanov@gmail.com" type="text" class="email data" name="email"></td>
+                <td>
+                    <div class="errorEmail"></div><input placeholder="ivanov@gmail.com" type="text" name="email"></td>
             </tr>
             <tr>
                 <td>Рубрика каталога:</td>
-                <td><select name="catalog" class="catalog data">
+                <td>
+                    <div class="errorCatalog"></div><select name="catalog">
         <option value="1">бытовая техника</option>
         <option value="2">одежда</option>
         <option value="3">спортовары</option>
@@ -49,19 +56,24 @@
             </tr>
             <tr>
                 <td>Размещение:</td>
-                <td><input type="radio" class="cost1 data" name="cost">бесплатное <input type="radio" name="cost" class="cost2">платное<input type="radio" name="cost" class="cost3">VIP</td>
+                <td>
+                    <div class="errorCost"></div><input type="radio" class="cost1" name="cost">бесплатное <input type="radio" name="cost" class="cost2">платное<input type="radio" name="cost" class="cost3">VIP</td>
             </tr>
             <tr>
                 <td>Разрешить отзывы:</td>
-                <td><input type="checkbox" name="review" class="data"></td>
+                <td>
+                    <div class="errorReview"></div><input type="checkbox" name="review"></td>
             </tr>
             <tr>
                 <td colspan="2">Описание сайта:</td>
             </tr>
             <tr>
-                <td colspan="2"><textarea name="description" class="descriptionSite data"></textarea></td>
+                <td colspan="2">
+                    <div class="errorDescription"></div><textarea name="description"></textarea></td>
             </tr>
-            <tr><td><input type="submit" name="validButton" class="validButton" value="Опубликовать"></td></tr>
+            <tr>
+                <td><input type="submit" name="validButton" value="Опубликовать"></td>
+            </tr>
         </table>
     </form>
 </body>
