@@ -172,7 +172,7 @@ catalog.addEventListener("change", function () {
 function validCost(autoFocus) {
     var error = document.querySelector('.errorCost');
 
-    if (!cost[0].checked && !cost[1].checked && !cost[2].checked) {
+    if (!cost[0].checked && !cost[1].checked && !cost[2].checked) { //или cost.value==""
         error.style.color = 'red';
         error.innerHTML = 'Выберите тип размещения!';
         if (autoFocus) {
