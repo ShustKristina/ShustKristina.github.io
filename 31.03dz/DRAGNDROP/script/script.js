@@ -1,3 +1,7 @@
+window.addEventListener("load", Mouse, false);
+
+function Mouse() {
+
 //Находим все картинки в контейнере
 var container = document.querySelector(".container");
 var images = container.querySelectorAll("img");
@@ -57,4 +61,5 @@ function MouseEvents(event) {
     document.onmousemove = function (event) {
         moveAt(event.pageX, event.pageY);
     };
+}
 }
