@@ -1,0 +1,22 @@
+{
+  "name": "copy",
+  "version": "1.0.0",
+  "description": "deep_copy",
+  "main": "script.js",
+  "scripts": {
+    "test": "mocha test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShustKristina/ShustKristina.github.io.git"
+  },
+  "author": "ShustKristina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShustKristina/ShustKristina.github.io/issues"
+  },
+  "homepage": "https://github.com/ShustKristina/ShustKristina.github.io#readme",
+  "devDependencies": {
+    "mocha": "^5.1.0"
+  }
+}
