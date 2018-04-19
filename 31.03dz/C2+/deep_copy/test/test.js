@@ -39,6 +39,9 @@ describe('Deep copy', () => {
 
     var e1 = { "a": 1, "b": null, "c": { "a": 11, "b": [4] }, "d": ["fff", undefined] };
     var e2 = deepCopy(e1);
+    it('9.1', () => {
+        assert.equal(e2.d instanceof Array, true);
+    })
     it('9', () => {
         assert.equal(e2 === e1, false);
     })
@@ -72,6 +75,9 @@ describe('Deep copy', () => {
 
     var f1 = ["fvfvf", [null, undefined, { "a": 1, "b": [null] }], { "c": 88, "d": undefined }];
     var f2 = deepCopy(f1);
+    it('19.1', () => {
+        assert.equal(f2[1] instanceof Array, true);
+    })
     it('19', () => {
         assert.equal(f2 === f1, false);
     })
@@ -105,7 +111,7 @@ describe('Deep copy', () => {
     it('29', () => {
         assert.equal(f2[2].d === f1[2].d, true);
     })
-    
+
     var g1 = Number.NaN;
     var g2 = deepCopy(g1);
     it('30', () => {
