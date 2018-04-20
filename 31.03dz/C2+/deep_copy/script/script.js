@@ -1,22 +1,23 @@
 module.exports = function deepCopy(obj) {
 
-    if (obj === null || typeof (obj) === 'undefined' || typeof (obj) === 'number' || typeof (obj) === 'string') {
+    if (obj === null) {
         return obj;
     }
+
     var newObj;
     if (Array.isArray(obj)) {
-        newObj = []
+        newObj = [];
+        for (var i = 0; i < obj.length; i++) {
+            newObj.push(deepCopy(obj[i]));
+        }
+        return newObj;
     }
-    else {
+    if (typeof (obj) === "object") {
         newObj = {};
-    }
-    for (var key in obj) {
-        if (typeof obj[key] === "object") {
-            newObj[key] = deepCopy(obj[key])
+        for (var key in obj) {
+            newObj[key] = deepCopy(obj[key]);
         }
-        else {
-            newObj[key] = obj[key];
-        }
+        return newObj;
     }
-    return newObj;
+    return obj;
 }

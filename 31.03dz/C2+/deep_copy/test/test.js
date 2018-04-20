@@ -1,7 +1,7 @@
 var assert = require("assert");
 var deepCopy = require('../script/script.js');
 describe('Deep copy', () => {
-    var a1 = 555;
+    let a1 = Symbol("a");
     var a2 = deepCopy(a1);
     it('1', () => {
         assert.equal(a1 === a2, true);
