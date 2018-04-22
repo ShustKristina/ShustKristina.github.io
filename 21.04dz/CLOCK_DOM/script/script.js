@@ -45,6 +45,7 @@ hoursHand.style.width = "12px";
 hoursHand.style.height = clockFaceRadius / 2 + "px";
 hoursHand.style.borderRadius = "15px";
 hoursHand.style.backgroundColor = "black";
+hoursHand.style.transformOrigin = "bottom";
 hoursHand.style.position = "absolute";
 hoursHand.style.left = (clockFaceRadius - 12 / 2) + "px";
 hoursHand.style.top = clockFaceRadius - clockFaceRadius / 2 + "px";
@@ -57,6 +58,7 @@ minutesHand.style.height = 0.8 * clockFaceRadius + "px";
 minutesHand.style.borderRadius = "15px";
 minutesHand.style.backgroundColor = "black";
 minutesHand.style.zIndex = "2";
+minutesHand.style.transformOrigin = "bottom";
 minutesHand.style.position = "absolute";
 minutesHand.style.left = clockFaceRadius - 0.7 * hoursHand.offsetWidth / 2 + "px";
 minutesHand.style.top = clockFaceRadius - 0.8 * clockFaceRadius + "px";
@@ -68,14 +70,14 @@ secondsHand.style.width = 0.2 * hoursHand.offsetWidth + "px";
 secondsHand.style.height = 0.9 * clockFaceRadius + "px";
 secondsHand.style.backgroundColor = "black";
 secondsHand.style.zIndex = "2";
-secondsHand.style.verticalAlign = "bottom";
+secondsHand.style.transformOrigin = "bottom";
 secondsHand.style.position = "absolute";
 secondsHand.style.left = clockFaceRadius - 0.2 * hoursHand.offsetWidth / 2 + "px";
 secondsHand.style.top = clockFaceRadius - 0.9 * clockFaceRadius + "px";
 clockFace.appendChild(secondsHand);
 
 //formation current time and moving hands
-setInterval(Clock, 500);
+setInterval(Clock, 1000);
 function Clock() {
     var currTime = new Date();
     var time = document.createElement("div");
