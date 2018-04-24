@@ -27,8 +27,8 @@ clockFace.setAttribute("cy", radiusYellowCircle);
 SVGElem.appendChild(clockFace);
 
 //determine the coordinates and radius of the clockFace
-var clockFaceCenterX = clockFace.getBoundingClientRect().left + clockFace.getBoundingClientRect().width / 2;
-var clockFaceCenterY = clockFace.getBoundingClientRect().top + clockFace.getBoundingClientRect().height / 2;
+var clockFaceCenterX = clockFace.getBoundingClientRect().width / 2;
+var clockFaceCenterY = clockFace.getBoundingClientRect().height / 2;
 
 //create green circles with numbers
 for (var i = 1, number = 12; i <= number; i++) {
@@ -39,18 +39,18 @@ for (var i = 1, number = 12; i <= number; i++) {
     greenCircle.setAttribute("fill", "green");
     greenCircle.setAttribute("r", radiusGreenCircle);
     SVGElem.appendChild(greenCircle);
-    var greenCirclePositionLeft = (greenCircleCenterX - greenCircle.getBoundingClientRect().width/4);
-    var greenCirclePositionTop = Math.round(greenCircleCenterY - greenCircle.getBoundingClientRect().height/4);
-    greenCircle.setAttribute("cx", greenCirclePositionLeft);
-    greenCircle.setAttribute("cy", greenCirclePositionTop);
+    greenCircle.setAttribute("cx", greenCircleCenterX);
+    greenCircle.setAttribute("cy", greenCircleCenterY);
 
     var numbers = document.createElementNS("http://www.w3.org/2000/svg", 'text');
     numbers.textContent = i;
     numbers.setAttribute("fill", "black");
     numbers.setAttribute("font-size", fontSizeNumbers);
     SVGElem.appendChild(numbers);
-    numbers.setAttribute("x", greenCirclePositionLeft-numbers.getComputedTextLength()/2);
-    numbers.setAttribute("y", greenCirclePositionTop+10);
+    numbers.setAttribute("x", greenCircleCenterX);
+    numbers.setAttribute("y", greenCircleCenterY);
+    numbers.setAttribute("text-anchor", "middle");
+    numbers.setAttribute("dominant-baseline", "middle");
 }
 var hoursHand = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
 hoursHand.setAttribute("width", wightHoursHand);
@@ -59,7 +59,7 @@ hoursHand.setAttribute("fill", "black");
 hoursHand.setAttribute("rx", "15");
 hoursHand.setAttribute("x", positionLeftHourHand);
 hoursHand.setAttribute("y", positionTopHourHand);
-hoursHand.setAttribute('transform-origin', '50% 50%');
+hoursHand.setAttribute('transform-origin', '240 225'); //clockFaceCenterX 0.93*clockFaceCenterY
 SVGElem.appendChild(hoursHand);
 
 var minutesHand = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
@@ -69,7 +69,7 @@ minutesHand.setAttribute("fill", "black");
 minutesHand.setAttribute("rx", "15");
 minutesHand.setAttribute("x", positionLeftMinutesHand);
 minutesHand.setAttribute("y", positionTopMinutesHand);
-minutesHand.setAttribute('transform-origin', '50% 50%');
+minutesHand.setAttribute('transform-origin', '240 225'); //clockFaceCenterX 0.93*clockFaceCenterY
 SVGElem.appendChild(minutesHand);
 var secondsHand = document.createElementNS("http://www.w3.org/2000/svg", 'rect');
 secondsHand.setAttribute("width", wightSecondsHand);
@@ -77,16 +77,16 @@ secondsHand.setAttribute("height", heightSecondsHand);
 secondsHand.setAttribute("fill", "black");
 secondsHand.setAttribute("x", positionLeftSecondsHand);
 secondsHand.setAttribute("y", positionTopSecondsHand);
-secondsHand.setAttribute('transform-origin', '50% 50%');
+secondsHand.setAttribute('transform-origin', '240 225'); //clockFaceCenterX 0.93*clockFaceCenterY
 SVGElem.appendChild(secondsHand);
 
 //current time
 var time = document.createElementNS("http://www.w3.org/2000/svg", 'text');
-setInterval(Clock, 1000);
+
 function Clock() {
     var currTime = new Date();
-    var widthTime = time.getComputedTextLength(); //ширина блока с текущим временем
-    var positionLeftTime = radiusYellowCircle - widthTime / 2; //позиционируем текущее время
+    var widthTime = time.getBoundingClientRect().width; //ширина блока с текущим временем=114
+    var positionLeftTime = radiusYellowCircle - 114 / 2; //позиционируем текущее время
     var positionTopTime = 0.5 * radiusYellowCircle;
     time.textContent = currTime.toLocaleTimeString();
     time.setAttribute("fill", "black");
@@ -98,3 +98,5 @@ function Clock() {
     minutesHand.style.transform = 'rotate(' + 6 * currTime.getMinutes() + 'deg)';
     hoursHand.style.transform = 'rotate(' + 30 * currTime.getHours() + 'deg)';
 }
+setInterval(Clock, 1000);
+Clock()
