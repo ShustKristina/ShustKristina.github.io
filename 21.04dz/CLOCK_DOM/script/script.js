@@ -1,29 +1,29 @@
 //all constants
     //yellow circle
     var widthYellowCircle=480;  //ширина циферблата
-    var heightYellowCircle=480; //высота циферблата
+    var heightYellowCircle=widthYellowCircle; //высота циферблата
     var radiusYellowCircle = widthYellowCircle / 2; //радиус желтого круга
        //green circles
     var widthGreenCircle=widthYellowCircle/10;  //ширина круга с цифрой
-    var heightGreenCircle=heightYellowCircle/10; //высота круга с цифрой
+    var heightGreenCircle=widthGreenCircle; //высота круга с цифрой=48
     var fontSizeNumbers=widthGreenCircle/2; //размер шрифта цифр
-    var lineHeightNumbers=heightGreenCircle; //межстрочный интервал (для центрирования цифер)
+    var lineHeightNumbers=widthGreenCircle; //межстрочный интервал (для центрирования цифер)
     var distance = 0.83 * radiusYellowCircle; //расстояние до зеленых кружков
        //clock hands
-    var wightHoursHand=15; // ширина часовой стрелки
-    var heightHoursHand=radiusYellowCircle/2; //высота часовой стрелки
+    var wightHoursHand=widthGreenCircle/3; // ширина часовой стрелки
+    var heightHoursHand=radiusYellowCircle/2; //высота часовой стрелки=120
     var positionLeftHourHand=radiusYellowCircle-wightHoursHand/2; //позиционируем часовую стрелку в центр циферблата
     var positionTopHourHand=radiusYellowCircle-heightHoursHand; 
-    var wightMinutesHand=0.6*wightHoursHand; // ширина минутной стрелки
-    var heightMinutesHand=0.8*radiusYellowCircle; //высота минутной стрелки
+    var wightMinutesHand=0.6*wightHoursHand; // ширина минутной стрелки=9
+    var heightMinutesHand=0.8*radiusYellowCircle; //высота минутной стрелки=192
     var positionLeftMinutesHand=radiusYellowCircle-wightMinutesHand/2; //позиционируем минутную стрелку в центр циферблата
     var positionTopMinutesHand=radiusYellowCircle-heightMinutesHand; 
-    var wightSecondsHand=0.2*wightHoursHand; // ширина секундной стрелки
-    var heightSecondsHand=0.9*radiusYellowCircle; //высота секундной стрелки
+    var wightSecondsHand=0.2*wightHoursHand; // ширина секундной стрелки=3
+    var heightSecondsHand=0.9*radiusYellowCircle; //высота секундной стрелки=216
     var positionLeftSecondsHand=radiusYellowCircle-wightSecondsHand/2; //позиционируем секундную стрелку в центр циферблата
     var positionTopSecondsHand=radiusYellowCircle-heightSecondsHand; 
         //current time
-    var widthTime=radiusYellowCircle/2; //ширина блока с текущим временем
+    var widthTime=radiusYellowCircle/2; //ширина блока с текущим временем=120
     var positionLeftTime=radiusYellowCircle-widthTime/2; //позиционируем текущее время
     var positionTopTime=0.4*radiusYellowCircle;
     
@@ -39,9 +39,9 @@
     document.body.appendChild(clockFace);
     
     //determine the coordinates and radius of the clockFace
-    var clockFaceCenterX = clockFace.offsetLeft + clockFace.offsetWidth / 2;
-    var clockFaceCenterY = clockFace.offsetTop + clockFace.offsetHeight / 2;
-    
+    var clockFaceCenterX = clockFace.offsetLeft + widthYellowCircle / 2;
+    var clockFaceCenterY = clockFace.offsetTop + heightYellowCircle / 2;
+
     //create green circles with numbers
     for (var i = 1, number = 12; i <= number; i++) {
         var circle = document.createElement("div");
@@ -61,8 +61,8 @@
         var angle = 2 / number * i * Math.PI;
         var circleCenterX = clockFaceCenterX + distance * Math.sin(angle);
         var circleCenterY = clockFaceCenterY - distance * Math.cos(angle);
-        circle.style.left = Math.round(circleCenterX - circle.offsetWidth / 2) + 'px';
-        circle.style.top = Math.round(circleCenterY - circle.offsetHeight / 2) + 'px';
+        circle.style.left = Math.round(circleCenterX - widthGreenCircle / 2) + 'px';
+        circle.style.top = Math.round(circleCenterY - heightGreenCircle/ 2) + 'px';
     }
     
     //create clock hands
@@ -112,7 +112,7 @@
         time.style.left = positionLeftTime + 'px';
         time.style.top = positionTopTime + 'px';
         time.innerHTML = currTime.toLocaleTimeString();
-        time.style.fontSize = clockFace.clientWidth / 15 + "px";
+        time.style.fontSize = widthYellowCircle / 15 + "px";
         clockFace.appendChild(time);
     
         secondsHand.style.transform = 'rotate(' + 6 * currTime.getSeconds() + 'deg)';
