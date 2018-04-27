@@ -1,0 +1,22 @@
+{
+  "name": "deepcomp",
+  "version": "1.0.0",
+  "description": "deepComp",
+  "main": "index.js",
+  "directories": {
+    "test": "mocha test.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ShustKristina/ShustKristina.github.io.git"
+  },
+  "author": "ShustKristina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ShustKristina/ShustKristina.github.io/issues"
+  },
+  "homepage": "https://github.com/ShustKristina/ShustKristina.github.io#readme"
+}
