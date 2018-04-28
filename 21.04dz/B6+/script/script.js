@@ -7,9 +7,8 @@ function buildWrapper(arg) {
             for (var key in arg3) {
                 var attr = key + '=' + '"' + arg3[key] + '"';
                 attributesArr.push(attr);
-                var strAttr=attributesArr.join(" ");
             }
-            var result = "<" + tag + " " + strAttr + ">" + text + "<" + "/" + tag + ">"; //text+tag+attributes
+            var result = "<" + tag + " " + attributesArr.join(" ") + ">" + text + "<" + "/" + tag + ">"; //text+tag+attributes
         }
         else {
             var result = "<" + tag + ">" + text + "<" + "/" + tag + ">"; //text+tag 
