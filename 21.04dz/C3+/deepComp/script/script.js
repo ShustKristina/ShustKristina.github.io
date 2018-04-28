@@ -20,7 +20,7 @@ module.exports=function deepComp(arg1, arg2) {
         }
     }
 
-    if (typeof (arg1) == "object" && typeof (arg2) == "object") {
+    if (typeof (arg1) == "object") {
         if (Object.keys(arg1).length !== Object.keys(arg2).length) {
             return false;
         }
