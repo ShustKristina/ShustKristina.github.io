@@ -7,8 +7,9 @@ function buildWrapper(arg) {
             for (var key in arg3) {
                 var attr = key + '=' + '"' + arg3[key] + '"';
                 attributesArr.push(attr);
+                var strAttr=attributesArr.join(" ");
             }
-            var result = "<" + tag + " " + attributesArr + ">" + text + "<" + "/" + tag + ">"; //text+tag+attributes
+            var result = "<" + tag + " " + strAttr + ">" + text + "<" + "/" + tag + ">"; //text+tag+attributes
         }
         else {
             var result = "<" + tag + ">" + text + "<" + "/" + tag + ">"; //text+tag 
@@ -20,7 +21,7 @@ function buildWrapper(arg) {
 //test
 var wrapH1 = buildWrapper("H1");
 var wrapP = buildWrapper("P");
-console.log(wrapH1("СТИХИ", { align: "center", color: "red", border: "1px solid red"}));
+console.log(wrapH1("СТИХИ", { align: "center", class: "logo", id: "logo"}));
 console.log(wrapP("Однажды в <студёную> зимнюю пору"));
 console.log(wrapP("Вкусные M&M's"));
 
