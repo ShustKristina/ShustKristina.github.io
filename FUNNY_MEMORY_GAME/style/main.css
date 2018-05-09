@@ -1,0 +1,395 @@
+a{
+    text-decoration: none;
+    color: aliceblue;
+}
+* {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+h1{
+    margin: 0;
+}
+input{
+    display: none;
+}
+input[type="text"]{
+    display: block;
+}
+body {
+    margin: 0;
+    overflow-x: hidden;
+}
+button {
+    background: rgba(255, 255, 0, 0.7);
+    -webkit-box-shadow: 2px 0 2px black; 
+    box-shadow: 2px 0 7px black;
+    padding: 20px;
+    color: antiquewhite;
+    text-shadow: 1px 1px 1px red;
+    font-size: 1.5em;
+    text-align: center;
+    display: block;
+    width: 250px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    transition: all 0.6s;
+}
+button:hover{
+    color: gray;
+    background: rgba(15, 255, 255, 0.7);
+}
+
+
+.wrapper {
+    width: 100vw;
+    background: url('../images/background1.png');
+    background-size: cover;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+.wrapper:target{
+    display: block;
+}
+.wrapper:not(target){
+    display: none;
+}
+#wrapper_main:not(target),
+#beginLesson:not(target),
+#beginPuzzle:not(target),
+#wrapper_current_word:not(target){
+    display: block;
+}
+.logo {
+    font-family: Arial;
+    font-size: 2.5em;
+    position: relative;
+    top:50px;
+    left: 120px;
+    color: yellow;
+    text-shadow: 0 0 5px red;
+}
+
+.logo:before {
+    content: "";
+    background: url(../images/sun.png);
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    top: -50px;
+    left: -120px;
+    
+}
+ .logo:before,
+.logo:before,
+.logo:before{
+    -webkit-animation: animatLogo 2s infinite linear;
+    animation: animatLogo 1.5s infinite linear;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+}
+@-webkit-keyframes animatLogo{
+    from{
+ 
+        -webkit-transform: rotate(-15deg);
+ 
+        transform: rotate(-15deg);
+    }
+    to{
+
+        -webkit-transform: rotate(15deg);
+
+        transform: rotate(15deg);
+    }
+}
+@-webkit-keyframes animatlogo{
+    from{
+        -webkit-transition: rotate(45deg);
+        transition: rotate(45deg);
+    }
+    to{
+        -webkit-transition: rotate(-45deg);
+        transition: rotate(-45deg);
+    }
+}
+@keyframes animatlogo{
+    from{
+        -webkit-transition: rotate(45deg);
+        transition: rotate(45deg);
+    }
+    to{
+        -webkit-transition: rotate(-45deg);
+        transition: rotate(-45deg);
+    }
+}
+#settings button{
+    width: 300px;
+    padding-bottom: 0;
+}
+#settings button:first-child{
+margin-top: 150px;
+}
+#settings img{
+    position: relative;
+    width: 50px;
+    display: block;
+    margin-left: calc(50% - 25px);
+}
+
+.start_page {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align:center;
+    -ms-flex-align:center;
+    align-items:center;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+
+.main_pencil{ 
+    height: 550px;
+}
+.wrapper_balls{
+    width: 100vw;
+    margin-top: 120px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+ 
+    -ms-flex-pack: distribute;
+ 
+    justify-content: space-around;
+}
+.wrapper_balls img{
+    display: block;
+    cursor:pointer;
+}
+
+
+.description_game{
+    position: relative;
+    width: 400px;
+    margin-top: 100px;
+    padding: 30px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: rgba(255, 255,0, 0.6);
+    text-shadow: 1px 1px 1px white;
+    -webkit-box-shadow: 0 0 15px white;
+    box-shadow: 0 0 15px white;
+    line-height: 1.2;
+}
+#table_records{
+    width: 450px;
+    text-align: center;
+margin-top: 150px;
+position: relative;
+background-color: rgba(255, 255,0, 0.6);
+border: 1px solid blue;
+font-size: 1.5em;
+box-shadow: 0 0 15px white;
+padding: 20px;
+color: antiquewhite;
+    text-shadow: 1px 1px 1px red;
+}
+#table_records tr:nth-of-type(2) td{
+    border-collapse: collapse;
+    border: 1px solid blue;
+    box-shadow: 0 0 15px white;
+}
+#play{
+    padding-bottom: 30px;
+    margin-top: 150px;
+    background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
+    align-items: flex-start;
+    box-shadow: 0 0 5px white;
+}
+#play img{
+    width: 150px;
+    cursor: pointer;
+}
+#play h3{
+    text-align: center;
+    color: antiquewhite;
+    text-shadow: 1px 1px 1px red;
+    font-size: 1.5em;
+}
+#choice_difficult label{
+    display: block;
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid rgb(49, 11, 189);
+    background: rgba(0, 255, 255, 0.7);
+    box-shadow: 0 0 5px whitesmoke;
+    text-shadow: 1px 2px 3px white;
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+    transition: all 0.6s;
+}
+input[type="radio"]:checked + label{
+    color:red;
+    font-weight: bold;
+    font-size: larger;
+}
+input[type="radio"] + img{
+    transition: all 0.6s;
+}
+input[type="radio"]:checked + img{
+    transform: translateY(-20px);
+}
+#playerInfo label{
+    font-size: 18px;
+    font-weight: bold;
+    text-shadow: 1px 2px 3px white;
+}
+#cardsBoard{
+    margin: 100px 20vw 0 20vw;
+
+
+}
+#cardsBoard img{
+    width: 15vw;
+    
+}
+.butterfly{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.but1{
+    top:  calc(100% - 50px);
+    left: -50px;
+    -webkit-transform: rotate(-135deg);
+    transform: scale(0.5) rotate(-135deg);
+    
+}
+.but2{
+    top:  calc(100% - 50px);
+    left: calc(100% - 50px);
+    -webkit-transform: rotate(135deg);
+    transform: scale(0.5) rotate(135deg);
+}
+.but3{
+    top:  calc(0% - 50px);
+    left: -50px;
+    -webkit-transform: rotate(-45deg);
+    transform: scale(0.5) rotate(-45deg);
+}
+.but4{
+    top:  calc(0% - 50px);
+    left: calc(100% - 50px);
+    -webkit-transform: rotate(45deg);
+    transform: scale(0.5) rotate(45deg);
+}
+.learn_english{
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    margin-top: 100px;
+}
+.learn_english img{
+    width: 300px; 
+    height: 300px;
+    margin-top: 50px;
+   -webkit-transform-origin: 100% 100%; 
+   transform-origin: 100% 100%;
+-webkit-animation: transformBalls 0.6s infinite ease-in-out;
+animation: transformBalls 0.6s infinite ease-in-out;
+-webkit-animation-direction: alternate;
+animation-direction: alternate;
+}
+@-webkit-keyframes transformBalls{
+from{
+-webkit-transform: skewX(3deg);
+transform: skewX(3deg)
+}
+to{
+-webkit-transform: skewX(-3deg);
+transform: skewX(-3deg) 
+}
+}
+@keyframes transformBalls{
+from{
+-webkit-transform: skewX(3deg);
+transform: skewX(3deg)
+}
+to{
+-webkit-transform: skewX(-3deg);
+transform: skewX(-3deg) 
+}
+}
+
+.learn_english #learn_puzzle{
+  
+    -webkit-animation-direction: alternate-reverse;
+    animation-direction: alternate-reverse;
+}
+.word_eng{
+    font: 32px Arial;
+    color: white;
+    text-shadow: 1px 1px yellow;
+    -webkit-box-shadow: 0 0 0 5px gray;
+    box-shadow: 0 0 5px 5px gray;
+    padding: 30px;
+    vertical-align:middle;
+    background: rgba(0, 255, 255, 0.7);
+}
+.word_eng:hover{
+     background: rgba(102, 102, 102, 0.7);
+     -webkit-box-shadow: 0 0 5px 5px black;
+     box-shadow: 0 0 0 5px black;
+   
+    -webkit-transition: all 0.6s;
+   
+    transition: all 0.6s;
+}
+.board table{
+    border-collapse: collapse;
+    margin-left: calc(50vw - 150px);
+    margin-top: calc(50vh - 150px);
+}
+.board td{
+    background: rgba(255,255,0, 0.7);
+    border: 3px solid black;
+    border-radius: 50%;
+}
+@media screen and (max-width: 768px) {
+    .main_pencil{
+        display: none;
+    }
+    .wrapper_button{
+        margin-top: 150px;
+    }
+    .settings button img{
+        -webkit-transform: scale(0.5);
+        transform: scale(0.5)
+    }
+    
+}
+@media screen and (max-width: 375px) {
+    .description_game{
+         width: 100vw;
+        margin: 80px 0 0 0;
+    
+    }
+    .settings button{
+        width: 80vw;
+        margin-left: 10vw;
+    }
+   .learn_english img{
+        width: 200px;
+        height: 200px;
+       
+    }
+    
+    
+}

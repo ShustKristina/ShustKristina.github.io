@@ -1,0 +1,22 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect x="-1" y="-1" width="302" height="302" id="canvas_background" fill="none"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <text style="cursor: move;" fill="#00ff00" stroke-width="0" stroke-opacity="null" x="105.604315" y="85.141741" id="svg_1" font-size="32" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="rotate(9.179198265075684 132.29911804199224,57.57428741455082) matrix(2.436543542375844,0,0,1.734528971386041,-148.5886615913412,-69.16828789504363) " stroke="null">L</text>
+  <text fill="#00007f" stroke-width="0" stroke-opacity="null" x="124.815444" y="101.096584" id="svg_2" font-size="32" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(1.4384914129559663,0,0,1.280136007779269,-34.54646125033112,-63.97163247428476) " stroke="null">Q</text>
+  <text style="cursor: move;" fill="#00ff00" stroke-width="0" stroke-opacity="null" x="143.166666" y="142.8" id="svg_3" font-size="32" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="matrix(1.3200000524520874,0,0,1.25,-48.48000794649124,-34) " stroke="null">S</text>
+  <text style="cursor: move;" fill="#ff7f00" stroke-width="0" stroke-opacity="null" x="104.983361" y="123.171868" id="svg_5" font-size="32" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="rotate(-24.443954467773438 136.6315155029296,106.81583404541014) matrix(1.9093479953593708,0,0,1.2157390102875354,-89.16380849670352,-28.10269917309172) " stroke="null">D</text>
+  <text fill="#ff0000" stroke-width="0" x="161.545803" y="104" id="svg_6" font-size="32" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="rotate(14.652314186096191 173.0856475830078,96.81473541259768) matrix(2.156886477000141,0,0,1.7190145949971352,-202.14519443960984,-61.56291086471325) " stroke="#ff0000">A</text>
+  <ellipse fill="#ffff00" stroke-width="null" cx="147.500001" cy="89.999994" id="svg_7" rx="54.999994" ry="69.999999" opacity="0.5" stroke="#7f7f7f"/>
+  <path fill="#ffff00" stroke="#7f7f7f" stroke-width="null" d="m141.277519,179.293114l5.499993,-18.999985l5.499993,18.999985l-10.999986,0z" id="svg_8" opacity="0.6"/>
+  <path fill="none" stroke="#333333" stroke-width="null" fill-opacity="null" id="svg_10" d="m146.5,161c0,0 -0.292892,0.292892 -1,1c-0.707108,0.707108 0,2 0,3c0,1 -0.707108,2.292892 0,3c0.707108,0.707108 1.292892,0.292892 2,1c0.707108,0.707108 0.458801,1.693436 1,3c0.38269,0.923874 0,2 0,3c0,1 0,2 0,3c0,1 -0.458801,1.693436 -1,3c-0.38269,0.923874 -0.292892,1.292892 -1,2c-0.707108,0.707108 -1,1 -1,2c0,1 0,2 0,3c0,1 0,2 0,3c0,1 -0.38269,2.076126 0,3c0.541199,1.306564 1.692551,1.186005 3,3c0.826904,1.147263 2.458801,1.693436 3,3c0.38269,0.923874 1,1 1,2c0,2 0.765366,3.152237 0,5c-0.541199,1.306564 -2.513,5.593994 -4,8c-1.662506,2.689987 -1.234634,3.152237 -2,5c-0.541199,1.306564 -1.292892,1.292892 -2,2c-0.707108,0.707108 -1.707108,2.292892 -1,3c0.707108,0.707108 2.292892,-0.707108 3,0c0.707108,0.707108 1.076126,0.61731 2,1c1.306564,0.541199 1.292892,1.292892 2,2c0.707108,0.707108 1,2 1,3c0,1 1,1 1,2c0,1 0,2 0,3c0,1 0,2 0,3l0,1l0,1l0,1"/>
+  <text fill="#ffff00" stroke-width="0" stroke-opacity="null" x="120.177595" y="89.464465" id="svg_4" font-size="32" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" text-anchor="start" xml:space="preserve" font-weight="bold" transform="rotate(-2.8647801876068115 150.82740783691384,89.09072113037105) matrix(1.6692156837959917,0,0,1.3092014621236314,-67.56046773378608,-12.309032846237077) " stroke="null">Y</text>
+  <rect rx="10" opacity="0.7" stroke="#333333" id="svg_17" height="28" width="91.000004" y="239.5" x="110.499996" stroke-opacity="null" stroke-width="null" fill="#ffff00"/>
+  <text font-style="italic" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Palatino Linotype', 'Book Antiqua', Palatino, serif" font-size="20" id="svg_18" y="259.5" x="116.5" stroke-opacity="null" stroke-width="0.5" stroke="#333333" fill="#007f00">Numbers</text>
+ </g>
+</svg>
