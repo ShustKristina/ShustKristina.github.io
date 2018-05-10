@@ -247,14 +247,45 @@ input[type="radio"]:checked + img{
     font-weight: bold;
     text-shadow: 1px 2px 3px white;
 }
-#cardsBoard{
-    margin: 100px 20vw 0 20vw;
-
+#board_cards{display: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 100px 1vw 0 1vw;
+padding: 50px 4vw 10vh 4vw;
+background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
+box-shadow: 0 0 20px white;
 
 }
-#cardsBoard img{
-    width: 15vw;
+.wrapper_card{
     
+    position: relative;
+    flex-basis: 12vw;
+ 
+    height: 16vw;
+    margin: 5px;
+}
+
+.wrapper_card span{
+    width: 100%;
+    height:100%;
+    
+    box-shadow: 0 0 5px cyan;
+   position: absolute; 
+    top:0;
+    left: 0;
+}
+
+.wrapper_card .face_card{
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+}
+.back_card{
+    cursor: pointer;
+    backface-visibility: hidden;
+}
+
+.error{
+    color:red; 
 }
 .butterfly{
     width: 100px;
