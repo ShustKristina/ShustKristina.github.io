@@ -18,7 +18,7 @@ function createPlayContainer() {
     var containerInfoGame = document.createElement("div");
     containerInfoGame.id = "containerInfoGame";
     startPage.id = "play";
-    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><label for="name">Your Name</label><input type="text" name="name" id="name" required><label for="surname">Your Surname</label><input type="text" name="surname" id="surname"></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio" name="difficulty" value="6" id="easy" ><label for="easy">Easy (6x1)</label><input type="radio" name="difficulty" value="12" id="medium" checked><label for="medium">Medium (6x2)</label><input type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (6x3)</label></div>';
+    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><label for="name">Your Name</label><input type="text" name="name" id="name" required><label for="surname">Your Surname</label><input type="text" name="surname" id="surname"></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio" name="difficulty" value="6" id="easy" ><label for="easy">Easy (6)</label><input type="radio" name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
     var btnStart = document.createElement("button");
     btnStart.id = "btn_play";
     btnStart.style.width = "150px"
@@ -27,10 +27,16 @@ function createPlayContainer() {
     btnStart.textContent = "PLAY";
     var boardOfCards = document.createElement("div");
     boardOfCards.id = "board_cards";
-    //boardOfCards.style.display = "none";
+    var timerStepsReset = document.createElement("div");
+    timerStepsReset.id = "timerStepsReset";
+    timerStepsReset.innerHTML = "<div id='steps'>Steps <span id='numbersOfSteps'></span></div><button id='reset'>Restart &#8635;</button><div id='timer'>Timer <span id='min'></span> <span id='sec'></span></div>";
+    var congratulations=document.createElement("div");
+        congratulations.id="congratulations";
     wrapper.appendChild(containerInfoGame);
     containerInfoGame.appendChild(startPage);
+    containerInfoGame.appendChild(congratulations);
     containerInfoGame.appendChild(btnStart);
+    containerInfoGame.appendChild(timerStepsReset);
     containerInfoGame.appendChild(boardOfCards);
     btnStart.addEventListener("click", startPlay, false);
 }
@@ -105,6 +111,7 @@ var startPlay = function startPlay() {
     var nameplayers = document.getElementById("name");
     var surnamePlayers = document.getElementById("surname");
     var playerInfo = document.getElementById("playerInfo");
+   
     function validate(event) {
         event.preventDefault();
         var errors = document.getElementsByClassName("error");
@@ -130,20 +137,19 @@ var startPlay = function startPlay() {
 
 
     var game = new Game();
-    // var timer=new Timer();
+    var timer = new Timer();
+    
 
-    game.getPlayerInfo(); //name+surname
+    game.getPlayerInfo();
     game.getNumberOfCards();
     game.getBackCards();
     game.defineCardsFace();
     game.getFaceCards();
-  
     game.createBoardCards();
     game.addCards();
-   
-    // game.addGameListeners();
-    // game.showGame();
-    // timer.start();
+    game.addListeners();
+    timer.start();
+ 
 }
 
 
@@ -159,12 +165,16 @@ function Game() {
     self.stopTime = 0;
     self.numberOfCards = 0;
     self.backCard = "";
-    self.wrapCards = [];
-
+    self.wrapperCards = [];
     self.randomCardsArray = [];
-
     self.cardsFaceArray = [];
-    self.numbersMatchedCards = 0;
+    self.selectedCards = [];
+    self.counterFlippedCards = 0;
+    self.flippedCardsArray = [];
+    self.memoryArray;
+    var step=new Steps();
+    var timer1=new Timer();
+
     self.defineCardsFace = function (backCard) {
         switch (self.backCard) {
             case 'family':
@@ -221,117 +231,191 @@ function Game() {
     };
 
     self.createBoardCards = function () {
-        for (var  i = 0; i < self.randomCardsArray.length; i++) {
+        for (var i = 0; i < self.randomCardsArray.length; i++) {
             var card = new Card(i, self.backCard, self.randomCardsArray[i]);
-            self.wrapCards.push(card.getWrapperCard());
+            self.wrapperCards.push(card.getWrapperCard());
         }
     }
     self.addCards = function () {
-    var boardOfCards=document.getElementById("board_cards");
-    var btnPlay=document.getElementById("btn_play");
-    var wrapPlay=document.getElementById("play");
-    btnPlay.style.display="none";
-    wrapPlay.style.display="none";
-    boardOfCards.style.display="flex";
-    
-    self.wrapCards.forEach((card) => {
-        boardOfCards.appendChild(card);
-    });
-    boardOfCards.addEventListener('click', Card.turnCard);
-    };
-    self.getFlippedCards=function() {
-        var boardOfCards=document.getElementById("board_cards");
-        return [...boardOfCards.querySelectorAll('.flipped')];
+        var boardOfCards = document.getElementById("board_cards");
+        var timerStepsReset = document.getElementById("timerStepsReset");
+        var btnPlay = document.getElementById("btn_play");
+        var wrapPlay = document.getElementById("play");
+        btnPlay.style.display = "none";
+        wrapPlay.style.display = "none";
+        timerStepsReset.style.display = "flex";
+        boardOfCards.style.display = "flex";
+
+        self.wrapperCards.forEach(function (card) {
+            boardOfCards.appendChild(card);
+        });
     };
 
-}
-function Card(id, backCard, faceCard) {
-    var self = this;
-    self.id = id;
-    self.backCard = backCard;
-    self.faceCard = faceCard;
-
-    self.getWrapperCard = function () {
-        var card = document.createElement("div");
-        card.className = "wrapper_card";
-
-        var back = document.createElement("span");
-        back.className = "back_card";
-        back.style.background="url(images/sprite_back.svg#"+self.backCard+") no-repeat";
-        back.style.backgroundSize="contain";
-        
-        
-
-        var face = document.createElement("span");
-        face.className = "face_card";
-        face.style.background="url("+self.faceCard+") no-repeat";
-        face.style.backgroundSize="contain";
-        
-
-        card.appendChild(back);
-        card.appendChild(face);
-
-        return card;
+    self.addListeners = function () {
+        document.getElementById("board_cards").addEventListener("click", self.turnCard);
+        document.getElementById("reset").addEventListener("click", reset);
     };
 
-self.turnCard=function(EO) {
-        if (!EO.target.classList.contains('back')) {
-            return;
+
+    self.turnCard = function (event) {
+        var flippedCards = document.getElementsByClassName("flipped");
+        if (!event.target.classList.contains('back_card')) return;
+        var target = event.target;
+        if (self.counterFlippedCards < 2) {
+            event.target.parentNode.classList.add('flipped');
         }
 
-        if (game.getFlippedCards()[0] === event.target.parentNode) {
-            return;
-        }
-
+        self.counterFlippedCards = self.counterFlippedCards + 1;
         
-        if (game.flippedCardsAmount < 2) {
-            event.target.parentNode.className="matched";
-        }
+        if (self.counterFlippedCards === 2) {
+            
+            step.start();
+            var flippedCards = document.querySelectorAll('.flipped');
 
-        // increase counter of flipped cards
-        game.flippedCardsAmount = game.flippedCardsAmount + 1;
-
-        // compare two flipped cards and remove them or flip them back
-        if (game.flippedCardsAmount === 2) {
-            var flippedCards = game.getFlippedCards();
-
-            if (game.compareCards(flippedCards)) {
-                flippedCards.forEach((elem) => {
-                    var timeout1 = setTimeout(() => {
-                        elem.parentNode.style.opacity = '0';
+            if (getComputedStyle(flippedCards[0].children[1]).backgroundImage === getComputedStyle(flippedCards[1].children[1]).backgroundImage) {
+                vibro();
+                flippedCards.forEach(function(elem)  {
+                    var timeout1 = setTimeout(function() {
+                        elem.style.visibility = 'hidden';
                     }, 1000);
-                    var timeout2 = setTimeout(() => {
-                        game.cards.splice(game.cards.indexOf(elem.parentNode), 1);
+                    var timeout2 = setTimeout(function() {
+
+                        self.wrapperCards.splice(self.wrapperCards.indexOf(elem.parentNode), 1);
                         elem.classList.remove('flipped');
-                        elem.style.display = 'none';
-
-                        // stop game if all cards disappeared
-                        if (game.cards.length === 0) {
-                            // stop timer
-                            //timer.stop();
-
-                            // clear field, show result
-                            //game.showResult();
-
-                            // save result into localStorage
-                            //storeResult();
+                        
+                        if (self.wrapperCards.length === 0) {
+                            
+                            timer1.stop();
+                            
+                            
+                            self.flowingCongratulations();
                         }
 
-                        game.flippedCardsAmount = 0;
-                    }, 1900);
-                    game.timeouts.push(timeout1, timeout2);
+                        self.counterFlippedCards = 0;
+                    }, 1000);
+                    
                 });
             } else {
+               
                 flippedCards.forEach((elem) => {
                     var timeout1 = setTimeout(() => {
                         elem.classList.remove('flipped');
                     }, 1000);
                     var timeout2 = setTimeout(() => {
-                        game.flippedCardsAmount = 0;
+                        self.counterFlippedCards = 0;
                     }, 1500);
-                    game.timeouts.push(timeout1, timeout2);
+                   
                 });
             }
         }
     }
+    self.stop=function() {
+      
+        step.stop();
+        document.getElementById("board_cards").innerHTML = "";
+        
+    };
+    self.flowingCongratulations=function(){
+        var congratulations=document.getElementById("congratulations");
+        document.getElementById("board_cards").style.opacity="0";
+        document.getElementById("timerStepsReset").style.opacity="0";
+        congratulations.innerHTML="<h2>Good job!</h2><br><p>Your time: </p><br><p>Your steps: </p><br><p>The best score: </p>";
+        congratulations.style.transform="translateY(300px)";
+
+    }
+}
+function Card(id, backCard, faceCard) {
+    var self = this;
+    self.id = "id";
+    self.backCard = backCard;
+    self.faceCard = faceCard;
+
+    self.getWrapperCard = function () {
+
+        var wrapperCard = document.createElement("div");
+
+        wrapperCard.className = "wrapper_card";
+
+        var back = document.createElement("span");
+        back.className = "back_card";
+        back.style.background = "url(images/sprite_back.svg#" + self.backCard + ") no-repeat";
+        back.style.backgroundSize = "contain";
+
+        var face = document.createElement("span");
+        face.className = "face_card";
+        face.style.background = "url(" + self.faceCard + ") no-repeat";
+        face.style.backgroundSize = "contain";
+
+        wrapperCard.appendChild(back);
+        wrapperCard.appendChild(face);
+
+        return wrapperCard;
+    };
+    
+
+}
+var  interval;
+function Timer() {
+    var self = this;
+    self.startTime = 0;
+    var second = 0, minute = 0; hour = 0;
+    var sec = document.getElementById("sec");
+    var min = document.getElementById("min");
+   
+    min.innerHTML = minute + "min";
+    sec.innerHTML = second + "sec";
+
+
+    self.start = function () {
+        interval = setInterval(function () {
+            min.innerHTML = minute + "min";
+            sec.innerHTML = second + "sec";
+            second++;
+            if (second == 60) {
+                minute++;
+                second = 0;
+            }
+            if (minute == 60) {
+                hour++;
+                minute = 0;
+            }
+        }, 1000);
+    };
+    self.stop = function () {
+       
+        clearInterval(interval);
+    };
+}
+function Steps() {
+    var self=this;
+    var counterSteps = 0;
+    self.stepsSpan = document.getElementById("numbersOfSteps");
+    self.stepsSpan.innerHTML = counterSteps;
+    
+    self.start = function () {
+        ++counterSteps;
+        self.stepsSpan.innerHTML = counterSteps;
+    }
+    self.stop=function(){
+        counterSteps=0;
+        self.stepsSpan.innerHTML = counterSteps;
+    }
+
+}
+function reset(){
+    var game=new Game();
+    game.stop();
+    var timer=new Timer();
+    timer.stop();
+    var game1 = new Game();
+    var timer1 = new Timer();
+    startPlay();
+}
+
+
+//add vibro
+function vibro() {
+    if ( navigator.vibrate ) { // есть поддержка Vibration API?
+            window.navigator.vibrate(100); // вибрация 100мс     
+}
 }
