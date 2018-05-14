@@ -1,0 +1,24 @@
+<svg width="400" height="480" xmlns="http://www.w3.org/2000/svg">
+ <defs>
+  <pattern patternUnits="userSpaceOnUse" height="400" width="500" id="wood"/>
+ </defs>
+ <g>
+  <title>background</title>
+  <rect fill="none" id="canvas_background" height="482" width="402" y="-1" x="-1"/>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1" stroke="null">
+   <rect x="0" y="207" width="400" height="280" fill="#999999" id="rect"/>
+   <text id="svg_2" fill="#00ffff" x="71" y="435" font-size="42" font-family="Junction, sans-serif" font-weight="bold" stroke="#000">Good Job!</text>
+   <text id="svg_3" fill="#ffff00" stroke-width="0.5" x="19.5" y="290" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Time:</text>
+   <text fill="#ffff00" stroke-width="0.5" x="22.5" y="326" id="svg_5" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Steps:</text>
+   <text id="svg_4" fill="#ff0000" x="23.5" y="361" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">The Best Score:</text>
+   <ellipse fill="#bf5f00" stroke-width="1.5" cx="31" cy="232" id="svg_8" rx="5" ry="5" stroke="#000"/>
+   <ellipse fill="#bf5f00" stroke-width="1.5" cx="370" cy="234" id="svg_8" rx="5" ry="5" stroke="#000"/>
+   <ellipse fill="#bf5f00" stroke-width="1.5" cx="195" cy="11" id="svg_6" rx="5" ry="5" stroke="#000"/>
+   <line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="15" x2="192.5" y1="227" x1="32.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/>
+   <line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="14" x2="198.499997" y1="228.999997" x1="366.500001" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/>
+  </g>
+ </g>
+</svg>

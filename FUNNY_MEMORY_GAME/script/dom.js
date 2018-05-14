@@ -1,15 +1,42 @@
+window.onload=function(){
+    var startWindow=document.createElement("div");
+    startWindow.id="startWindow";
+    startWindow.innerHTML="<label for='nameUser'>Please, enter your name!<input name='nameUser' id='nameUser' type='text'></label><button id='btn_continue'>Continue</button>";
+    document.getElementById("start_page").style.opacity="0.5";
+    document.body.appendChild(startWindow);
+    document.getElementById("btn_continue").addEventListener("click", validAndStart, false);
+}
+function validAndStart(){
+    var userName=document.getElementById('nameUser');
+    if (userName.value==""){
+        return false;
+    }
+    else{
+        var userName=window.localStorage.getItem('lsName');
+    if ( userName )
+        document.getElementById('nameUser').value=userName;
 
-var btnBeginStydy = document.getElementById("btn_begin_play");
-btnBeginStydy.addEventListener("click", createPlayContainer);
-
-var btnSettings = document.getElementById("btn_settings");
-btnSettings.addEventListener("click", createSettingsContainer);
-
-var btnRecords = document.getElementById("btn_records");
-btnRecords.addEventListener("click", createRecordsContainer);
-
-var btnDescription = document.getElementById("btn_description");
-btnDescription.addEventListener("click", createDescriptionContainer);
+    function store() {
+        window.localStorage.setItem('lsName',document.getElementById('nameUser').value);
+    }
+        document.getElementById("startWindow").style.display="none";
+        document.getElementById("start_page").style.opacity="1";
+        addEventListenerButtons();
+    }
+}
+function addEventListenerButtons(){
+    var btnBeginStydy = document.getElementById("btn_begin_play");
+    btnBeginStydy.addEventListener("click", createPlayContainer);
+    
+    var btnSettings = document.getElementById("btn_settings");
+    btnSettings.addEventListener("click", createSettingsContainer);
+    
+    var btnRecords = document.getElementById("btn_records");
+    btnRecords.addEventListener("click", createRecordsContainer);
+    
+    var btnDescription = document.getElementById("btn_description");
+    btnDescription.addEventListener("click", createDescriptionContainer);
+}
 
 //create PLAY CONTAINER
 function createPlayContainer() {
@@ -18,7 +45,7 @@ function createPlayContainer() {
     var containerInfoGame = document.createElement("div");
     containerInfoGame.id = "containerInfoGame";
     startPage.id = "play";
-    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><label for="name">Your Name</label><input type="text" name="name" id="name" required><label for="surname">Your Surname</label><input type="text" name="surname" id="surname"></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio" name="difficulty" value="6" id="easy" ><label for="easy">Easy (6)</label><input type="radio" name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
+    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><div id="namePlayer"> <span></span></div><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio" name="difficulty" value="6" id="easy" ><label for="easy">Easy (6)</label><input type="radio" name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
     var btnStart = document.createElement("button");
     btnStart.id = "btn_play";
     btnStart.style.width = "150px"
@@ -29,9 +56,9 @@ function createPlayContainer() {
     boardOfCards.id = "board_cards";
     var timerStepsReset = document.createElement("div");
     timerStepsReset.id = "timerStepsReset";
-    timerStepsReset.innerHTML = "<div id='steps'>Steps <span id='numbersOfSteps'></span></div><button id='reset'>Restart &#8635;</button><div id='timer'>Timer <span id='min'></span> <span id='sec'></span></div>";
-    var congratulations=document.createElement("div");
-        congratulations.id="congratulations";
+    timerStepsReset.innerHTML = "<div id='steps'>Steps <p><span id='numbersOfSteps'></span></p></div><button id='reset'>Restart &#8635;</button><div id='timer'>Timer <p><span id='min'></span> <span id='sec'></span></p></div>";
+    var congratulations = document.createElement("div");
+    congratulations.id = "congratulations";
     wrapper.appendChild(containerInfoGame);
     containerInfoGame.appendChild(startPage);
     containerInfoGame.appendChild(congratulations);
@@ -89,7 +116,7 @@ function createDescriptionContainer() {
     var wrapper = document.getElementById("wrapper_main");
     var startPage = document.getElementById("start_page");
     startPage.id = "description";
-    startPage.innerHTML = '<p class="description_game"><img class="butterfly but1" src="images/butterfly.svg"><img class="butterfly but2"src="images/butterfly.svg"><img class="butterfly but3"src="images/butterfly.svg"><img class="butterfly but4"src="images/butterfly.svg">Наше приложение разработано специально для детишек в возрасте от двух лет. Игра позволяет тренировать память, запоминать новые слова. Выбирая рубашку карт, вы определяете и рубрику тем карточек-перевертышей. Постепенно натренировав свою память, можно также и увеличивать уровень сложности. Управление игрой осуществляется либо мышкой, либо стрелками &laquo;вверх&raquo;, &laquo;вниз&raquo;, &laquo;вперед&raquo;, &laquo;назад&raquo; и &laquo;enter&raquo;. </p>';
+    startPage.innerHTML = '<p class="description_game"><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png">Наше приложение разработано специально для детишек в возрасте от двух лет. Игра позволяет тренировать память, запоминать новые слова. Выбирая рубашку карт, вы определяете и рубрику тем карточек-перевертышей. Постепенно натренировав свою память, можно также и увеличивать уровень сложности. Управление игрой осуществляется либо мышкой, либо стрелками &laquo;вверх&raquo;, &laquo;вниз&raquo;, &laquo;вперед&raquo;, &laquo;назад&raquo; и &laquo;enter&raquo;. </p>';
     wrapper.appendChild(startPage);
 }
 //create RECORDS CONTAINER
@@ -98,7 +125,7 @@ function createRecordsContainer() {
     var wrapper = document.getElementById("wrapper_main");
     var startPage = document.getElementById("start_page");
     startPage.id = "records";
-    startPage.innerHTML = '<div id="container_records"><table id="table_records"><tr><td><img class="butterfly but1" src="images/butterfly.svg"><img class="butterfly but2"src="images/butterfly.svg"><img class="butterfly but3"src="images/butterfly.svg"><img class="butterfly but4"src="images/butterfly.svg"></td></tr><tr><td>Date</td><td>Player</td><td>Score</td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table>';
+    startPage.innerHTML = '<div id="container_records"><table id="table_records"><tr><td><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png"></td></tr><tr><td>Date</td><td>Player</td><td>Score</td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table>';
     wrapper.appendChild(startPage);
 }
 
@@ -111,7 +138,7 @@ var startPlay = function startPlay() {
     var nameplayers = document.getElementById("name");
     var surnamePlayers = document.getElementById("surname");
     var playerInfo = document.getElementById("playerInfo");
-   
+
     function validate(event) {
         event.preventDefault();
         var errors = document.getElementsByClassName("error");
@@ -138,7 +165,7 @@ var startPlay = function startPlay() {
 
     var game = new Game();
     var timer = new Timer();
-    
+
 
     game.getPlayerInfo();
     game.getNumberOfCards();
@@ -149,15 +176,15 @@ var startPlay = function startPlay() {
     game.addCards();
     game.addListeners();
     timer.start();
- 
+
 }
 
 
 function Game() {
     var self = this;
-    var cardsFamilyArray = ["images/family/brother.png", "images/family/daughter.png", "images/family/father.png", "images/family/grandfather.png", "images/family/grandmather.png", "images/family/sister.png", "images/family/son.png", "images/family/uncle.png", "images/family/aunt.png"];
-    var cardsNumbersArray = ["images/numbers/one.png", "images/numbers/two.png", "images/numbers/three.png", "images/numbers/four.png", "images/numbers/five.png", "images/numbers/six.png", "images/numbers/seven.png", "images/numbers/eight.png", "images/numbers/nine.png", "images/numbers/ten.png"];
-    var cardsAnimalsArray = ["images/animals/bear.png", "images/animals/cat.png", "images/animals/dog.png", "images/animals/fox.png", "images/animals/hare.png", "images/animals/wolf.png", "images/animals/squirrel.png", "images/animals/camel.png", "images/animals/deer.png"];
+    var cardsFamilyArray = ["brother", "daughter", "father", "grandfather", "grandmother", "sister", "son", "uncle", "aunt", "mother"];
+    var cardsNumbersArray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
+    var cardsAnimalsArray = ["bear", "cat", "dog", "fox", "hare", "wolf", "squirrel", "camel", "deer"];
 
 
 
@@ -172,8 +199,11 @@ function Game() {
     self.counterFlippedCards = 0;
     self.flippedCardsArray = [];
     self.memoryArray;
-    var step=new Steps();
-    var timer1=new Timer();
+    var soundName = "";
+    var step = new Steps();
+    var timer1 = new Timer();
+    var audio = new Audio;
+
 
     self.defineCardsFace = function (backCard) {
         switch (self.backCard) {
@@ -231,9 +261,11 @@ function Game() {
     };
 
     self.createBoardCards = function () {
-        for (var i = 0; i < self.randomCardsArray.length; i++) {
-            var card = new Card(i, self.backCard, self.randomCardsArray[i]);
+        for (let i = 0; i < self.randomCardsArray.length; i++) {
+            self.face = self.randomCardsArray[i]
+            var card = new Card(self.randomCardsArray[i], self.backCard, self.randomCardsArray[i]);
             self.wrapperCards.push(card.getWrapperCard());
+
         }
     }
     self.addCards = function () {
@@ -252,12 +284,13 @@ function Game() {
     };
 
     self.addListeners = function () {
-        document.getElementById("board_cards").addEventListener("click", self.turnCard);
+        document.getElementById("board_cards").addEventListener("mouseup", self.turnCard);
         document.getElementById("reset").addEventListener("click", reset);
     };
 
 
     self.turnCard = function (event) {
+
         var flippedCards = document.getElementsByClassName("flipped");
         if (!event.target.classList.contains('back_card')) return;
         var target = event.target;
@@ -266,37 +299,37 @@ function Game() {
         }
 
         self.counterFlippedCards = self.counterFlippedCards + 1;
-        
+
         if (self.counterFlippedCards === 2) {
-            
+
             step.start();
             var flippedCards = document.querySelectorAll('.flipped');
 
             if (getComputedStyle(flippedCards[0].children[1]).backgroundImage === getComputedStyle(flippedCards[1].children[1]).backgroundImage) {
+                soundName = flippedCards[0].children[1].getAttribute("class").split(" ")[1];
+                self.startSound(soundName);
                 vibro();
-                flippedCards.forEach(function(elem)  {
-                    var timeout1 = setTimeout(function() {
+                flippedCards.forEach(function (elem) {
+                    var timeout1 = setTimeout(function () {
                         elem.style.visibility = 'hidden';
                     }, 1000);
-                    var timeout2 = setTimeout(function() {
+                    var timeout2 = setTimeout(function () {
 
                         self.wrapperCards.splice(self.wrapperCards.indexOf(elem.parentNode), 1);
                         elem.classList.remove('flipped');
-                        
+
                         if (self.wrapperCards.length === 0) {
-                            
+
                             timer1.stop();
-                            
-                            
-                            self.flowingCongratulations();
+                           flowingCongratulations();
                         }
 
                         self.counterFlippedCards = 0;
                     }, 1000);
-                    
+
                 });
             } else {
-               
+
                 flippedCards.forEach((elem) => {
                     var timeout1 = setTimeout(() => {
                         elem.classList.remove('flipped');
@@ -304,29 +337,45 @@ function Game() {
                     var timeout2 = setTimeout(() => {
                         self.counterFlippedCards = 0;
                     }, 1500);
-                   
+
                 });
             }
         }
     }
-    self.stop=function() {
-      
-        step.stop();
-        document.getElementById("board_cards").innerHTML = "";
-        
-    };
-    self.flowingCongratulations=function(){
-        var congratulations=document.getElementById("congratulations");
-        document.getElementById("board_cards").style.opacity="0";
-        document.getElementById("timerStepsReset").style.opacity="0";
-        congratulations.innerHTML="<h2>Good job!</h2><br><p>Your time: </p><br><p>Your steps: </p><br><p>The best score: </p>";
-        congratulations.style.transform="translateY(300px)";
+
+    self.startSound = function (soundName) {
+        if (audio.canPlayType("audio/mpeg") == "probably") {
+            audio.src = 'audio/' + self.backCard + '/' + soundName + '.mp3';
+        }
+
+        else {
+            audio.src = 'audio/' + self.backCard + '/' + soundName + '.ogg';
+        }
+        if (soundName) {
+
+            audio.play();
+        }
+
 
     }
+    self.stopSound = function (soundName) {
+        if (soundName) {
+
+            audio.stop();
+        }
+    }
+
+    self.stop = function () {
+
+        step.stop();
+        document.getElementById("board_cards").innerHTML = "";
+
+    };
+    
 }
-function Card(id, backCard, faceCard) {
+function Card(className, backCard, faceCard) {
     var self = this;
-    self.id = "id";
+    self.className = className;
     self.backCard = backCard;
     self.faceCard = faceCard;
 
@@ -338,12 +387,12 @@ function Card(id, backCard, faceCard) {
 
         var back = document.createElement("span");
         back.className = "back_card";
-        back.style.background = "url(images/sprite_back.svg#" + self.backCard + ") no-repeat";
-        back.style.backgroundSize = "contain";
+        back.style.background = "url(images/sprite_back2.svg#" + self.backCard + ") no-repeat";
+        back.style.backgroundSize = "cover";
 
         var face = document.createElement("span");
-        face.className = "face_card";
-        face.style.background = "url(" + self.faceCard + ") no-repeat";
+        face.className = "face_card " + self.className + "";
+        face.style.background = "url(images/" + self.backCard + "/" + self.faceCard + ".png) no-repeat";
         face.style.backgroundSize = "contain";
 
         wrapperCard.appendChild(back);
@@ -351,17 +400,21 @@ function Card(id, backCard, faceCard) {
 
         return wrapperCard;
     };
-    
+    self.playSound = function () {
+
+
+
+    }
 
 }
-var  interval;
+var interval;
 function Timer() {
     var self = this;
     self.startTime = 0;
     var second = 0, minute = 0; hour = 0;
     var sec = document.getElementById("sec");
     var min = document.getElementById("min");
-   
+
     min.innerHTML = minute + "min";
     sec.innerHTML = second + "sec";
 
@@ -382,40 +435,91 @@ function Timer() {
         }, 1000);
     };
     self.stop = function () {
-       
+
         clearInterval(interval);
     };
 }
 function Steps() {
-    var self=this;
+    var self = this;
     var counterSteps = 0;
     self.stepsSpan = document.getElementById("numbersOfSteps");
     self.stepsSpan.innerHTML = counterSteps;
-    
+
     self.start = function () {
         ++counterSteps;
         self.stepsSpan.innerHTML = counterSteps;
     }
-    self.stop=function(){
-        counterSteps=0;
+    self.stop = function () {
+        counterSteps = 0;
         self.stepsSpan.innerHTML = counterSteps;
     }
 
 }
-function reset(){
-    var game=new Game();
+
+function saveTimeSteps() {
+    var memory = [];
+    const keys = Object.keys(localStorage);
+
+    game.playerInfo.time = timerDOMElem.innerHTML;
+
+    for (let i = 0; i < keys.length && i < 10; i++) {
+        archive.push(localStorage.getItem(keys[i]))
+    }
+
+    if (archive.length === 0) {
+        localStorage.setItem(1, JSON.stringify(game.playerInfo));
+    } else {
+        archive.push(JSON.stringify(game.playerInfo));
+        archive.sort((a, b) => {
+            if (Number(JSON.parse(a).time) < Number(JSON.parse(b).time)) {
+                return -1;
+            }
+            if (Number(JSON.parse(a).time) > Number(JSON.parse(b).time)) {
+                return 1;
+            }
+
+            return Number(JSON.parse(a).stopTime) - Number(JSON.parse(b).stopTime);
+        });
+
+        for (let i = 1; i <= archive.length && i <= 10; i++) {
+            localStorage.setItem(i, archive[i - 1]);
+        }
+    }
+};
+
+function reset() {
+    var game = new Game();
     game.stop();
-    var timer=new Timer();
+    //game.flowingCongratulations()=null;
+    var timer = new Timer();
     timer.stop();
     var game1 = new Game();
     var timer1 = new Timer();
     startPlay();
+
+}
+function flowingCongratulations() {
+    var timeMin = document.getElementById("min").innerHTML;
+    var timeSec = document.getElementById("sec").innerHTML;
+    var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
+    var congratulations = document.getElementById("congratulations");
+
+    document.getElementById("board_cards").style.opacity = "0";
+    document.getElementById("board_cards").style.display = "none";
+    document.getElementById("timerStepsReset").style.opacity = "0";
+    document.getElementById("timerStepsReset").style.display = "none";
+
+    congratulations.innerHTML = '<svg id="SVGElem" height="480" width="400" xmlns="http://www.w3.org/2000/svg" stroke="null"><g id="svg_1" stroke="null"><rect blur="5" stroke="white"stroke-width="2.5" rx="10" fill-opacity="0.9" x="0" y="207" width="400" height="270" fill="url(#wood)" id="rect"/><text id="svg_2" fill="#00ffff" x="71" y="435" font-size="42" font-family="Junction, sans-serif" font-weight="bold" stroke="#000">Good Job!</text><text id="svg_3" fill="red" stroke-width="0.5" x="19.5" y="290" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Time: '+timeMin+' '+timeSec+'</text><text fill="red" stroke-width="0.5" x="22.5" y="326" id="svg_5" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Steps: '+numberSteps+'</text><text id="svg_4" fill="#ff0000" x="23.5" y="361" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">The Best Score:</text><ellipse fill="#bf5f00" stroke-width="1.5" cx="31" cy="232" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="370" cy="234" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="195" cy="11" id="svg_6" rx="5" ry="5" stroke="#000"/><line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="15" x2="192.5" y1="227" x1="32.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/><line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="14" x2="198.499997" y1="228.999997" x1="366.500001" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/></g><pattern id="wood" width="500" height="480" patternUnits="userSpaceOnUse"> <image  xlink:href="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EQMOWcXPx/rotating-bright-yellow-background-with-circles-summer-sun-endless-loop_b3xin9uy__F0000.png"></pattern></svg>';
+   
+    
+    congratulations.style.transform = "translateY(430px)";
+
 }
 
 
 //add vibro
 function vibro() {
-    if ( navigator.vibrate ) { // есть поддержка Vibration API?
-            window.navigator.vibrate(100); // вибрация 100мс     
-}
+    if (navigator.vibrate) { // есть поддержка Vibration API?
+        window.navigator.vibrate(100); // вибрация 100мс     
+    }
 }

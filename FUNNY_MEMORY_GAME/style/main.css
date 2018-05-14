@@ -38,11 +38,36 @@ button:hover{
     color: gray;
     background: rgba(15, 255, 255, 0.7);
 }
-
+#btn_continue{
+    width: auto;
+    padding: 10px;
+    margin: 20px;
+}
+label[for="nameUser"]{
+    margin: 20px;
+    font-size: 24px;
+    color: antiquewhite;
+    text-shadow: 1px 1px 1px red;
+}
+#startWindow{
+    position: absolute;
+    top: calc(50vh - 100px);
+    left: calc(50vw - 25vw);
+    width: 50vw;
+    height: 200px;
+    vertical-align: center;
+    border-radius: 10px;
+    background: linear-gradient(to top right, rgba(0, 255, 255, 1),rgba(255,255,0, 1));
+box-shadow: 0 0 20px 5px white;
+display: flex;
+flex-direction: column;
+align-items: center;
+transition: opacity 0.5s linear;
+}
 
 .wrapper {
     width: 100vw;
-    background: url('../images/background1.png');
+    background: url('../images/background1.jpg');
     background-size: cover;
     min-height: 100vh;
     overflow-x: hidden;
@@ -59,7 +84,7 @@ button:hover{
 #wrapper_current_word:not(target){
     display: block;
 }
-.logo {
+.logo {z-index: 2;
     font-family: Arial;
     font-size: 2.5em;
     position: relative;
@@ -132,6 +157,7 @@ margin-top: 150px;
 #settings img{
     position: relative;
     width: 50px;
+    height: 60px;
     display: block;
     margin-left: calc(50% - 25px);
 }
@@ -145,6 +171,7 @@ margin-top: 150px;
     align-items:center;
     -ms-flex-pack: distribute;
     justify-content: space-around;
+    transition: opacity 1s linear;
 }
 
 
@@ -163,10 +190,6 @@ margin-top: 150px;
     -ms-flex-pack: distribute;
  
     justify-content: space-around;
-}
-.wrapper_balls img{
-    display: block;
-    cursor:pointer;
 }
 
 
@@ -208,9 +231,13 @@ color: antiquewhite;
     align-items: flex-start;
     box-shadow: 0 0 5px white;
 }
-#play img{
-    width: 150px;
+input[type="radio"]:not(checked) + img{
+    width: 130px;
+    height: 170px;
+    border-radius: 10px;
+    margin-left: 10px;
     cursor: pointer;
+    box-shadow: 0 0 5px 2px white;
 }
 #play h3{
     text-align: center;
@@ -222,9 +249,8 @@ color: antiquewhite;
     display: block;
     cursor: pointer;
     padding: 10px;
-    border: 1px solid rgb(49, 11, 189);
     background: rgba(0, 255, 255, 0.7);
-    box-shadow: 0 0 5px whitesmoke;
+    box-shadow: 0 0 5px 2px whitesmoke;
     text-shadow: 1px 2px 3px white;
     font-size: 18px;
     margin-bottom: 10px;
@@ -233,6 +259,7 @@ color: antiquewhite;
 }
 input[type="radio"]:checked + label{
     color:red;
+    box-shadow: 0 0 5px 2px gray !important;
     font-weight: bold;
     font-size: larger;
 }
@@ -241,8 +268,9 @@ input[type="radio"] + img{
 }
 input[type="radio"]:checked + img{
     transform: translateY(-20px);
+    box-shadow: 0 0 5px 2px gray;
 }
-#playerInfo label{
+#playerInfo div{
     font-size: 18px;
     font-weight: bold;
     text-shadow: 1px 2px 3px white;
@@ -254,7 +282,7 @@ input[type="radio"]:checked + img{
 padding: 50px 4vw 10vh 4vw;
 background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
 box-shadow: 0 0 20px white;
-transition: opacity 4s linear;
+transition: opacity 2s linear;
 }
 .wrapper_card{
     width: 120px;
@@ -276,7 +304,7 @@ transition: opacity 4s linear;
 .wrapper_card span{
     width: 100%;
     height:100%;
-   
+   border-radius: 10px;
    position: absolute; 
     top:0;
     left: 0;
@@ -302,23 +330,39 @@ transition: opacity 4s linear;
     color:red; 
 }
 #timerStepsReset{
+   
+    text-align: center;
     display:none;
     justify-content: space-around;
     align-items: center;
     margin-top: 120px;
-transition: opacity 4s linear;
+transition: opacity 2s linear;
+}
+
+#timerStepsReset p{
+    height: 30px;
+    position: relative;
 }
 #timerStepsReset span{
+    position: absolute;
     background-color: white;
     color: red;
     
     padding: 5px;
     border-radius: 5px;
 }
-
+#timerStepsReset #min{
+    left:0;
+}
+#timerStepsReset #sec{
+    right:0;
+}
+#timerStepsReset #numbersOfSteps{
+    left:40%;
+}
 #timerStepsReset div,
 #timerStepsReset button{
-    width: auto;
+    width: 150px;
     background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
 box-shadow: 0 0 5px white;
     padding: 15px;
@@ -364,7 +408,10 @@ transition: all 0.6s linear;
     -webkit-transform: rotate(45deg);
     transform: scale(0.5) rotate(45deg);
 }
-
+#containerInfoGame{
+    display: flex;
+    flex-direction: column;
+}
 .board table{
     border-collapse: collapse;
     margin-left: calc(50vw - 150px);
@@ -376,18 +423,19 @@ transition: all 0.6s linear;
     border-radius: 50%;
 }
 #congratulations{
+    z-index: 1;
     transform: translateZ(0);
     will-change: transform;
     display: flex;
-    position: absolute;
-    
-    width: 40vw;
-    top: 0;
-    left: calc(50% - 20vw);
-    background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
-    box-shadow: 0 0 5px white;
-    transition: all 5s ease-in-out;
+    position: relative;
+    border-radius: 10px;
+    width: 400px;
+    top: -480px;
+    left: calc(50% - 200px);
+    transition: transform 3.5s ease-out;
 }
+
+
 
 @media screen and (max-width: 768px) {
     .main_pencil{
@@ -400,6 +448,14 @@ transition: all 0.6s linear;
         -webkit-transform: scale(0.5);
         transform: scale(0.5)
     }
+#btn_play{
+    order: 1;
+    margin-top: 120px !important;
+}
+#play{
+    order:2;
+    margin-top: 20px;
+}
     
 }
 @media screen and (max-width: 375px) {
@@ -412,11 +468,7 @@ transition: all 0.6s linear;
         width: 80vw;
         margin-left: 10vw;
     }
-   .learn_english img{
-        width: 200px;
-        height: 200px;
-       
-    }
+
     
     
 }
