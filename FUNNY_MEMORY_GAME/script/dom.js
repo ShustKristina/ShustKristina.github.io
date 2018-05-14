@@ -1,42 +1,15 @@
-window.onload=function(){
-    var startWindow=document.createElement("div");
-    startWindow.id="startWindow";
-    startWindow.innerHTML="<label for='nameUser'>Please, enter your name!<input name='nameUser' id='nameUser' type='text'></label><button id='btn_continue'>Continue</button>";
-    document.getElementById("start_page").style.opacity="0.5";
-    document.body.appendChild(startWindow);
-    document.getElementById("btn_continue").addEventListener("click", validAndStart, false);
-}
-function validAndStart(){
-    var userName=document.getElementById('nameUser');
-    if (userName.value==""){
-        return false;
-    }
-    else{
-        var userName=window.localStorage.getItem('lsName');
-    if ( userName )
-        document.getElementById('nameUser').value=userName;
 
-    function store() {
-        window.localStorage.setItem('lsName',document.getElementById('nameUser').value);
-    }
-        document.getElementById("startWindow").style.display="none";
-        document.getElementById("start_page").style.opacity="1";
-        addEventListenerButtons();
-    }
-}
-function addEventListenerButtons(){
-    var btnBeginStydy = document.getElementById("btn_begin_play");
-    btnBeginStydy.addEventListener("click", createPlayContainer);
-    
-    var btnSettings = document.getElementById("btn_settings");
-    btnSettings.addEventListener("click", createSettingsContainer);
-    
-    var btnRecords = document.getElementById("btn_records");
-    btnRecords.addEventListener("click", createRecordsContainer);
-    
-    var btnDescription = document.getElementById("btn_description");
-    btnDescription.addEventListener("click", createDescriptionContainer);
-}
+var btnBeginStydy = document.getElementById("btn_begin_play");
+btnBeginStydy.addEventListener("click", createPlayContainer);
+
+var btnSettings = document.getElementById("btn_settings");
+btnSettings.addEventListener("click", createSettingsContainer);
+
+var btnRecords = document.getElementById("btn_records");
+btnRecords.addEventListener("click", createRecordsContainer);
+
+var btnDescription = document.getElementById("btn_description");
+btnDescription.addEventListener("click", createDescriptionContainer);
 
 //create PLAY CONTAINER
 function createPlayContainer() {
@@ -45,7 +18,7 @@ function createPlayContainer() {
     var containerInfoGame = document.createElement("div");
     containerInfoGame.id = "containerInfoGame";
     startPage.id = "play";
-    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><div id="namePlayer"> <span></span></div><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio" name="difficulty" value="6" id="easy" ><label for="easy">Easy (6)</label><input type="radio" name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
+    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><label for="namePlayer">Your Name <input type="text" name="namePlayer" id="namePlayer"></label><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio" name="difficulty" value="6" id="easy" ><label for="easy">Easy (6)</label><input type="radio" name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
     var btnStart = document.createElement("button");
     btnStart.id = "btn_play";
     btnStart.style.width = "150px"
@@ -135,13 +108,32 @@ function createRecordsContainer() {
 
 //
 var startPlay = function startPlay() {
+    var nameplayers = document.getElementById("namePlayer");
+    function validate(){
+        if(nameplayers.value==""||nameplayers.value == " "){
+            nameplayers.style.border="1.5px solid red";
+            nameplayers.focus();
+            return false;
+        }
+        return true;
+    }
+    if(!validate()){
+        return false
+    };
+
+    localStorage.setItem('namePlayer', JSON.stringify(nameplayers.value));
+  savedName = JSON.parse(localStorage.getItem('namePlayer'));
+  nameplayers.innerHTML = savedName;
+  console.log(nameplayers.innerHTML)
+
     var game = new Game();
     var timer = new Timer();
+
     game.getPlayerInfo();
     game.getNumberOfCards();
     game.getBackCards();
     game.defineCardsFace();
-    game.getFaceCards();
+    game.getRandomArr();
     game.createBoardCards();
     game.addCards();
     game.addListeners();
@@ -155,8 +147,6 @@ function Game() {
     var cardsNumbersArray = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"];
     var cardsAnimalsArray = ["bear", "cat", "dog", "fox", "hare", "wolf", "squirrel", "camel", "deer"];
 
-
-
     self.playerInfo = {};
     self.stopTime = 0;
     self.numberOfCards = 0;
@@ -168,11 +158,11 @@ function Game() {
     self.counterFlippedCards = 0;
     self.flippedCardsArray = [];
     self.memoryArray;
+    
     var soundName = "";
     var step = new Steps();
     var timer1 = new Timer();
     var audio = new Audio;
-
 
     self.defineCardsFace = function (backCard) {
         switch (self.backCard) {
@@ -192,7 +182,10 @@ function Game() {
     }
 
     self.getPlayerInfo = function () {
-        
+        var nameplayers = document.getElementById("name");
+        var surnamePlayers = document.getElementById("surname");
+       // self.playerInfo.name = nameplayers.value;
+
 
     };
 
@@ -214,7 +207,7 @@ function Game() {
             }
         };
     }
-    self.getFaceCards = function () {
+    self.getRandomArr = function () {
 
         for (var i = 0; i < self.numberOfCards; i++) {
             if (self.randomCardsArray.length === self.numberOfCards / 2) {
