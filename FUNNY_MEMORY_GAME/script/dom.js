@@ -135,12 +135,8 @@ function createRecordsContainer() {
 
 //
 var startPlay = function startPlay() {
-
-
     var game = new Game();
     var timer = new Timer();
-
-
     game.getPlayerInfo();
     game.getNumberOfCards();
     game.getBackCards();
@@ -150,7 +146,6 @@ var startPlay = function startPlay() {
     game.addCards();
     game.addListeners();
     timer.start();
-
 }
 
 
@@ -197,10 +192,7 @@ function Game() {
     }
 
     self.getPlayerInfo = function () {
-        var nameplayers = document.getElementById("name");
-        var surnamePlayers = document.getElementById("surname");
-        self.playerInfo.name = nameplayers.value;
-        self.playerInfo.surname = surnamePlayers.value;
+        
 
     };
 
