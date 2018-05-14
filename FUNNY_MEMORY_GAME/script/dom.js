@@ -123,8 +123,8 @@ var startPlay = function startPlay() {
 
     localStorage.setItem('namePlayer', JSON.stringify(nameplayers.value));
   savedName = JSON.parse(localStorage.getItem('namePlayer'));
-  nameplayers.innerHTML = savedName;
-  console.log(nameplayers.innerHTML)
+  nameplayers.value = savedName;
+  console.log(nameplayers.value)
 
     var game = new Game();
     var timer = new Timer();
