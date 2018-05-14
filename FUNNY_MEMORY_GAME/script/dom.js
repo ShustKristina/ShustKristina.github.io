@@ -135,32 +135,6 @@ function createRecordsContainer() {
 
 //
 var startPlay = function startPlay() {
-    var nameplayers = document.getElementById("name");
-    var surnamePlayers = document.getElementById("surname");
-    var playerInfo = document.getElementById("playerInfo");
-
-    function validate(event) {
-        event.preventDefault();
-        var errors = document.getElementsByClassName("error");
-        for (var i = 0; i < errors.length; i++) {
-            errors[i].remove();
-        }
-
-        if (nameplayers.value == "" || surnamePlayers.value == "") {
-            nameplayers.style.border = "1px solid red";
-            surnamePlayers.style.border = "1px solid red";
-            var error = document.createElement("div");
-            error.className = "error";
-            error.textContent = "Enter your name and surname, please!";
-            playerInfo.appendChild(error);
-        }
-        else {
-            nameplayers.style.border = "1px solid green";
-            surnamePlayers.style.border = "1px solid green";
-        }
-
-    }
-    validate(event);
 
 
     var game = new Game();
