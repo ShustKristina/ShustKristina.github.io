@@ -10,7 +10,7 @@ btnRecords.addEventListener("click", createRecordsContainer);
 
 var btnDescription = document.getElementById("btn_description");
 btnDescription.addEventListener("click", createDescriptionContainer);
-
+document.addEventListener("keydown", keyboardKontrol);
 //create PLAY CONTAINER
 function createPlayContainer() {
     var wrapper = document.getElementById("wrapper_main");
@@ -18,10 +18,11 @@ function createPlayContainer() {
     var containerInfoGame = document.createElement("div");
     containerInfoGame.id = "containerInfoGame";
     startPage.id = "play";
-    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><label for="namePlayer">Your Name <input type="text" name="namePlayer" id="namePlayer"></label><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio" name="difficulty" value="6" id="easy" ><label for="easy">Easy (6)</label><input type="radio" name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
+    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><label for="namePlayer">Your Name <input type="text" autofocus name="namePlayer" id="namePlayer"></label><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input  type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio"  name="difficulty" value="6" id="easy" ><label  for="easy">Easy (6)</label><input type="radio"  name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input  type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
     var btnStart = document.createElement("button");
     btnStart.id = "btn_play";
-    btnStart.style.width = "150px"
+    btnStart.style.width = "150px";
+    btnStart.tabIndex="5";
     btnStart.style.marginLeft = 'calc(50% - 75px)';
     btnStart.style.marginTop = "30px";
     btnStart.textContent = "PLAY";
@@ -29,7 +30,7 @@ function createPlayContainer() {
     boardOfCards.id = "board_cards";
     var timerStepsReset = document.createElement("div");
     timerStepsReset.id = "timerStepsReset";
-    timerStepsReset.innerHTML = "<div id='steps'>Steps <p><span id='numbersOfSteps'></span></p></div><button id='reset'>Restart &#8635;</button><div id='timer'>Timer <p><span id='min'></span> <span id='sec'></span></p></div>";
+    timerStepsReset.innerHTML = "<div id='steps'>Steps <p><span id='numbersOfSteps'></span></p></div><div id='timer'>Timer <p><span id='min'></span> <span id='sec'></span></p></div>";
     var congratulations = document.createElement("div");
     congratulations.id = "congratulations";
     wrapper.appendChild(containerInfoGame);
@@ -244,7 +245,7 @@ function Game() {
 
     self.addListeners = function () {
         document.getElementById("board_cards").addEventListener("mouseup", self.turnCard);
-        document.getElementById("reset").addEventListener("click", reset);
+        
     };
 
 
@@ -258,7 +259,7 @@ function Game() {
         }
 
         self.counterFlippedCards = self.counterFlippedCards + 1;
-
+        self.startSound();
         if (self.counterFlippedCards === 2) {
 
             step.start();
@@ -303,18 +304,25 @@ function Game() {
     }
 
     self.startSound = function (soundName) {
-        if (audio.canPlayType("audio/mpeg") == "probably") {
-            audio.src = 'audio/' + self.backCard + '/' + soundName + '.mp3';
-        }
 
-        else {
-            audio.src = 'audio/' + self.backCard + '/' + soundName + '.ogg';
-        }
         if (soundName) {
-
+            if (audio.canPlayType("audio/mpeg") == "probably") {
+                audio.src = 'audio/' + self.backCard + '/' + soundName + '.mp3';
+            }
+            else {
+                audio.src = 'audio/' + self.backCard + '/' + soundName + '.ogg';
+            }
             audio.play();
         }
-
+        else {
+            if (audio.canPlayType("audio/mpeg") == "probably") {
+                audio.src = 'audio/card.mp3';
+            }
+            else {
+                audio.src = 'audio/card.ogg';
+            }
+            audio.play();
+        }
 
     }
     self.stopSound = function (soundName) {
@@ -343,9 +351,10 @@ function Card(className, backCard, faceCard) {
         var wrapperCard = document.createElement("div");
 
         wrapperCard.className = "wrapper_card";
-
+        
         var back = document.createElement("span");
         back.className = "back_card";
+        back.tabIndex="4";
         back.style.background = "url(images/sprite_back2.svg#" + self.backCard + ") no-repeat";
         back.style.backgroundSize = "cover";
 
@@ -359,11 +368,6 @@ function Card(className, backCard, faceCard) {
 
         return wrapperCard;
     };
-    self.playSound = function () {
-
-
-
-    }
 
 }
 var interval;
@@ -449,7 +453,6 @@ function saveTimeSteps() {
 function reset() {
     var game = new Game();
     game.stop();
-    //game.flowingCongratulations()=null;
     var timer = new Timer();
     timer.stop();
     var game1 = new Game();
@@ -457,6 +460,38 @@ function reset() {
     startPlay();
 
 }
+
+    function keyboardKontrol(event){
+        event = event || window.event;
+        if (event.altKey) {
+           
+            switch (event.keyCode) {
+                case 49:
+                
+                    window.location.href= "#play";
+                    createPlayContainer();
+                    break;
+                case 50:
+                event.preventDefault();
+                    window.location.href= "#settings";
+                    createSettingsContainer();
+                    break;
+                case 51:
+                event.preventDefault();
+                    window.location.href= "#records";
+                    createRecordsContainer();
+                    break;
+                case 52:
+                event.preventDefault();
+                    window.location.href= "#description";
+                    createDescriptionContainer();
+                    break;
+            }
+        }
+    
+        return false;
+    }
+    
 function flowingCongratulations() {
     var timeMin = document.getElementById("min").innerHTML;
     var timeSec = document.getElementById("sec").innerHTML;
@@ -468,7 +503,7 @@ function flowingCongratulations() {
     document.getElementById("timerStepsReset").style.opacity = "0";
     document.getElementById("timerStepsReset").style.display = "none";
 
-    congratulations.innerHTML = '<svg id="SVGElem" height="480" width="400" xmlns="http://www.w3.org/2000/svg" stroke="null"><g id="svg_1" stroke="null"><rect blur="5" stroke="white"stroke-width="2.5" rx="10" fill-opacity="0.9" x="0" y="207" width="400" height="270" fill="url(#wood)" id="rect"/><text id="svg_2" fill="#00ffff" x="71" y="435" font-size="42" font-family="Junction, sans-serif" font-weight="bold" stroke="#000">Good Job!</text><text id="svg_3" fill="red" stroke-width="0.5" x="19.5" y="290" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Time: '+timeMin+' '+timeSec+'</text><text fill="red" stroke-width="0.5" x="22.5" y="326" id="svg_5" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Steps: '+numberSteps+'</text><text id="svg_4" fill="#ff0000" x="23.5" y="361" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">The Best Score:</text><ellipse fill="#bf5f00" stroke-width="1.5" cx="31" cy="232" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="370" cy="234" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="195" cy="11" id="svg_6" rx="5" ry="5" stroke="#000"/><line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="15" x2="192.5" y1="227" x1="32.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/><line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="14" x2="198.499997" y1="228.999997" x1="366.500001" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/></g><pattern id="wood" width="500" height="480" patternUnits="userSpaceOnUse"> <image  xlink:href="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EQMOWcXPx/rotating-bright-yellow-background-with-circles-summer-sun-endless-loop_b3xin9uy__F0000.png"></pattern></svg>';
+    congratulations.innerHTML = '<svg id="SVGElem" height="480" width="400" xmlns="http://www.w3.org/2000/svg" stroke="null"><g id="svg_1" stroke="null"><rect blur="5" stroke="white"stroke-width="2.5" rx="10" fill-opacity="0.9" x="0" y="207" width="400" height="270" fill="url(#wood)" id="rect"/><text id="svg_2" fill="#00ffff" x="71" y="435" font-size="42" font-family="Junction, sans-serif" font-weight="bold" stroke="#000">'+JSON.parse(localStorage.getItem('namePlayer'))+', Good Job!</text><text id="svg_3" fill="red" stroke-width="0.5" x="19.5" y="290" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Time: '+timeMin+' '+timeSec+'</text><text fill="red" stroke-width="0.5" x="22.5" y="326" id="svg_5" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Steps: '+numberSteps+'</text><text id="svg_4" fill="#ff0000" x="23.5" y="361" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">The Best Score:</text><ellipse fill="#bf5f00" stroke-width="1.5" cx="31" cy="232" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="370" cy="234" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="195" cy="11" id="svg_6" rx="5" ry="5" stroke="#000"/><line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="15" x2="192.5" y1="227" x1="32.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/><line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="14" x2="198.499997" y1="228.999997" x1="366.500001" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/></g><pattern id="wood" width="500" height="480" patternUnits="userSpaceOnUse"> <image  xlink:href="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EQMOWcXPx/rotating-bright-yellow-background-with-circles-summer-sun-endless-loop_b3xin9uy__F0000.png"></pattern></svg>';
    
     
     congratulations.style.transform = "translateY(430px)";
@@ -479,6 +514,6 @@ function flowingCongratulations() {
 //add vibro
 function vibro() {
     if (navigator.vibrate) { // есть поддержка Vibration API?
-        window.navigator.vibrate(100); // вибрация 100мс     
+        window.navigator.vibrate(200);     
     }
 }
