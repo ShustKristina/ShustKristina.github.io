@@ -23,7 +23,7 @@
 <img class="main_pencil" src="images/pencil.svg">
 </div>
 </div>
-
+<script></script>
 <script>
 var SPAState={};
   
@@ -69,7 +69,7 @@ var SPAState={};
   function switchToGamePage() {
     switchToState( { pagename:'Play'} );
   }
-
+  
   function switchToRecordsPage() {
     switchToState( { pagename:'Records' } );
   }
@@ -80,6 +80,9 @@ var SPAState={};
 
   window.addEventListener('hashchange', switchToStateFromURLHash, false);
   switchToStateFromURLHash();
+
+
+
 </script>
 
 </body>

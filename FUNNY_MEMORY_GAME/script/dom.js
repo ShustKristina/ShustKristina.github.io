@@ -1,5 +1,4 @@
 
-
 document.addEventListener("keydown", keyboardKontrol);
 
 var startPlay = function startPlay() {
@@ -10,24 +9,14 @@ var startPlay = function startPlay() {
             nameplayers.focus();
             return false;
         }
-        return true;
+        else{ 
+        window.localStorage.setItem('UserName', nameplayers.value);
+            return true;
+        }
     }
     if (!validate()) {
         return false
     }
-    else{
-
-        window.localStorage.setItem('UserName', document.getElementById('namePlayer').value);
-
-        var storedName=window.localStorage.getItem('UserName');
-        if ( storedName ){
-            document.getElementById('namePlayer').value=storedName;
-        }
-           
-        console.log(storedName)
-    }
-
-    
 
     var game = new Game();
     var timer = new Timer();
