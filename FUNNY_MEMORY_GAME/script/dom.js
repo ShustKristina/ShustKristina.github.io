@@ -4,26 +4,32 @@ document.addEventListener("keydown", keyboardKontrol);
 
 var startPlay = function startPlay() {
     var nameplayers = document.getElementById("namePlayer");
-    function validate(){
-        if(nameplayers.value==""||nameplayers.value == " "){
-            nameplayers.style.border="1.5px solid red";
+    function validate() {
+        if (nameplayers.value == "" || nameplayers.value == " ") {
+            nameplayers.style.border = "1.5px solid red";
             nameplayers.focus();
             return false;
         }
         return true;
     }
-    if(!validate()){
+    if (!validate()) {
         return false
-    };
+    }
+    else{
+        var storedName=window.localStorage.getItem('UserName');
+        if ( storedName ){
+            document.getElementById('namePlayer').value=storedName;
+        }
+           
+        window.localStorage.setItem('UserName', document.getElementById('namePlayer').value);
+        
+        console.log(nameplayers.value)
+    }
 
-    localStorage.setItem('namePlayer', JSON.stringify(nameplayers.value));
-  savedName = JSON.parse(localStorage.getItem('namePlayer'));
-  nameplayers.value = savedName;
-  console.log(nameplayers.value)
+    
 
     var game = new Game();
     var timer = new Timer();
-
     game.getPlayerInfo();
     game.getNumberOfCards();
     game.getBackCards();
@@ -53,7 +59,7 @@ function Game() {
     self.counterFlippedCards = 0;
     self.flippedCardsArray = [];
     self.memoryArray;
-    
+
     var soundName = "";
     var step = new Steps();
     var timer1 = new Timer();
@@ -79,7 +85,7 @@ function Game() {
     self.getPlayerInfo = function () {
         var nameplayers = document.getElementById("name");
         var surnamePlayers = document.getElementById("surname");
-       // self.playerInfo.name = nameplayers.value;
+        // self.playerInfo.name = nameplayers.value;
 
 
     };
@@ -139,6 +145,8 @@ function Game() {
 
     self.addListeners = function () {
         document.getElementById("board_cards").addEventListener("mouseup", self.turnCard);
+        window.addEventListener("hashchange", self.backReset);
+        window.addEventListener("beforeunload", self.backReset);
     };
 
 
@@ -164,17 +172,18 @@ function Game() {
                 vibro();
                 flippedCards.forEach(function (elem) {
                     var timeout1 = setTimeout(function () {
-                        elem.style.visibility = 'hidden';
+                        elem.classList.add('hidden');
+                        
                     }, 1000);
                     var timeout2 = setTimeout(function () {
 
                         self.wrapperCards.splice(self.wrapperCards.indexOf(elem.parentNode), 1);
                         elem.classList.remove('flipped');
 
-                        if (self.wrapperCards.length === 0) {
+                        if (document.querySelectorAll(".hidden").length === self.numberOfCards) {
 
                             timer1.stop();
-                           self.flowingCongratulations();
+                            self.flowingCongratulations();
                         }
 
                         self.counterFlippedCards = 0;
@@ -210,7 +219,7 @@ function Game() {
         else {
             if (audio.canPlayType("audio/mpeg") == "probably") {
                 audio.src = 'audio/card.mp3';
-                audio.className="audio";
+                audio.className = "audio";
             }
             else {
                 audio.src = 'audio/card.ogg';
@@ -227,20 +236,41 @@ function Game() {
 
     };
 
-    self.flowingCongratulations=function() {
+    self.flowingCongratulations = function () {
         var timeMin = document.getElementById("min").innerHTML;
         var timeSec = document.getElementById("sec").innerHTML;
         var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
         var congratulations = document.getElementById("congratulations");
         document.getElementById("timerStepsReset").style.opacity = "0.6";
-    
-        congratulations.innerHTML = '<svg id="SVGElem" height="480" width="400" xmlns="http://www.w3.org/2000/svg" stroke="null"><g id="svg_1" stroke="null"><rect blur="5" stroke="white"stroke-width="2.5" rx="10" fill-opacity="0.9" x="0" y="207" width="400" height="270" fill="url(#wood)" id="rect"/><text id="svg_2" fill="#00ffff" x="71" y="435" font-size="26" font-family="Junction, sans-serif" font-weight="bold" stroke="#000">'+JSON.parse(localStorage.getItem('namePlayer'))+', Good Job!</text><text id="svg_3" fill="red" stroke-width="0.5" x="70" y="290" font-size="20" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Time: '+timeMin+' '+timeSec+'</text><text fill="red" stroke-width="0.5" x="70" y="326" id="svg_5" font-size="20" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Steps: '+numberSteps+'</text><text id="svg_4" fill="#ff0000" x="70" y="361" font-size="20" font-family="Helvetica, Arial, sans-serif" stroke="#000">The Best Score:</text><ellipse fill="#bf5f00" stroke-width="1.5" cx="31" cy="232" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="370" cy="234" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="195" cy="11" id="svg_6" rx="5" ry="5" stroke="#000"/><line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="15" x2="192.5" y1="227" x1="32.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/><line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="14" x2="198.499997" y1="228.999997" x1="366.500001" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/></g><pattern id="wood" width="500" height="480" patternUnits="userSpaceOnUse"> <image  xlink:href="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EQMOWcXPx/rotating-bright-yellow-background-with-circles-summer-sun-endless-loop_b3xin9uy__F0000.png"></pattern></svg>';
+        document.getElementById("board_cards").style.opacity = "0.7";
+
        
-        
-        congratulations.style.transform = "translateY(430px)";
-    
+        congratulations.innerHTML = '<p>Your Time: '+timeMin+' '+timeSec+'</p><p>Your Steps: '+numberSteps+'</p><p>Best Score: </p><h3>, Good Job!</h3><button id="btn_new_game" onclick="reset()">New Game</button>';
+       
+       
+        congratulations.style.transform = "translateY(480px)";
+
     }
-    
+
+    //
+    self.backReset = function () {
+        var event = event || window.event;
+        var oldHash = window.location.hash;
+        switch (event.type) {
+            case 'beforeunload':
+                event.returnValue = 'Возможно, внесенные изменения не сохраняться.';
+                break;
+            case 'hashchange':
+                var returnValue = confirm('Переход осуществится на главную страницу! Продолжить?');
+                if (returnValue) {
+                    window.removeEventListener("beforeunload", self.backReset);
+                    window.removeEventListener("hashchange", self.backReset);
+                    switchToStateFromURLHash()
+                }
+                break;
+        }
+    }
+
 }
 function Card(className, backCard, faceCard) {
     var self = this;
@@ -253,10 +283,10 @@ function Card(className, backCard, faceCard) {
         var wrapperCard = document.createElement("div");
 
         wrapperCard.className = "wrapper_card";
-        
+
         var back = document.createElement("span");
         back.className = "back_card";
-        back.tabIndex="4";
+        back.tabIndex = "4";
         back.style.background = "url(images/sprite_back2.svg#" + self.backCard + ") no-repeat";
         back.style.backgroundSize = "cover";
 
@@ -354,52 +384,59 @@ function saveTimeSteps() {
 
 function reset() {
     var game = new Game();
-    game.stop();
-    var timer = new Timer();
-    timer.stop();
-    var game1 = new Game();
-    var timer1 = new Timer();
-    startPlay();
-
+        game.stop();
+        var timer = new Timer();
+        timer.stop();
+        var game1 = new Game();
+        var timer1 = new Timer();
+        startPlay();
+        document.getElementById("congratulations").style.transform = "translateY(-480px)";
+    function newGame(){
+        
+        document.getElementById("timerStepsReset").style.opacity = "1";
+        document.getElementById("board_cards").style.opacity = "1";
+    }
+    setTimeout(newGame(), 5000);
 }
 
-    function keyboardKontrol(event){
-        event = event || window.event;
-        if (event.altKey) {
-           
-            switch (event.keyCode) {
-                case 49:
-                
-                    window.location.href= "#play";
-                    createPlayContainer();
-                    break;
-                case 50:
+
+function keyboardKontrol(event) {
+    event = event || window.event;
+    if (event.altKey) {
+
+        switch (event.keyCode) {
+            case 49:
+
+                window.location.href = "#Main";
+                createPlayContainer();
+                break;
+            case 50:
                 event.preventDefault();
-                    window.location.href= "#settings";
-                    createSettingsContainer();
-                    break;
-                case 51:
+                window.location.href = "#Play";
+                createSettingsContainer();
+                break;
+            case 51:
                 event.preventDefault();
-                    window.location.href= "#records";
-                    createRecordsContainer();
-                    break;
-                case 52:
+                window.location.href = "#Records";
+                createRecordsContainer();
+                break;
+            case 52:
                 event.preventDefault();
-                    window.location.href= "#description";
-                    createDescriptionContainer();
-                    break;
-            }
+                window.location.href = "#Description";
+                createDescriptionContainer();
+                break;
         }
-    
-        return false;
     }
-    
+
+    return false;
+}
+
 
 
 
 //add vibro
 function vibro() {
     if (navigator.vibrate) { // есть поддержка Vibration API?
-        window.navigator.vibrate(200);     
+        window.navigator.vibrate(200);
     }
 }
