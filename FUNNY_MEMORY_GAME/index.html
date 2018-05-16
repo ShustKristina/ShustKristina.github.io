@@ -28,7 +28,7 @@
 var SPAState={};
   
   function switchToStateFromURLHash() {
-    
+
     var URLHash=window.location.hash;
     var stateStr=URLHash.substr(1);
     if ( stateStr!="" ) // если закладка непустая, читаем из неё состояние и отображаем
@@ -56,7 +56,13 @@ var SPAState={};
     }
     document.getElementById('start_page').innerHTML=pageHTML;
   }
-
+function userName(){
+  if (window.localStorage["UserName"]==undefined){
+    window.localStorage["UserName"]="User";
+  }
+ 
+}
+userName();
   function switchToState(newState) {
     var stateStr=newState.pagename;
     location.hash=stateStr;

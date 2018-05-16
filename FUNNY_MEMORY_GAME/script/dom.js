@@ -235,7 +235,7 @@ function Game() {
         document.getElementById("board_cards").style.opacity = "0.7";
 
        
-        congratulations.innerHTML = '<p>Your Time: '+timeMin+' '+timeSec+'</p><p>Your Steps: '+numberSteps+'</p><p>Best Score: </p><h3>, Good Job!</h3><button id="btn_new_game" onclick="reset()">New Game</button>';
+        congratulations.innerHTML = '<p>Your Time: '+timeMin+' '+timeSec+'</p><p>Your Steps: '+numberSteps+'</p><p>Best Score: </p><h3>'+window.localStorage["UserName"]+', Good Job!</h3><button id="btn_new_game" onclick="reset()">New Game</button>';
        
        
         congratulations.style.transform = "translateY(480px)";
