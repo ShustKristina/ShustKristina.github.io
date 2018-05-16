@@ -16,14 +16,15 @@ var startPlay = function startPlay() {
         return false
     }
     else{
+
+        window.localStorage.setItem('UserName', document.getElementById('namePlayer').value);
+
         var storedName=window.localStorage.getItem('UserName');
         if ( storedName ){
             document.getElementById('namePlayer').value=storedName;
         }
            
-        window.localStorage.setItem('UserName', document.getElementById('namePlayer').value);
-        
-        console.log(nameplayers.value)
+        console.log(storedName)
     }
 
     
@@ -84,7 +85,7 @@ function Game() {
 
     self.getPlayerInfo = function () {
         var nameplayers = document.getElementById("name");
-        var surnamePlayers = document.getElementById("surname");
+       
         // self.playerInfo.name = nameplayers.value;
 
 
