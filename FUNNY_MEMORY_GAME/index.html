@@ -7,23 +7,90 @@
     <link rel="stylesheet" href="style/main.css">
 
     <script defer src="script/dom.js"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script defer src="script/classes.js"></script>
 </head>
 
 <body>
 <div class="wrapper" id="wrapper_main">
-<h1 class="logo"><a href="index.html" tabindex="-1">Funny Memory Game</a></h1>
+<h1 class="logo" onclick="switchToMainPage()">Funny Memory <span>Game</span></h1>
 <div id="start_page" class="start_page">
    <div class="wrapper_button">
-       <a href="#play" tabindex="-1"><button tabindex="1" id="btn_begin_play">Start play</button></a>
-       <a href="#settings" tabindex="-1"><button tabindex="1" id="btn_settings">Settings</button></a>
-       <a href="#records" tabindex="-1"><button tabindex="1" id="btn_records">The best players</button></a>
-       <a href="#description" tabindex="-1"><button  tabindex="1" id="btn_description">About game</button></a>
+       <button tabindex="1" id="btn_begin_play" onclick="switchToGamePage()">Start play</button>
+      <button tabindex="1" id="btn_records" onclick="switchToRecordsPage()">The best players</button>
+       <button  tabindex="1" id="btn_description" onclick="switchToDescriptionPage()">About game</button>
    </div> 
 <img class="main_pencil" src="images/pencil.svg">
 </div>
 </div>
 
+<script>
+var SPAState={};
+  
+  function switchToStateFromURLHash() {
+
+    var URLHash=window.location.hash;
+    var stateStr=URLHash.substr(1);
+    if ( stateStr!="" ) // если закладка непустая, читаем из неё состояние и отображаем
+    {
+      SPAState={ pagename: stateStr }; // первая часть закладки - номер страницы
+    }
+    else
+      SPAState={pagename:'Main'}; // иначе показываем главную страницу
+
+    console.log('Новое состояние приложения:');
+    console.log(SPAState);
+
+    let pageHTML="";
+    switch ( SPAState.pagename ) {
+      case 'Main':
+        pageHTML+='<div class="wrapper_button"><button tabindex="1" id="btn_begin_play" onclick="switchToGamePage()">Start play</button><button tabindex="1" id="btn_records" onclick="switchToRecordsPage()">The best players</button><button  tabindex="1" id="btn_description" onclick="switchToDescriptionPage()">About game</button></div> <img class="main_pencil"src="images/pencil.svg">';
+        break;
+      case 'Play':
+        pageHTML+='<div id="containerInfoGame"><div id="play" class="start_page"><div id="congratulations"></div><div id="playerInfo"><h3>Information about you</h3><label for="namePlayer">Your Name <input type="text" tabindex="-1" autofocus name="namePlayer" id="namePlayer"></label><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input  type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio"  name="difficulty" value="6" id="easy" ><label  for="easy">Easy (6)</label><input type="radio"  name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input  type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div></div><div id="congratulations"></div><button id="btn_play" onclick="startPlay()">PLAY</button><div id="timerStepsReset"><div id="steps">Steps <p><span id="numbersOfSteps"></span></p></div><div id="timer">Timer <p><span id="min"></span><span id="sec"></span></p></div></div><div id="board_cards"></div></div>';
+        
+        break;
+      case 'Records':
+        pageHTML+='<div id="records" class="start_page"><div id="container_records"><table id="table_records"><tr><td><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png"></td></tr><tr><td>Date</td><td>Player</td><td>Score</td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table></div>';
+        break;
+      case 'Description':
+        pageHTML+='<div id="description" class="start_page"><p class="description_game"><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png">Наше приложение разработано специально для детишек в возрасте от двух лет. Игра позволяет тренировать память, запоминать новые слова. Выбирая рубашку карт, вы определяете и рубрику тем карточек-перевертышей. Постепенно натренировав свою память, можно также и увеличивать уровень сложности. Управление игрой осуществляется либо мышкой, либо стрелками &laquo;вверх&raquo;, &laquo;вниз&raquo;, &laquo;вперед&raquo;, &laquo;назад&raquo; и &laquo;enter&raquo;. </p></div>';
+         break;
+    }
+    document.getElementById('start_page').innerHTML=pageHTML;
+  }
+
+  // устанавливает в закладке УРЛа новое состояние приложения
+  // и затем устанавливает+отображает это состояние
+  function switchToState(newState) {
+    // устанавливаем закладку УРЛа
+    // нужно для правильной работы кнопок навигации браузера
+    // (т.к. записывается новый элемент истории просмотренных страниц)
+    // и для возможности передачи УРЛа другим лицам
+    var stateStr=newState.pagename;
+    location.hash=stateStr;
+  }
+
+  function switchToMainPage() {
+    switchToState( { pagename:'Main' } );
+
+  }
+
+  function switchToGamePage() {
+    switchToState( { pagename:'Play'} );
+  }
+
+  function switchToRecordsPage() {
+    switchToState( { pagename:'Records' } );
+  }
+
+  function switchToDescriptionPage() {
+    switchToState( { pagename:'Description' } );
+  }
+
+  // переключаемся в состояние, которое сейчас прописано в закладке УРЛ
+  switchToStateFromURLHash();
+</script>
 
 </body>
 

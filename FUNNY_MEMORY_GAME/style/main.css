@@ -1,3 +1,5 @@
+/*main styles*/
+
 a{
     text-decoration: none;
     color: aliceblue;
@@ -6,7 +8,7 @@ a{
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-h1{
+h1{ 
     margin: 0;
 }
 input{
@@ -15,7 +17,9 @@ input{
 input[type="text"]{
     display: block;
 }
-body {
+body { background: url('../images/background1.jpg');
+    background-size: cover;
+    min-height: 100vh;
     margin: 0;
     overflow-x: hidden;
 }
@@ -39,10 +43,9 @@ button:hover{
     background: rgba(15, 255, 255, 0.7);
 }
 
+/* style of start page */
 .wrapper {
     width: 100vw;
-    background: url('../images/background1.jpg');
-    background-size: cover;
     min-height: 100vh;
     overflow-x: hidden;
 }
@@ -52,19 +55,17 @@ button:hover{
 .wrapper:not(target){
     display: none;
 }
-#wrapper_main:not(target),
-#beginLesson:not(target),
-#beginPuzzle:not(target),
-#wrapper_current_word:not(target){
+#wrapper_main:not(target){
     display: block;
 }
 .logo {z-index: 2;
     font-family: Arial;
-    font-size: 2.5em;
+    font-size: 2.2em;
     position: relative;
-    top:50px;
-    left: 120px;
-    color: yellow;
+    top:20px;
+    left: 100px;
+    color: aliceblue;
+    cursor: pointer;
     text-shadow: 0 0 5px red;
 }
 
@@ -72,15 +73,13 @@ button:hover{
     content: "";
     background: url(../images/sun.png);
     background-size: cover;
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     position: absolute;
-    top: -50px;
-    left: -120px;
-    
+    top: -10px;
+    left: -110px;  
 }
- .logo:before,
-.logo:before,
+
 .logo:before{
     -webkit-animation: animatLogo 2s infinite linear;
     animation: animatLogo 1.5s infinite linear;
@@ -121,20 +120,6 @@ button:hover{
         transition: rotate(-45deg);
     }
 }
-#settings button{
-    width: 300px;
-    padding-bottom: 0;
-}
-#settings button:first-child{
-margin-top: 150px;
-}
-#settings img{
-    position: relative;
-    width: 50px;
-    height: 60px;
-    display: block;
-    margin-left: calc(50% - 25px);
-}
 
 .start_page {
     display: -webkit-box;
@@ -148,29 +133,15 @@ margin-top: 150px;
     transition: opacity 1s linear;
 }
 
-
 .main_pencil{ 
     height: 550px;
 }
-.wrapper_balls{
-    width: 100vw;
-    margin-top: 120px;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
  
-    -ms-flex-pack: distribute;
- 
-    justify-content: space-around;
-}
-
-
+/* style of description page*/
 .description_game{
     position: relative;
     width: 400px;
-    margin-top: 100px;
+    margin-top: 120px;
     padding: 30px;
     font-size: 20px;
     font-weight: bold;
@@ -180,6 +151,38 @@ margin-top: 150px;
     box-shadow: 0 0 15px white;
     line-height: 1.2;
 }
+
+.butterfly{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+}
+.but1{
+    top:  calc(100% - 50px);
+    left: -50px;
+    -webkit-transform: rotate(-135deg);
+    transform: scale(0.5) rotate(-135deg);
+    
+}
+.but2{
+    top:  calc(100% - 50px);
+    left: calc(100% - 50px);
+    -webkit-transform: rotate(135deg);
+    transform: scale(0.5) rotate(135deg);
+}
+.but3{
+    top:  calc(0% - 50px);
+    left: -50px;
+    -webkit-transform: rotate(-45deg);
+    transform: scale(0.5) rotate(-45deg);
+}
+.but4{
+    top:  calc(0% - 50px);
+    left: calc(100% - 50px);
+    -webkit-transform: rotate(45deg);
+    transform: scale(0.5) rotate(45deg);
+}
+/* style of records page*/
 #table_records{
     width: 450px;
     text-align: center;
@@ -197,6 +200,13 @@ color: antiquewhite;
     border-collapse: collapse;
     border: 1px solid blue;
     box-shadow: 0 0 15px white;
+}
+
+/* style of play page*/
+#containerInfoGame{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 #play{flex-wrap: wrap;
     padding-bottom: 30px;
@@ -249,6 +259,13 @@ input[type="radio"]:checked + img{
     font-weight: bold;
     text-shadow: 1px 2px 3px white;
 }
+#btn_play{
+    width: 150px;
+    margin-left: calc(50% - 75px);
+    margin-top: 30px;
+}
+
+/* style of board with cards*/
 #board_cards{display: none;
     flex-wrap: wrap;
     justify-content: center;
@@ -291,20 +308,13 @@ transition: opacity 2s linear;
 }
 .back_card{
     cursor: pointer;
-    
 }
-
 
 .flipped {
     transform: rotateY(180deg);
 }
 
-
-.error{
-    color:red; 
-}
 #timerStepsReset{
-   
     text-align: center;
     display:none;
     justify-content: space-around;
@@ -321,7 +331,6 @@ transition: opacity 2s linear;
     position: absolute;
     background-color: white;
     color: red;
-    
     padding: 5px;
     border-radius: 5px;
 }
@@ -347,61 +356,14 @@ display: inline-block;
 border-radius: 5px;
 transition: all 0.6s linear;
 }
-#timerStepsReset button:hover{
-    background: linear-gradient(to top right, rgba(0, 255, 255, 1),rgba(255,255,0, 1));
-    box-shadow: 0 0 15px gray;
-   
-}
-.butterfly{
-    width: 100px;
-    height: 100px;
-    position: absolute;
-}
-.but1{
-    top:  calc(100% - 50px);
-    left: -50px;
-    -webkit-transform: rotate(-135deg);
-    transform: scale(0.5) rotate(-135deg);
-    
-}
-.but2{
-    top:  calc(100% - 50px);
-    left: calc(100% - 50px);
-    -webkit-transform: rotate(135deg);
-    transform: scale(0.5) rotate(135deg);
-}
-.but3{
-    top:  calc(0% - 50px);
-    left: -50px;
-    -webkit-transform: rotate(-45deg);
-    transform: scale(0.5) rotate(-45deg);
-}
-.but4{
-    top:  calc(0% - 50px);
-    left: calc(100% - 50px);
-    -webkit-transform: rotate(45deg);
-    transform: scale(0.5) rotate(45deg);
-}
-#containerInfoGame{
-    display: flex;
-    flex-direction: column;
-}
-.board table{
-    border-collapse: collapse;
-    margin-left: calc(50vw - 150px);
-    margin-top: calc(50vh - 150px);
-}
-.board td{
-    background: rgba(255,255,0, 0.7);
-    border: 3px solid black;
-    border-radius: 50%;
-}
+
+/*congratulations + restart*/
 #congratulations{
     z-index: 1;
     transform: translateZ(0);
     will-change: transform;
     display: flex;
-    position: relative;
+    position: absolute;
     border-radius: 10px;
     width: 400px;
     top: -480px;
@@ -409,8 +371,7 @@ transition: all 0.6s linear;
     transition: transform 3.5s ease-out;
 }
 
-
-
+/*media conditions*/
 @media screen and (max-width: 768px) {
     .main_pencil{
         display: none;
@@ -418,31 +379,35 @@ transition: all 0.6s linear;
     .wrapper_button{
         margin-top: 150px;
     }
-    .settings button img{
-        -webkit-transform: scale(0.5);
-        transform: scale(0.5)
-    }
+    
 #btn_play{
+    padding: 8px;
     order: 1;
     margin-top: 120px !important;
 }
 #play{
     order:2;
     margin-top: 20px;
+    flex-direction: column;
+    align-items: center;
 }
-    
+#playerInfo{
+    order:3;
+}
+input[type="radio"]:not(checked) + img{
+    width: 95px;
+    height: 135px;
+}
+#timerStepsReset div{
+    padding: 7px;
+}
 }
 @media screen and (max-width: 375px) {
     .description_game{
          width: 100vw;
-        margin: 80px 0 0 0;
-    
     }
-    .settings button{
-        width: 80vw;
-        margin-left: 10vw;
-    }
-
-    
+.description_game img{
+    display: none;
+}
     
 }

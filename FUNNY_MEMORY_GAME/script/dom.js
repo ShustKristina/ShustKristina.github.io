@@ -1,113 +1,7 @@
 
-var btnBeginStydy = document.getElementById("btn_begin_play");
-btnBeginStydy.addEventListener("click", createPlayContainer);
 
-var btnSettings = document.getElementById("btn_settings");
-btnSettings.addEventListener("click", createSettingsContainer);
-
-var btnRecords = document.getElementById("btn_records");
-btnRecords.addEventListener("click", createRecordsContainer);
-
-var btnDescription = document.getElementById("btn_description");
-btnDescription.addEventListener("click", createDescriptionContainer);
 document.addEventListener("keydown", keyboardKontrol);
-//create PLAY CONTAINER
-function createPlayContainer() {
-    var wrapper = document.getElementById("wrapper_main");
-    var startPage = document.getElementById("start_page");
-    var containerInfoGame = document.createElement("div");
-    containerInfoGame.id = "containerInfoGame";
-    startPage.id = "play";
-    startPage.innerHTML = '<div id="playerInfo"><h3>Information about you</h3><label for="namePlayer">Your Name <input type="text" autofocus name="namePlayer" id="namePlayer"></label><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input  type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio"  name="difficulty" value="6" id="easy" ><label  for="easy">Easy (6)</label><input type="radio"  name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input  type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div>';
-    var btnStart = document.createElement("button");
-    btnStart.id = "btn_play";
-    btnStart.style.width = "150px";
-    btnStart.tabIndex="5";
-    btnStart.style.marginLeft = 'calc(50% - 75px)';
-    btnStart.style.marginTop = "30px";
-    btnStart.textContent = "PLAY";
-    var boardOfCards = document.createElement("div");
-    boardOfCards.id = "board_cards";
-    var timerStepsReset = document.createElement("div");
-    timerStepsReset.id = "timerStepsReset";
-    timerStepsReset.innerHTML = "<div id='steps'>Steps <p><span id='numbersOfSteps'></span></p></div><div id='timer'>Timer <p><span id='min'></span> <span id='sec'></span></p></div>";
-    var congratulations = document.createElement("div");
-    congratulations.id = "congratulations";
-    wrapper.appendChild(containerInfoGame);
-    containerInfoGame.appendChild(startPage);
-    containerInfoGame.appendChild(congratulations);
-    containerInfoGame.appendChild(btnStart);
-    containerInfoGame.appendChild(timerStepsReset);
-    containerInfoGame.appendChild(boardOfCards);
-    btnStart.addEventListener("click", startPlay, false);
-}
 
-//create SETTINGS CONTAINER
-function createSettingsContainer() {
-    var wrapper = document.getElementById("wrapper_main");
-    var startPage = document.getElementById("start_page");
-    startPage.id = "settings";
-    startPage.innerHTML = '<div><button id="btn_mus">Выключить музыку</span><img src="images/sprite_settings.svg#muteMusic"></button><button id="btn_sound">Выключить звук<img src="images/sprite_settings.svg#muteSound"></button><button id="btn_vibro">Отключить вибрацию<img src="images/sprite_settings.svg#offVibro"></button><div>';
-    wrapper.appendChild(startPage);
-    var btnMus = document.getElementById("btn_mus");
-    btnMus.addEventListener("click", changeOnOffMus, false);
-    var btnSound = document.getElementById("btn_sound");
-    btnSound.addEventListener("click", changeOnOffSound, false);
-    var btnVibro = document.getElementById("btn_vibro");
-    btnVibro.addEventListener("click", changeOnOffVibro, false);
-}
-//change On/Off on buttons
-var flag = 0;
-function changeOnOffMus() {
-    if (flag == 0) {
-        this.innerHTML = 'Включить музыку</span><img src="images/sprite_settings.svg#Music">';
-        flag = 1;
-    } else {
-        this.innerHTML = 'Выключить музыку</span><img src="images/sprite_settings.svg#muteMusic">';
-        flag = 0;
-    }
-}
-function changeOnOffSound() {
-    if (flag == 0) {
-        this.innerHTML = 'Включить звук</span><img src="images/sprite_settings.svg#Sound">';
-        flag = 1;
-    } else {
-        this.innerHTML = 'Выключить звук</span><img src="images/sprite_settings.svg#muteSound">';
-        flag = 0;
-    }
-}
-function changeOnOffVibro() {
-    if (flag == 0) {
-        this.innerHTML = 'Включить виброотклик</span><img src="images/sprite_settings.svg#Vibro">';
-        flag = 1;
-    } else {
-        this.innerHTML = 'Отключить вибрацию</span><img src="images/sprite_settings.svg#offVibro">';
-        flag = 0;
-    }
-}
-//create DESCRIPTION CONTAINER
-function createDescriptionContainer() {
-    var wrapper = document.getElementById("wrapper_main");
-    var startPage = document.getElementById("start_page");
-    startPage.id = "description";
-    startPage.innerHTML = '<p class="description_game"><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png">Наше приложение разработано специально для детишек в возрасте от двух лет. Игра позволяет тренировать память, запоминать новые слова. Выбирая рубашку карт, вы определяете и рубрику тем карточек-перевертышей. Постепенно натренировав свою память, можно также и увеличивать уровень сложности. Управление игрой осуществляется либо мышкой, либо стрелками &laquo;вверх&raquo;, &laquo;вниз&raquo;, &laquo;вперед&raquo;, &laquo;назад&raquo; и &laquo;enter&raquo;. </p>';
-    wrapper.appendChild(startPage);
-}
-//create RECORDS CONTAINER
-
-function createRecordsContainer() {
-    var wrapper = document.getElementById("wrapper_main");
-    var startPage = document.getElementById("start_page");
-    startPage.id = "records";
-    startPage.innerHTML = '<div id="container_records"><table id="table_records"><tr><td><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png"></td></tr><tr><td>Date</td><td>Player</td><td>Score</td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table>';
-    wrapper.appendChild(startPage);
-}
-
-
-//
-
-
-//
 var startPlay = function startPlay() {
     var nameplayers = document.getElementById("namePlayer");
     function validate(){
@@ -245,7 +139,6 @@ function Game() {
 
     self.addListeners = function () {
         document.getElementById("board_cards").addEventListener("mouseup", self.turnCard);
-        
     };
 
 
@@ -281,7 +174,7 @@ function Game() {
                         if (self.wrapperCards.length === 0) {
 
                             timer1.stop();
-                           flowingCongratulations();
+                           self.flowingCongratulations();
                         }
 
                         self.counterFlippedCards = 0;
@@ -317,6 +210,7 @@ function Game() {
         else {
             if (audio.canPlayType("audio/mpeg") == "probably") {
                 audio.src = 'audio/card.mp3';
+                audio.className="audio";
             }
             else {
                 audio.src = 'audio/card.ogg';
@@ -325,12 +219,6 @@ function Game() {
         }
 
     }
-    self.stopSound = function (soundName) {
-        if (soundName) {
-
-            audio.stop();
-        }
-    }
 
     self.stop = function () {
 
@@ -338,6 +226,20 @@ function Game() {
         document.getElementById("board_cards").innerHTML = "";
 
     };
+
+    self.flowingCongratulations=function() {
+        var timeMin = document.getElementById("min").innerHTML;
+        var timeSec = document.getElementById("sec").innerHTML;
+        var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
+        var congratulations = document.getElementById("congratulations");
+        document.getElementById("timerStepsReset").style.opacity = "0.6";
+    
+        congratulations.innerHTML = '<svg id="SVGElem" height="480" width="400" xmlns="http://www.w3.org/2000/svg" stroke="null"><g id="svg_1" stroke="null"><rect blur="5" stroke="white"stroke-width="2.5" rx="10" fill-opacity="0.9" x="0" y="207" width="400" height="270" fill="url(#wood)" id="rect"/><text id="svg_2" fill="#00ffff" x="71" y="435" font-size="26" font-family="Junction, sans-serif" font-weight="bold" stroke="#000">'+JSON.parse(localStorage.getItem('namePlayer'))+', Good Job!</text><text id="svg_3" fill="red" stroke-width="0.5" x="70" y="290" font-size="20" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Time: '+timeMin+' '+timeSec+'</text><text fill="red" stroke-width="0.5" x="70" y="326" id="svg_5" font-size="20" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Steps: '+numberSteps+'</text><text id="svg_4" fill="#ff0000" x="70" y="361" font-size="20" font-family="Helvetica, Arial, sans-serif" stroke="#000">The Best Score:</text><ellipse fill="#bf5f00" stroke-width="1.5" cx="31" cy="232" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="370" cy="234" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="195" cy="11" id="svg_6" rx="5" ry="5" stroke="#000"/><line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="15" x2="192.5" y1="227" x1="32.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/><line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="14" x2="198.499997" y1="228.999997" x1="366.500001" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/></g><pattern id="wood" width="500" height="480" patternUnits="userSpaceOnUse"> <image  xlink:href="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EQMOWcXPx/rotating-bright-yellow-background-with-circles-summer-sun-endless-loop_b3xin9uy__F0000.png"></pattern></svg>';
+       
+        
+        congratulations.style.transform = "translateY(430px)";
+    
+    }
     
 }
 function Card(className, backCard, faceCard) {
@@ -492,23 +394,7 @@ function reset() {
         return false;
     }
     
-function flowingCongratulations() {
-    var timeMin = document.getElementById("min").innerHTML;
-    var timeSec = document.getElementById("sec").innerHTML;
-    var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
-    var congratulations = document.getElementById("congratulations");
 
-    document.getElementById("board_cards").style.opacity = "0";
-    document.getElementById("board_cards").style.display = "none";
-    document.getElementById("timerStepsReset").style.opacity = "0";
-    document.getElementById("timerStepsReset").style.display = "none";
-
-    congratulations.innerHTML = '<svg id="SVGElem" height="480" width="400" xmlns="http://www.w3.org/2000/svg" stroke="null"><g id="svg_1" stroke="null"><rect blur="5" stroke="white"stroke-width="2.5" rx="10" fill-opacity="0.9" x="0" y="207" width="400" height="270" fill="url(#wood)" id="rect"/><text id="svg_2" fill="#00ffff" x="71" y="435" font-size="42" font-family="Junction, sans-serif" font-weight="bold" stroke="#000">'+JSON.parse(localStorage.getItem('namePlayer'))+', Good Job!</text><text id="svg_3" fill="red" stroke-width="0.5" x="19.5" y="290" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Time: '+timeMin+' '+timeSec+'</text><text fill="red" stroke-width="0.5" x="22.5" y="326" id="svg_5" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">Your Steps: '+numberSteps+'</text><text id="svg_4" fill="#ff0000" x="23.5" y="361" font-size="24" font-family="Helvetica, Arial, sans-serif" stroke="#000">The Best Score:</text><ellipse fill="#bf5f00" stroke-width="1.5" cx="31" cy="232" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="370" cy="234" id="svg_8" rx="5" ry="5" stroke="#000"/><ellipse fill="#bf5f00" stroke-width="1.5" cx="195" cy="11" id="svg_6" rx="5" ry="5" stroke="#000"/><line stroke-linecap="null" stroke-linejoin="null" id="svg_7" y2="15" x2="192.5" y1="227" x1="32.5" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" stroke="#000" fill="none"/><line stroke="#000" stroke-linecap="null" stroke-linejoin="null" id="svg_9" y2="14" x2="198.499997" y1="228.999997" x1="366.500001" fill-opacity="null" stroke-opacity="null" stroke-width="1.5" fill="none"/></g><pattern id="wood" width="500" height="480" patternUnits="userSpaceOnUse"> <image  xlink:href="https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/EQMOWcXPx/rotating-bright-yellow-background-with-circles-summer-sun-endless-loop_b3xin9uy__F0000.png"></pattern></svg>';
-   
-    
-    congratulations.style.transform = "translateY(430px)";
-
-}
 
 
 //add vibro
