@@ -459,7 +459,7 @@ var steps=window.localStorage["Steps"];
 	$.ajax({
 			url : AjaxHandlerScript,
 			type : 'POST',
-			data : { f : 'LOCKGET', n : 'NIKOLAEV_ARTILLERY_TABLE', p : password },
+			data : { f : 'LOCKGET', n : stringName, p : password },
 			cache : false,
 			success : LockGetReady,
 			error : ErrorHandler
