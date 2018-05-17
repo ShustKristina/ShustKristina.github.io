@@ -363,7 +363,7 @@ function reset() {
         document.getElementById("timerStepsReset").style.opacity = "1";
         document.getElementById("board_cards").style.opacity = "1";
     }
-    setTimeout(newGame(), 5000);
+    setTimeout(newGame(), 3000);
 }
 
 
@@ -373,24 +373,16 @@ function keyboardKontrol(event) {
 
         switch (event.keyCode) {
             case 49:
-
-                window.location.href = "#Main";
-                createPlayContainer();
+                switchToMainPage();
                 break;
             case 50:
-                event.preventDefault();
-                window.location.href = "#Play";
-                createSettingsContainer();
+            switchToGamePage();
                 break;
             case 51:
-                event.preventDefault();
-                window.location.href = "#Records";
-                createRecordsContainer();
+            switchToRecordsPage();
                 break;
             case 52:
-                event.preventDefault();
-                window.location.href = "#Description";
-                createDescriptionContainer();
+            switchToDescriptionPage();
                 break;
         }
     }
@@ -434,7 +426,7 @@ RefreshStorage();
 function ReadReady(ResultH) 
 {
 	if ( ResultH.error != undefined )
-		alert("Извините, таблицы рекордов временно недоступны.\n" + ResultH.error); 
+		alert("Извините, сохранение рекордов временно не доступно.\n" + ResultH.error); 
 	else
 	{
 		if ( ResultH.result != "" ) // либо строка пустая - сообщений нет
@@ -447,7 +439,7 @@ function ReadReady(ResultH)
 // функция добавляет данные в хэш и отправляет обновленный хэш на сервер
 function saveResult() {
 var userName=window.localStorage["UserName"];
-var time=parseFloat(window.localStorage["TimeSec"]);
+var time=parseFloat(window.localStorage["TimeMin"])*60+parseFloat(window.localStorage["TimeSec"]);
 var steps=+window.localStorage["Steps"];
    
 	//добавляем нового победителя
@@ -469,7 +461,7 @@ var steps=+window.localStorage["Steps"];
 
 function LockGetReady(ResultH) {
 	if ( ResultH.error!=undefined )
-		alert("Извините, таблицы рекордов временно недоступны.\n"+ResultH.error); 
+		alert("Извините, запись рекордов временно не доступна.\n"+ResultH.error); 
 	else {
 		$.ajax({
 				url : AjaxHandlerScript,
@@ -487,15 +479,15 @@ function LockGetReady(ResultH) {
 // вывод сообщения об ошибке при записи
 function UpdateReady(ResultH) {
 	if ( ResultH.error!=undefined )
-		console.log("Извините, таблицы рекордов временно недоступны.\n"+ResultH.error); 
+		console.log("Извините, запись рекордов временно не доступна.\n"+ResultH.error); 
 }
 
 //вывод сообщения об ошибке
 function ErrorHandler(jqXHR,StatusStr,ErrorStr){	
-	console.log("Извините, таблицы рекордов временно недоступны.\n"+StatusStr+' '+ErrorStr);
+	console.log("Извините, запись рекордов временно не доступна.\n"+StatusStr+' '+ErrorStr);
 }
 
 //функция сравнения по времени для сортировки таблицы
 function CompareScore(A,B) {
-	return B.score - A.score;
+	return A.score - B.score;
 }
