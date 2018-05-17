@@ -167,6 +167,8 @@ function Game() {
                         if (document.querySelectorAll(".hidden").length === self.numberOfCards) {
 
                             timer1.stop();
+                            storeInfo()
+restoreInfo();
                             self.flowingCongratulations();
                         }
 
