@@ -242,12 +242,12 @@ function Game() {
     RecordStorage.UpdateRecords( {user: 'Kristina', score: 20} );
     
     function addRecordToResultTable() {
-        //alert('add user!!!');
+      
         var userName = window.localStorage["UserName"];
         
         var score = parseFloat(window.localStorage["TimeSec"]);
 
-        var result = {user: userName, score: score};
+        var result = {"user": userName, "score": score};
 
         RecordStorage.UpdateRecords( result );
         
