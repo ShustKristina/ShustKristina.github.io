@@ -116,7 +116,7 @@ var updatePassword;
 					alert(ResultH.error); 
 				}
 				else{
-					MessagesA=[];
+			var MessagesA={};
 					MessagesA=window.localStorage;
 					AddRecords();
 				}
@@ -126,22 +126,13 @@ var updatePassword;
 				var CONT="<div id=wrap_table>";
 				CONT+="<table id='table_records'>";
 				CONT+='<tr><th>Player</th><th>Difficulty</th><th>Time</th><th>Steps</th></tr>';
-				for ( var i=MessagesA.length-1; i>=0;--i){
-					var Fill= MessagesA[i];
-					var name, score, steps;
+				for ( let i=0; i<10;i++){
+				
+					var name=MessagesA["UserName"]
+					var score=MessagesA["Time"];
+					var steps=MessagesA["Steps"]
 		
 
-					for(var k in Fill){
-						if(k=='UserName'){
-							name=Fill[k];
-						}
-						else if(k=='Time'){
-							score=Fill[k];
-						}
-						else if(k=='Steps'){
-							steps=Fill[k];
-						}
-					}
 					CONT +='<tr><td>'+name+'</td><td>Medium(12)</td><td>'+score+'</td><td>'+score+'</td></tr>';
 				}
 				CONT+='</table>';
