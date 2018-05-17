@@ -164,10 +164,19 @@ function Game() {
                         self.wrapperCards.splice(self.wrapperCards.indexOf(elem.parentNode), 1);
                         elem.classList.remove('flipped');
 
+                      
                         if (document.querySelectorAll(".hidden").length === self.numberOfCards) {
 
                             timer1.stop();
                             
+                            var timeMin = document.getElementById("min").innerHTML;
+                            var timeSec = document.getElementById("sec").innerHTML;
+                            window.localStorage.setItem("TimeMin", timeMin);
+                            window.localStorage.setItem("TimeSec", timeSec);
+                            var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
+                            window.localStorage.setItem("Steps", numberSteps);
+
+                            saveResult();
 
                             self.flowingCongratulations();
                         }
@@ -339,36 +348,6 @@ function Steps() {
 
 }
 
-function saveTimeSteps() {
-    var memory = [];
-    const keys = Object.keys(localStorage);
-
-    game.playerInfo.time = timerDOMElem.innerHTML;
-
-    for (let i = 0; i < keys.length && i < 10; i++) {
-        archive.push(localStorage.getItem(keys[i]))
-    }
-
-    if (archive.length === 0) {
-        localStorage.setItem(1, JSON.stringify(game.playerInfo));
-    } else {
-        archive.push(JSON.stringify(game.playerInfo));
-        archive.sort((a, b) => {
-            if (Number(JSON.parse(a).time) < Number(JSON.parse(b).time)) {
-                return -1;
-            }
-            if (Number(JSON.parse(a).time) > Number(JSON.parse(b).time)) {
-                return 1;
-            }
-
-            return Number(JSON.parse(a).stopTime) - Number(JSON.parse(b).stopTime);
-        });
-
-        for (let i = 1; i <= archive.length && i <= 10; i++) {
-            localStorage.setItem(i, archive[i - 1]);
-        }
-    }
-};
 
 function reset() {
     var game = new Game();
@@ -428,3 +407,96 @@ function vibro() {
         window.navigator.vibrate(200);
     }
 }
+
+
+
+//AJAX
+
+var stringName='SHUST_MEMORY_GAME';
+var password; //переменная для хранения пароля
+var AjaxHandlerScript = "http://fe.it-academy.by/AjaxStringStorage2.php";
+var Storage = [];//массив для хранения данных
+
+//функция берет с сервера данные 
+function RefreshStorage() {
+	$.ajax({
+		url : AjaxHandlerScript,
+		type : 'POST',
+		data : { f : 'READ', n : stringName },
+		cache : false,
+		success : ReadReady,
+		error : ErrorHandler
+	}
+	);
+}
+
+// функция записывает данные в массив
+function ReadReady(ResultH) 
+{
+	if ( ResultH.error != undefined )
+		alert("Извините, таблицы рекордов временно недоступны.\n" + ResultH.error); 
+	else
+	{
+		if ( ResultH.result != "" ) // либо строка пустая - сообщений нет
+		{
+			
+			Storage = JSON.parse(ResultH.result);
+		}
+	}
+}	
+// функция добавляет данные в хэш и отправляет обновленный хэш на сервер
+function saveResult() {
+var userName=window.localStorage["UserName"];
+var time=parseFloat(window.localStorage["TimeSec"]);
+var steps=window.localStorage["Steps"];
+   
+	//добавляем нового победителя
+	Storage.push({"name": userName, "score": time, "steps": steps});
+	Storage.sort(CompareScore);
+	
+		
+	password = Math.random();
+	$.ajax({
+			url : AjaxHandlerScript,
+			type : 'POST',
+			data : { f : 'LOCKGET', n : 'NIKOLAEV_ARTILLERY_TABLE', p : password },
+			cache : false,
+			success : LockGetReady,
+			error : ErrorHandler
+		}
+	);
+}
+
+function LockGetReady(ResultH) {
+	if ( ResultH.error!=undefined )
+		alert("Извините, таблицы рекордов временно недоступны.\n"+ResultH.error); 
+	else {
+		$.ajax({
+				url : AjaxHandlerScript,
+				type : 'POST',
+				data : { f : 'UPDATE', n : stringName,
+				v : JSON.stringify(Storage), p : password },
+				cache : false,				
+				success : UpdateReady,
+				error : ErrorHandler
+			}
+		);
+	}
+}
+
+// вывод сообщения об ошибке при записи
+function UpdateReady(ResultH) {
+	if ( ResultH.error!=undefined )
+		console.log("Извините, таблицы рекордов временно недоступны.\n"+ResultH.error); 
+}
+
+//вывод сообщения об ошибке
+function ErrorHandler(jqXHR,StatusStr,ErrorStr){	
+	console.log("Извините, таблицы рекордов временно недоступны.\n"+StatusStr+' '+ErrorStr);
+}
+
+//функция сравнения по времени для сортировки таблицы
+function CompareScore(A,B) {
+	return B.score - A.score;
+}
+RefreshStorage();

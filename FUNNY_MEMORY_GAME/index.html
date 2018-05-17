@@ -49,20 +49,14 @@ var SPAState={};
         
         break;
 			case 'Records':
-			var records=[{"userName":"Kristina", "time": 15, "steps":8},
-		{"userName":"Kristina", "time": 15, "steps":8},
-		{"userName":"Kate", "time": 15, "steps":20},
-		{"userName":"Nick", "time": 22, "steps":16},
-		{"userName":"Olga", "time": 55, "steps":8},
-		{"userName":"Ivan", "time": 16, "steps":10},
-		{"userName":"Alex", "time": 99, "steps":8},
-		{"userName":"Kristina", "time": 15, "steps":8},
-		{"userName":"Kristina", "time": 8, "steps":4},
-		{"userName":"Kristina", "time": 99, "steps":8}]
-		pageHTML+="<table id='table_records'><tr><th>Player</th><th>Time</th><th>Steps</th></tr>";
-			for(let i = 0; i<records.length;i++  ){
-				pageHTML+="<tr><th>"+records[i].userName+"</th><th>"+records[i].time+"</th><th>"+records[i].steps+"</th></tr>";
-			}
+			
+		pageHTML+="<table id='table_records'><tr><td>Player</td><td>Time</td><td>Steps</td></tr>";
+		
+    if (Storage.length > 10) Storage.length = 10;
+    for (let i=0; i < Storage.length; i++) {
+      pageHTML += '<tr><td>' + Storage[i].userName +'</td><td class="Name">'+ Storage[i].time + '</td><td>'+Storage[i].steps+'</td></tr>';
+    } 
+			
 			pageHTML+="</table>"
 			
 		
@@ -106,102 +100,8 @@ userName();
 
 
 </script>
-<script>
-
-	var stringName='SHUST_MEMORY_GAME';
-	var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
-var updatePassword;
-	var recordsLength = 10;
-	var lastRecords = [];
-	var context = null;
-	var userName;
-var score;
-var steps;
 
 
-function storeInfo() {
-    updatePassword=Math.random();
-    $.ajax( {
-            url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-            data : { f : 'LOCKGET', n : stringName, p : updatePassword },
-            success : lockGetReady, error : errorHandler
-        }
-    );
-}
-storeInfo();
-
-function lockGetReady(callresult) {
-    if ( callresult.error!=undefined )
-        alert(callresult.error); 
-    else {
-        // нам всё равно, что было прочитано - 
-        // всё равно перезаписываем
-        var info=[{"userName":"Kristina", "time": 15, "steps":8},
-				{"userName":"Kristina", "time": 15, "steps":8},
-				{"userName":"Kate", "time": 15, "steps":20},
-				{"userName":"Nick", "time": 22, "steps":16},
-				{"userName":"Olga", "time": 55, "steps":8},
-				{"userName":"Ivan", "time": 16, "steps":10},
-				{"userName":"Alex", "time": 99, "steps":8},
-				{"userName":"Kristina", "time": 15, "steps":8},
-				{"userName":"Kristina", "time": 8, "steps":4},
-				{"userName":"Kristina", "time": 99, "steps":8}];
-        $.ajax( {
-                url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-                data : { f : 'UPDATE', n : stringName, v : JSON.stringify(info), p : updatePassword },
-                success : updateReady, error : errorHandler
-            }
-        );
-    }
-}
-
-function updateReady(callresult) {
-    if ( callresult.error!=undefined )
-        alert(callresult.error); 
-}
-
-function restoreInfo() {
-    $.ajax(
-        {
-            url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-            data : { f : 'READ', n : stringName },
-            success : readReady, error : errorHandler
-        }
-    );
-}
-
-function readReady(callresult) {
-	var records=[{"userName":"Kristina", "time": 15, "steps":8},
-		{"userName":"Kristina", "time": 15, "steps":8},
-		{"userName":"Kate", "time": 15, "steps":20},
-		{"userName":"Nick", "time": 22, "steps":16},
-		{"userName":"Olga", "time": 55, "steps":8},
-		{"userName":"Ivan", "time": 16, "steps":10},
-		{"userName":"Alex", "time": 99, "steps":8},
-		{"userName":"Kristina", "time": 15, "steps":8},
-		{"userName":"Kristina", "time": 8, "steps":4},
-		{"userName":"Kristina", "time": 99, "steps":8}]
-
-    if ( callresult.error!=undefined )
-        alert(callresult.error); 
-    else if ( callresult.result!="" ) {
-        var info=JSON.parse(callresult.result); 
-        records[0].userName=info.userName;
-				records[0].time=info.score;
-				records[0].steps=info.steps;
-    }
-}
-
-function errorHandler(jqXHR,statusStr,errorStr) {
-    alert(statusStr+' '+errorStr);
-}
-
-restoreInfo();
-
-        
-
-	
-</script>
 </body>
 
 </html>
