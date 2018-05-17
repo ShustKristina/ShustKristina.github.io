@@ -414,7 +414,7 @@ function vibro() {
 
 var stringName='SHUST_MEMORY_GAME';
 var password; //переменная для хранения пароля
-var AjaxHandlerScript = "http://fe.it-academy.by/AjaxStringStorage2.php";
+var AjaxHandlerScript = "https://fe.it-academy.by/AjaxStringStorage2.php";
 var Storage = [];//массив для хранения данных
 
 //функция берет с сервера данные 
@@ -429,7 +429,7 @@ function RefreshStorage() {
 	}
 	);
 }
-
+RefreshStorage();
 // функция записывает данные в массив
 function ReadReady(ResultH) 
 {
@@ -499,4 +499,3 @@ function ErrorHandler(jqXHR,StatusStr,ErrorStr){
 function CompareScore(A,B) {
 	return B.score - A.score;
 }
-RefreshStorage();
