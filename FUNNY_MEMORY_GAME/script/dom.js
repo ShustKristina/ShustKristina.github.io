@@ -489,5 +489,5 @@ function ErrorHandler(jqXHR,StatusStr,ErrorStr){
 
 //функция сравнения по времени для сортировки таблицы
 function CompareScore(A,B) {
-	return A.score - B.score;
+	return B.score - A.score;
 }
