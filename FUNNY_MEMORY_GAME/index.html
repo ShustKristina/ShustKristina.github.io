@@ -136,11 +136,16 @@ function lockGetReady(callresult) {
     else {
         // нам всё равно, что было прочитано - 
         // всё равно перезаписываем
-        var info={
-            "userName" : window.localStorage["UserName"],
-						"score" : window.localStorage["TimeSec"],
-						"steps":window.localStorage["Steps"]
-        };
+        var info=[{"userName":"Kristina", "time": 15, "steps":8},
+				{"userName":"Kristina", "time": 15, "steps":8},
+				{"userName":"Kate", "time": 15, "steps":20},
+				{"userName":"Nick", "time": 22, "steps":16},
+				{"userName":"Olga", "time": 55, "steps":8},
+				{"userName":"Ivan", "time": 16, "steps":10},
+				{"userName":"Alex", "time": 99, "steps":8},
+				{"userName":"Kristina", "time": 15, "steps":8},
+				{"userName":"Kristina", "time": 8, "steps":4},
+				{"userName":"Kristina", "time": 99, "steps":8}];
         $.ajax( {
                 url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
                 data : { f : 'UPDATE', n : stringName, v : JSON.stringify(info), p : updatePassword },
