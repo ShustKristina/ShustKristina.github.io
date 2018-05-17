@@ -439,7 +439,7 @@ function ReadReady(ResultH)
 // функция добавляет данные в хэш и отправляет обновленный хэш на сервер
 function saveResult() {
 var userName=window.localStorage["UserName"];
-var time=parseFloat(window.localStorage["TimeMin"])*60+parseFloat(window.localStorage["TimeSec"]);
+var time=(parseFloat(window.localStorage["TimeMin"]))*60+parseFloat(window.localStorage["TimeSec"]);
 var steps=+window.localStorage["Steps"];
    
 	//добавляем нового победителя
