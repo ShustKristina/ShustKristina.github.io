@@ -153,7 +153,8 @@ function readReady(callresult) {
 function errorHandler(jqXHR,statusStr,errorStr) {
     alert(statusStr+' '+errorStr);
 }
-storeInfo()
+
+document.getElementById("btn_records").addEventListener("click",storeInfo, false);
 document.getElementById("btn_records").addEventListener("click",restoreInfo, false);
 
 	
