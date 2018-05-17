@@ -145,7 +145,7 @@ function readReady(callresult) {
         alert(callresult.error); 
     else if ( callresult.result!="" ) {
         var info=JSON.parse(callresult.result); 
-        document.getElementById('btn_begin_play').innerHTML=info.name+info.score+info.difficulty;
+        document.getElementById('container_records').innerHTML=info.name+info.score+info.difficulty;
         
     }
 }
@@ -154,7 +154,8 @@ function errorHandler(jqXHR,statusStr,errorStr) {
     alert(statusStr+' '+errorStr);
 }
 storeInfo()
-restoreInfo();
+document.getElementById("btn_records").addEventListener("click",restoreInfo, false);
+
 	
 </script>
 </body>
