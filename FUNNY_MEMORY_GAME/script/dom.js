@@ -223,13 +223,14 @@ function Game() {
     };
 
     self.flowingCongratulations = function () {
-        addRecordToResultTable();
+       
 
         var timeMin = document.getElementById("min").innerHTML;
         var timeSec = document.getElementById("sec").innerHTML;
         window.localStorage.setItem("TimeMin", timeMin);
         window.localStorage.setItem("TimeSec", timeSec);
         var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
+        window.localStorage.setItem("Steps", numberSteps);
         var congratulations = document.getElementById("congratulations");
         document.getElementById("timerStepsReset").style.opacity = "0.6";
         document.getElementById("board_cards").style.opacity = "0.7"; 
@@ -237,21 +238,7 @@ function Game() {
         congratulations.style.transform = "translateY(480px)";
     }
 
-    var RecordStorage  = new TAjaxStorage( showRecordTable );
-   
-    RecordStorage.UpdateRecords( {user: 'Kristina', score: 20} );
     
-    function addRecordToResultTable() {
-      
-        var userName = window.localStorage["UserName"];
-        
-        var score = parseFloat(window.localStorage["TimeSec"]);
-
-        var result = {"user": userName, "score": score};
-
-        RecordStorage.UpdateRecords( result );
-        
-    }
 
     //
     self.backReset = function () {

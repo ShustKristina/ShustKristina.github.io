@@ -48,8 +48,24 @@ var SPAState={};
         pageHTML+='<div id="containerInfoGame"><div id="play" class="start_page"><div id="playerInfo"><h3>Information about you</h3><label for="namePlayer">Your Name <input type="text" value ='+window.localStorage["UserName"]+' tabindex="-1" autofocus name="namePlayer" id="namePlayer"></label><div id="playersBestScore">Your Best Score <span></span></div></div><div id="choise_back"><h3>Cards Back</h3><label for="family"><input  type="radio" name="back" id="family" value="family" checked><img src="images/sprite_back2.svg#family"></label><label for="animals"><input type="radio"  name="back" id="animals" value="animals"><img src="images/sprite_back2.svg#animals"></label><label for="numbers"><input type="radio" name="back" id="numbers" value="numbers"><img src="images/sprite_back2.svg#numbers"></label></div><div id="choice_difficult"><h3>Difficulty Of The Game</h3><input type="radio"  name="difficulty" value="6" id="easy" ><label  for="easy">Easy (6)</label><input type="radio"  name="difficulty" value="12" id="medium" checked><label for="medium">Medium (12)</label><input  type="radio" name="difficulty" value="18" id="hard"><label for="hard">Hard (18)</label></div></div><button id="btn_play" onclick="startPlay()">PLAY</button><div id="timerStepsReset"><div id="steps">Steps <p><span id="numbersOfSteps"></span></p></div><div id="timer">Timer <p><span id="min"></span><span id="sec"></span></p></div></div><div id="board_cards"></div><div id="congratulations"></div></div>';
         
         break;
-      case 'Records':
-			showRecords();
+			case 'Records':
+			var records=[{"userName":"Kristina", "time": 15, "steps":8},
+		{"userName":"Kristina", "time": 15, "steps":8},
+		{"userName":"Kate", "time": 15, "steps":20},
+		{"userName":"Nick", "time": 22, "steps":16},
+		{"userName":"Olga", "time": 55, "steps":8},
+		{"userName":"Ivan", "time": 16, "steps":10},
+		{"userName":"Alex", "time": 99, "steps":8},
+		{"userName":"Kristina", "time": 15, "steps":8},
+		{"userName":"Kristina", "time": 8, "steps":4},
+		{"userName":"Kristina", "time": 99, "steps":8}]
+		pageHTML+="<table id='table_records'><tr><th>Player</th><th>Time</th><th>Steps</th></tr>";
+			for(let i = 0; i<records.length;i++  ){
+				pageHTML+="<tr><th>"+records[i].userName+"</th><th>"+records[i].time+"</th><th>"+records[i].steps+"</th></tr>";
+			}
+			pageHTML+="</table>"
+			
+		
         break;
       case 'Description':
         pageHTML+='<div id="description" class="start_page"><p class="description_game"><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png">Наше приложение разработано специально для детишек в возрасте от двух лет. Игра позволяет тренировать память, запоминать новые слова. Выбирая рубашку карт, вы определяете и рубрику тем карточек-перевертышей. Постепенно натренировав свою память, можно также и увеличивать уровень сложности. Управление игрой осуществляется либо мышкой, либо стрелками &laquo;вверх&raquo;, &laquo;вниз&raquo;, &laquo;вперед&raquo;, &laquo;назад&raquo; и &laquo;enter&raquo;. </p></div>';
@@ -89,13 +105,12 @@ userName();
   switchToStateFromURLHash();
 
 
-
 </script>
 <script>
 
 	var stringName='SHUST_MEMORY_GAME';
 	var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
-var UpdatePassword;
+var updatePassword;
 	var recordsLength = 10;
 	var lastRecords = [];
 	var context = null;
@@ -103,218 +118,82 @@ var UpdatePassword;
 var score;
 var steps;
 
-function showRecords() {
-        
-	var RecordStorage  = new TAjaxStorage( showRecordTable );
-        RecordStorage.RestoreRecords();
 
-       // ShowRecordTable(Records);
-    }
-	
+function storeInfo() {
+    updatePassword=Math.random();
+    $.ajax( {
+            url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+            data : { f : 'LOCKGET', n : stringName, p : updatePassword },
+            success : lockGetReady, error : errorHandler
+        }
+    );
+}
+storeInfo();
 
-
-		function LoadData(url)
-    {
-        $.ajax( url,
-                { type:'GET', dataType:'html', success:DataLoaded, error:ErrorHandler }
+function lockGetReady(callresult) {
+    if ( callresult.error!=undefined )
+        alert(callresult.error); 
+    else {
+        // нам всё равно, что было прочитано - 
+        // всё равно перезаписываем
+        var info={
+            "userName" : window.localStorage["UserName"],
+						"score" : window.localStorage["TimerSec"],
+						"steps":window.localStorage["Steps"]
+        };
+        $.ajax( {
+                url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+                data : { f : 'UPDATE', n : stringName, v : JSON.stringify(info), p : updatePassword },
+                success : updateReady, error : errorHandler
+            }
         );
     }
+}
 
-    function DataLoaded(data)
-    {
-        InfoWrapper.innerHTML = data;
-    }
+function updateReady(callresult) {
+    if ( callresult.error!=undefined )
+        alert(callresult.error); 
+}
 
-    function ErrorHandler(jqXHR,StatusStr,ErrorStr)
-    {
-        alert(StatusStr+' '+ErrorStr);
-    }
-
-
-
-    function showRecordTable(arr) {
-
-        var RowNumber = (arr.length < 10) ? arr.length-1 : 9;
-
-        RecordTable = document.createElement('table');
-        RecordTable.classList.add('record-table');
-
-        var Caption = document.createElement('caption');
-        Caption.innerHTML = 'TOP 10';
-        RecordTable.appendChild(Caption);
-
-        var trHead = document.createElement('tr');
-        var NameTh = document.createElement('th');
-        var ScoreTh = document.createElement('th');
-
-        NameTh.innerHTML = 'PLAYER';
-        ScoreTh.innerHTML = 'SCORE';
-
-        trHead.appendChild(NameTh);
-        trHead.appendChild(ScoreTh);
-
-        RecordTable.appendChild(trHead);
-
-        for (var i = 0; i <= RowNumber; i++)
+function restoreInfo() {
+    $.ajax(
         {
-            var tr = document.createElement('tr');
-            var NameTd = document.createElement('td');
-            var ScoreTd = document.createElement('td');
-
-            NameTd.innerHTML = arr[i].user;
-            ScoreTd.innerHTML = arr[i].score;
-
-            tr.appendChild(NameTd);
-            tr.appendChild(ScoreTd);
-
-            RecordTable.appendChild(tr);
+            url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+            data : { f : 'READ', n : stringName },
+            success : readReady, error : errorHandler
         }
-
-        document.getElementById("start_page").appendChild(RecordTable);
-		}
-		
-
-
-
-		function TAjaxStorage(showFunc) {
-
-var self = this;
-var Records = [
-		{user: 'dima', score: 20},
-		{user: 'roma', score: 20},
-		{user: 'vasia', score: 50},
-		{user: 'alex', score: 50},
-		{user: 'dan', score: 100}
-];
-
-
-
-//InsertDataSting();  //!!! Do not decomment!!!
-
-function InsertDataSting() {
-		$.ajax(
-				{
-						url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-						data : { f : 'INSERT', n : stringName, v : JSON.stringify(Records) },
-						success : InsertReady, error : ErrorHandler
-				}
-		);
+    );
 }
 
-function InsertReady(Result) {
-		if (Result) alert('Строка данных ' + stringName + ' добавлена!!!');
-		console.log(Result);
+function readReady(callresult) {
+	var records=[{"userName":"Kristina", "time": 15, "steps":8},
+		{"userName":"Kristina", "time": 15, "steps":8},
+		{"userName":"Kate", "time": 15, "steps":20},
+		{"userName":"Nick", "time": 22, "steps":16},
+		{"userName":"Olga", "time": 55, "steps":8},
+		{"userName":"Ivan", "time": 16, "steps":10},
+		{"userName":"Alex", "time": 99, "steps":8},
+		{"userName":"Kristina", "time": 15, "steps":8},
+		{"userName":"Kristina", "time": 8, "steps":4},
+		{"userName":"Kristina", "time": 99, "steps":8}]
+
+    if ( callresult.error!=undefined )
+        alert(callresult.error); 
+    else if ( callresult.result!="" ) {
+        var info=JSON.parse(callresult.result); 
+        records[0].userName=info.userName;
+				records[0].time=info.score;
+				records[0].steps=info.steps;
+    }
 }
 
-self.RestoreRecords = function()
-{
-		$.ajax(
-				{
-						url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-						data : { f : 'READ', n : stringName },
-						success : ReadReady, error : ErrorHandler
-				}
-		);
-};
-
-function ReadReady(ResultH)
-{
-		if ( ResultH.error!=undefined )
-				alert(ResultH.error);
-		else if ( ResultH.result!="" )
-		{
-				var RecordA = JSON.parse(ResultH.result);
-				showFunc( RecordA );
-		}
+function errorHandler(jqXHR,statusStr,errorStr) {
+    alert(statusStr+' '+errorStr);
 }
 
-self.UpdateRecords = function (hash) {
-		var CurrentRecordA;
-		
-		$.ajax(
-				{
-						url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-						data : { f : 'READ', n : stringName },
-						success : ReadReady2, error : ErrorHandler
-				}
-		);
+restoreInfo();
 
-		function ReadReady2(ResultH)
-		{
-				if ( ResultH.error!=undefined )
-						alert(ResultH.error);
-				else if ( ResultH.result!="" )
-				{
-						CurrentRecordA = JSON.parse(ResultH.result); // Comment to clean records table
-						//CurrentRecordA = []; // For clean Records Table
-						for (var i=0; i<CurrentRecordA.length; i++)
-						{
-								if (hash.user === CurrentRecordA[i].user)
-								{
-										//alert('same user!');
-										//alert(hash.score);
-										//alert(CurrentRecordA[i].score);
-										if (hash.score > CurrentRecordA[i].score)
-										{
-												CurrentRecordA[i].score = hash.score;
-												StoreData();
-												return;
-										} else
-												return;
-								}
-						}
-						CurrentRecordA.push( hash );
-						CurrentRecordA.sort(compareNumeric);
-						StoreData();
-				}
-
-				function compareNumeric(a, b) {
-						return b.score - a.score;
-				}
-		}
-
-		function StoreData() {
-				UpdatePassword = Math.random();
-				$.ajax(
-						{
-								url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-								data : { f : 'LOCKGET', n : stringName, p : UpdatePassword },
-								success : LockGetReady, error : ErrorHandler
-						}
-				);
-		}
-
-		function LockGetReady(ResultH) {
-				if ( ResultH.error != undefined )
-						alert(ResultH.error);
-				else
-				{
-						$.ajax(
-								{
-										url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-										data : { f : 'UPDATE', n : stringName, v : JSON.stringify(CurrentRecordA), p : UpdatePassword },
-										success : UpdateReady, error : ErrorHandler
-								}
-						);
-				}
-		}
-};
-
-
-
-
-
-function UpdateReady(ResultH) {
-		if ( ResultH.error != undefined )
-				alert(ResultH.error);
-}
-
-function ErrorHandler(jqXHR,StatusStr,ErrorStr) {
-		alert(StatusStr + ' ' + ErrorStr);
-}
-}
-
-
+        
 
 	
 </script>
