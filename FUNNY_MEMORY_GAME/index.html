@@ -48,7 +48,7 @@ var SPAState={};
         
         break;
       case 'Records':
-        pageHTML+='<div id="records" class="start_page"><div id="container_records"></div>';
+        showRecords();
         break;
       case 'Description':
         pageHTML+='<div id="description" class="start_page"><p class="description_game"><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png">Наше приложение разработано специально для детишек в возрасте от двух лет. Игра позволяет тренировать память, запоминать новые слова. Выбирая рубашку карт, вы определяете и рубрику тем карточек-перевертышей. Постепенно натренировав свою память, можно также и увеличивать уровень сложности. Управление игрой осуществляется либо мышкой, либо стрелками &laquo;вверх&raquo;, &laquo;вниз&raquo;, &laquo;вперед&raquo;, &laquo;назад&raquo; и &laquo;enter&raquo;. </p></div>';
@@ -97,65 +97,60 @@ userName();
 var updatePassword;
 	var recordsLength = 10;
 
-	function storeInfo() {
-    updatePassword=Math.random();
-    $.ajax( {
-            url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-            data : { f : 'LOCKGET', n : stringName, p : updatePassword },
-            success : lockGetReady, error : errorHandler
-        }
-    );
-}
 
-function lockGetReady(callresult) {
-    if ( callresult.error!=undefined )
-        alert("Извините! Таблица рекордов в данный момент не доступна!"); 
-    else {
-        var info={
-            name : window.localStorage["UserName"],
-						score : window.localStorage["Time"],
-						difficulty : window.localStorage["Difficulty"]
-        };
-        $.ajax( {
-                url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-                data : { f : 'UPDATE', n : stringName, v : JSON.stringify(info), p : updatePassword },
-                success : updateReady, error : errorHandler
-            }
-        );
-    }
-}
+	//Показать Рекорды
+	function errorHandler(jqXHR,StatusStr,ErrorStr){
+				alert(StatusStr+' '+ErrorStr);
+			}
+			function showRecords(){
+				updatePassword=Math.random();
+				$.ajax( {
+								url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+								data : { f : 'LOCKGET', n : stringName, p : updatePassword },
+								success : lockGetReady, error : errorHandler
+						}
+				);
+			}
+			function lockGetReady(ResultH){
+				if ( ResultH.error!=undefined ){
+					alert(ResultH.error); 
+				}
+				else{
+					MessagesA=[];
+					MessagesA=window.localStorage;
+					AddRecords();
+				}
+			}
+			function AddRecords(){
+				$('#start_page').empty();
+				var CONT="<div id=wrap_table>";
+				CONT+="<table id='table_records'>";
+				CONT+='<tr><th>Player</th><th>Difficulty</th><th>Time</th><th>Steps</th></tr>';
+				for ( var i=MessagesA.length-1; i>=0;--i){
+					var Fill= MessagesA[i];
+					var name, score, steps;
+		
 
-function updateReady(callresult) {
-    if ( callresult.error!=undefined )
-        alert("Извините! Таблица рекордов в данный момент не доступна!"); 
-}
+					for(var k in Fill){
+						if(k=='UserName'){
+							name=Fill[k];
+						}
+						else if(k=='Time'){
+							score=Fill[k];
+						}
+						else if(k=='Steps'){
+							steps=Fill[k];
+						}
+					}
+					CONT +='<tr><td>'+name+'</td><td>Medium(12)</td><td>'+score+'</td><td>'+score+'</td></tr>';
+				}
+				CONT+='</table>';
+				document.getElementById('start_page').innerHTML =CONT;
+			}
+		
 
-function restoreInfo() {
-    $.ajax(
-        {
-            url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-            data : { f : 'READ', n : stringName },
-            success : readReady, error : errorHandler
-        }
-    );
-}
 
-function readReady(callresult) {
-    if ( callresult.error!=undefined )
-        alert(callresult.error); 
-    else if ( callresult.result!="" ) {
-        var info=JSON.parse(callresult.result); 
-        document.getElementById('container_records').innerHTML=info.name+info.score+info.difficulty;
-        
-    }
-}
 
-function errorHandler(jqXHR,statusStr,errorStr) {
-    alert(statusStr+' '+errorStr);
-}
-
-document.getElementById("btn_records").addEventListener("click",storeInfo, false);
-document.getElementById("btn_records").addEventListener("click",restoreInfo, false);
 
 	
 </script>
