@@ -20,7 +20,7 @@ var startPlay = function startPlay() {
 
     var game = new Game();
     var timer = new Timer();
-    game.getPlayerInfo();
+
     game.getNumberOfCards();
     game.getBackCards();
     game.defineCardsFace();
@@ -72,19 +72,13 @@ function Game() {
         }
     }
 
-    self.getPlayerInfo = function () {
-        var nameplayers = document.getElementById("name");
-       
-        // self.playerInfo.name = nameplayers.value;
-
-
-    };
 
     self.getNumberOfCards = function () {
         var inputDifficulty = document.getElementsByName("difficulty");
         for (var i = 0; i < inputDifficulty.length; i++) {
             if (inputDifficulty[i].checked) {
                 self.numberOfCards = Number(inputDifficulty[i].value);
+                window.localStorage.setItem("Difficulty", self.numberOfCards)
                 return self.numberOfCards;
             }
         };
@@ -229,17 +223,13 @@ function Game() {
     self.flowingCongratulations = function () {
         var timeMin = document.getElementById("min").innerHTML;
         var timeSec = document.getElementById("sec").innerHTML;
+        window.localStorage.setItem("Time", timeMin+timeSec);
         var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
         var congratulations = document.getElementById("congratulations");
         document.getElementById("timerStepsReset").style.opacity = "0.6";
-        document.getElementById("board_cards").style.opacity = "0.7";
-
-       
+        document.getElementById("board_cards").style.opacity = "0.7"; 
         congratulations.innerHTML = '<p>Your Time: '+timeMin+' '+timeSec+'</p><p>Your Steps: '+numberSteps+'</p><p>Best Score: </p><h3>'+window.localStorage["UserName"]+', Good Job!</h3><button id="btn_new_game" onclick="reset()">New Game</button>';
-       
-       
         congratulations.style.transform = "translateY(480px)";
-
     }
 
     //
@@ -276,7 +266,7 @@ function Card(className, backCard, faceCard) {
 
         var back = document.createElement("span");
         back.className = "back_card";
-        back.tabIndex = "4";
+        
         back.style.background = "url(images/sprite_back2.svg#" + self.backCard + ") no-repeat";
         back.style.backgroundSize = "cover";
 
