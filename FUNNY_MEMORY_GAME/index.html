@@ -53,7 +53,7 @@ var SPAState={};
 		pageHTML+="<table id='table_records'><tr><td>Player</td><td>Time</td><td>Steps</td></tr>";
 		
     if (Storage.length > 10) Storage.length = 10;
-    for (let i=0; i < Storage.length; i++) {
+    for (var i=0; i < Storage.length; i++) {
       pageHTML += '<tr><td>' + Storage[i].name +'</td><td class="Name">'+ Storage[i].score + '</td><td>'+Storage[i].steps+'</td></tr>';
     } 
 			

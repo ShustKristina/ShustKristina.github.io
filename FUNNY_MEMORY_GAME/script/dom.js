@@ -448,10 +448,10 @@ function ReadReady(ResultH)
 function saveResult() {
 var userName=window.localStorage["UserName"];
 var time=parseFloat(window.localStorage["TimeSec"]);
-var steps=window.localStorage["Steps"];
+var steps=+window.localStorage["Steps"];
    
 	//добавляем нового победителя
-	Storage.push({"name": userName, "score": time, "steps": steps});
+	Storage.unshift({"name": userName, "score": time, "steps": steps});
 	Storage.sort(CompareScore);
 	
 		
