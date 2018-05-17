@@ -223,6 +223,8 @@ function Game() {
     };
 
     self.flowingCongratulations = function () {
+        addRecordToResultTable();
+
         var timeMin = document.getElementById("min").innerHTML;
         var timeSec = document.getElementById("sec").innerHTML;
         window.localStorage.setItem("TimeMin", timeMin);
@@ -233,6 +235,22 @@ function Game() {
         document.getElementById("board_cards").style.opacity = "0.7"; 
         congratulations.innerHTML = '<p>Your Time: '+timeMin+' '+timeSec+'</p><p>Your Steps: '+numberSteps+'</p><p>Best Score: </p><h3>'+window.localStorage["UserName"]+', Good Job!</h3><button id="btn_new_game" onclick="reset()">New Game</button>';
         congratulations.style.transform = "translateY(480px)";
+    }
+
+    var RecordStorage  = new TAjaxStorage( showRecordTable );
+   
+    RecordStorage.UpdateRecords( {user: 'Kristina', score: 20} );
+    
+    function addRecordToResultTable() {
+        //alert('add user!!!');
+        var userName = window.localStorage["UserName"];
+        
+        var score = parseFloat(window.localStorage["TimeSec"]);
+
+        var result = {user: userName, score: score};
+
+        RecordStorage.UpdateRecords( result );
+        
     }
 
     //

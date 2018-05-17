@@ -49,14 +49,7 @@ var SPAState={};
         
         break;
       case 'Records':
-			pageHTML+="<div id='wrap_records'>Records</div>";
-				pageHTML+="<table id='table_records'>";
-					pageHTML+="<tr><td>User</td><td>Score</td><td>Steps</td></tr>";
-					var lastRecords=[];
-          for (let i = 0; i < lastRecords.length; i++){
-            pageHTML+="<tr><td>"+(i+1)+"</td><td>"+lastRecords[i]["userName"]+"</td><td>"+lastRecords[i]["score"]+"</td></tr>";
-          }
-        pageHTML+="</table>";
+			showRecords();
         break;
       case 'Description':
         pageHTML+='<div id="description" class="start_page"><p class="description_game"><img class="butterfly but1" src="images/butterfly.png"><img class="butterfly but2"src="images/butterfly.png"><img class="butterfly but3"src="images/butterfly.png"><img class="butterfly but4"src="images/butterfly.png">Наше приложение разработано специально для детишек в возрасте от двух лет. Игра позволяет тренировать память, запоминать новые слова. Выбирая рубашку карт, вы определяете и рубрику тем карточек-перевертышей. Постепенно натренировав свою память, можно также и увеличивать уровень сложности. Управление игрой осуществляется либо мышкой, либо стрелками &laquo;вверх&raquo;, &laquo;вниз&raquo;, &laquo;вперед&raquo;, &laquo;назад&raquo; и &laquo;enter&raquo;. </p></div>';
@@ -102,106 +95,226 @@ userName();
 
 	var stringName='SHUST_MEMORY_GAME';
 	var ajaxHandlerScript="https://fe.it-academy.by/AjaxStringStorage2.php";
-var updatePassword;
+var UpdatePassword;
 	var recordsLength = 10;
 	var lastRecords = [];
 	var context = null;
 	var userName;
 var score;
 var steps;
-	
-	restoreInfo();
-	
-	function restoreInfo() {
-			$.ajax(
-					{
-							url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-							data : { f : 'READ', n : stringName },
-							success : readReady, error : errorHandler,
-					}
-			);
-	}
-	
-	
-	function readReady(callresult) {
-			if ( callresult.error!=undefined )
-					 alert(callresult.error);
-			 else if ( callresult.result!="" ) {
-					 lastRecords=JSON.parse(callresult.result);
-					 console.log(lastRecords);
-			}
-	}
-	
-	function storeInfo(self) {
-			score = parseFloat(window.localStorage["TimeSec"]);
-			updatePassword=Math.random();
-			$.ajax( {
-							url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-							data : { f : 'LOCKGET', n : stringName, p : updatePassword },
-							success : lockGetReady, error : errorHandler
-					}
-			);
-	}
-	
-	function lockGetReady(callresult) {
-			if ( callresult.error!=undefined )
-					alert(callresult.error);
-			else {
-					
-				if (lastRecords.some(isRecordMax) || lastRecords.length < 10){
-					console.log(lastRecords.some(isRecordMax));
 
-				}
-				 else {
-							return;
-						}
-			}
-	}
+function showRecords() {
+        
+	var RecordStorage  = new TAjaxStorage( showRecordTable );
+        RecordStorage.RestoreRecords();
+
+       // ShowRecordTable(Records);
+    }
 	
-	function updateReady(callresult) {
-			if ( callresult.error!=undefined )
-					alert(callresult.error);
-	}
-	
-	function errorHandler(jqXHR,statusStr,errorStr) {
-			alert(statusStr+' '+errorStr);
-	}
-	
-	let isRecordMax = (V, I, A) => {return points > V["point"]};                //функция-стрелка проверки попадает ли рекорд в топ 10
-	
-	
-	function recordOfPoints(score, arrOfPoints) {                                         // функция записи рекорда
-			userName = window.localStorage["UserName"];
-			if (arrOfPoints.some(isRecordMax)){
-				for (let i = 0; i <arrOfPoints.length; i++){
-					 if (score > arrOfPoints[i]["score"]){
-						 let arrOfRec = arrOfPoints.splice(i, (arrOfPoints.length - i));                  // вариант через методы массива
-						 arrOfPoints[i] = {name : userName, score : score};
-						 arrOfPoints = arrOfPoints.concat(arrOfRec);
-						 if (arrOfPoints.length > 10){
-							 arrOfPoints.pop();
-						 }
-						 break;
-					 }
-				 }
-			 }
-			else {
-				arrOfPoints.push({name : userName, score : score});
-			}
-		
-			updateAJAX(arrOfPoints);
-			return lastRecords = arrOfPoints;
+
+
+		function LoadData(url)
+    {
+        $.ajax( url,
+                { type:'GET', dataType:'html', success:DataLoaded, error:ErrorHandler }
+        );
+    }
+
+    function DataLoaded(data)
+    {
+        InfoWrapper.innerHTML = data;
+    }
+
+    function ErrorHandler(jqXHR,StatusStr,ErrorStr)
+    {
+        alert(StatusStr+' '+ErrorStr);
+    }
+
+
+
+    function showRecordTable(arr) {
+
+        var RowNumber = (arr.length < 10) ? arr.length-1 : 9;
+
+        RecordTable = document.createElement('table');
+        RecordTable.classList.add('record-table');
+
+        var Caption = document.createElement('caption');
+        Caption.innerHTML = 'TOP 10';
+        RecordTable.appendChild(Caption);
+
+        var trHead = document.createElement('tr');
+        var NameTh = document.createElement('th');
+        var ScoreTh = document.createElement('th');
+
+        NameTh.innerHTML = 'PLAYER';
+        ScoreTh.innerHTML = 'SCORE';
+
+        trHead.appendChild(NameTh);
+        trHead.appendChild(ScoreTh);
+
+        RecordTable.appendChild(trHead);
+
+        for (var i = 0; i <= RowNumber; i++)
+        {
+            var tr = document.createElement('tr');
+            var NameTd = document.createElement('td');
+            var ScoreTd = document.createElement('td');
+
+            NameTd.innerHTML = arr[i].user;
+            ScoreTd.innerHTML = arr[i].score;
+
+            tr.appendChild(NameTd);
+            tr.appendChild(ScoreTd);
+
+            RecordTable.appendChild(tr);
+        }
+
+        document.getElementById("start_page").appendChild(RecordTable);
 		}
-	
-	function updateAJAX(lastRecords){
-		$.ajax( {
+		
+
+
+
+		function TAjaxStorage(showFunc) {
+
+var self = this;
+var Records = [
+		{user: 'dima', score: 20},
+		{user: 'roma', score: 20},
+		{user: 'vasia', score: 50},
+		{user: 'alex', score: 50},
+		{user: 'dan', score: 100}
+];
+
+
+
+//InsertDataSting();  //!!! Do not decomment!!!
+
+function InsertDataSting() {
+		$.ajax(
+				{
 						url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
-						data : { f : 'UPDATE', n : stringName, v : JSON.stringify(lastRecords), p : updatePassword },
-						success : updateReady, error : errorHandler
+						data : { f : 'INSERT', n : stringName, v : JSON.stringify(Records) },
+						success : InsertReady, error : ErrorHandler
 				}
 		);
-	}
-	
+}
+
+function InsertReady(Result) {
+		if (Result) alert('Строка данных ' + stringName + ' добавлена!!!');
+		console.log(Result);
+}
+
+self.RestoreRecords = function()
+{
+		$.ajax(
+				{
+						url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+						data : { f : 'READ', n : stringName },
+						success : ReadReady, error : ErrorHandler
+				}
+		);
+};
+
+function ReadReady(ResultH)
+{
+		if ( ResultH.error!=undefined )
+				alert(ResultH.error);
+		else if ( ResultH.result!="" )
+		{
+				var RecordA = JSON.parse(ResultH.result);
+				showFunc( RecordA );
+		}
+}
+
+self.UpdateRecords = function (hash) {
+		var CurrentRecordA;
+		
+		$.ajax(
+				{
+						url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+						data : { f : 'READ', n : stringName },
+						success : ReadReady2, error : ErrorHandler
+				}
+		);
+
+		function ReadReady2(ResultH)
+		{
+				if ( ResultH.error!=undefined )
+						alert(ResultH.error);
+				else if ( ResultH.result!="" )
+				{
+						CurrentRecordA = JSON.parse(ResultH.result); // Comment to clean records table
+						//CurrentRecordA = []; // For clean Records Table
+						for (var i=0; i<CurrentRecordA.length; i++)
+						{
+								if (hash.user === CurrentRecordA[i].user)
+								{
+										//alert('same user!');
+										//alert(hash.score);
+										//alert(CurrentRecordA[i].score);
+										if (hash.score > CurrentRecordA[i].score)
+										{
+												CurrentRecordA[i].score = hash.score;
+												StoreData();
+												return;
+										} else
+												return;
+								}
+						}
+						CurrentRecordA.push( hash );
+						CurrentRecordA.sort(compareNumeric);
+						StoreData();
+				}
+
+				function compareNumeric(a, b) {
+						return b.score - a.score;
+				}
+		}
+
+		function StoreData() {
+				UpdatePassword = Math.random();
+				$.ajax(
+						{
+								url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+								data : { f : 'LOCKGET', n : stringName, p : UpdatePassword },
+								success : LockGetReady, error : ErrorHandler
+						}
+				);
+		}
+
+		function LockGetReady(ResultH) {
+				if ( ResultH.error != undefined )
+						alert(ResultH.error);
+				else
+				{
+						$.ajax(
+								{
+										url : ajaxHandlerScript, type : 'POST', cache : false, dataType:'json',
+										data : { f : 'UPDATE', n : stringName, v : JSON.stringify(CurrentRecordA), p : UpdatePassword },
+										success : UpdateReady, error : ErrorHandler
+								}
+						);
+				}
+		}
+};
+
+
+
+
+
+function UpdateReady(ResultH) {
+		if ( ResultH.error != undefined )
+				alert(ResultH.error);
+}
+
+function ErrorHandler(jqXHR,StatusStr,ErrorStr) {
+		alert(StatusStr + ' ' + ErrorStr);
+}
+}
+
+
 
 	
 </script>
