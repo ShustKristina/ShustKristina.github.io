@@ -109,7 +109,7 @@ var updatePassword;
 
 function lockGetReady(callresult) {
     if ( callresult.error!=undefined )
-        alert(callresult.error); 
+        alert("Извините! Таблица рекордов в данный момент не доступна!"); 
     else {
         var info={
             name : window.localStorage["UserName"],
@@ -127,7 +127,7 @@ function lockGetReady(callresult) {
 
 function updateReady(callresult) {
     if ( callresult.error!=undefined )
-        alert(callresult.error); 
+        alert("Извините! Таблица рекордов в данный момент не доступна!"); 
 }
 
 function restoreInfo() {
@@ -145,7 +145,7 @@ function readReady(callresult) {
         alert(callresult.error); 
     else if ( callresult.result!="" ) {
         var info=JSON.parse(callresult.result); 
-        document.getElementById('playersBestScore').innerHTML=info.name+info.score+info.difficulty;
+        document.getElementById('btn_begin_play').innerHTML=info.name+info.score+info.difficulty;
         
     }
 }
@@ -154,7 +154,7 @@ function errorHandler(jqXHR,statusStr,errorStr) {
     alert(statusStr+' '+errorStr);
 }
 storeInfo()
-
+restoreInfo();
 	
 </script>
 </body>

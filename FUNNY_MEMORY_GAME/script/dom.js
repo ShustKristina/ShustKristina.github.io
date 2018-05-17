@@ -168,7 +168,7 @@ function Game() {
 
                             timer1.stop();
                             
-restoreInfo();
+
                             self.flowingCongratulations();
                         }
 
