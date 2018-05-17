@@ -225,7 +225,8 @@ function Game() {
     self.flowingCongratulations = function () {
         var timeMin = document.getElementById("min").innerHTML;
         var timeSec = document.getElementById("sec").innerHTML;
-        window.localStorage.setItem("Time", timeMin+timeSec);
+        window.localStorage.setItem("TimeMin", timeMin);
+        window.localStorage.setItem("TimeSec", timeSec);
         var numberSteps = document.getElementById("numbersOfSteps").innerHTML;
         var congratulations = document.getElementById("congratulations");
         document.getElementById("timerStepsReset").style.opacity = "0.6";
