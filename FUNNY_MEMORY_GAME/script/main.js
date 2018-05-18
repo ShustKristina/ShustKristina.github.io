@@ -375,8 +375,6 @@ function vibro() {
     }
 }
 
-
-
 //AJAX
 
 var stringName='SHUST_MEMORY_GAME';
