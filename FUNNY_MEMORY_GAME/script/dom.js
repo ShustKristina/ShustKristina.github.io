@@ -1,5 +1,25 @@
 
 document.addEventListener("keydown", keyboardKontrol);
+function aa(){
+    var wrap=document.getElementsByClassName("wrapper_card")
+    console.log(wrap)
+    console.log(document.activeElement)
+    for(var i=0; i<wrap.length; i++){
+        if (document.activeElement === wrap[i]) {
+            
+            document.body.keydown(function(event) {
+
+                if (event.keyCode === 53) {
+                    event.preventDefault()
+                    console.log('keydown pressed')
+                }
+            });
+        }
+    }
+}
+
+    
+
 
 var startPlay = function startPlay() {
     var nameplayers = document.getElementById("namePlayer");
@@ -28,7 +48,9 @@ var startPlay = function startPlay() {
     game.createBoardCards();
     game.addCards();
     game.addListeners();
+
     timer.start();
+
 }
 
 
@@ -280,7 +302,8 @@ function Card(className, backCard, faceCard) {
         var wrapperCard = document.createElement("div");
 
         wrapperCard.className = "wrapper_card";
-
+        wrapperCard.tabIndex="2";
+       
         var back = document.createElement("span");
         back.className = "back_card";
         
@@ -296,9 +319,15 @@ function Card(className, backCard, faceCard) {
         wrapperCard.appendChild(face);
 
         return wrapperCard;
+
+        
+      
     };
 
 }
+
+
+
 var interval;
 function Timer() {
     var self = this;
@@ -436,13 +465,13 @@ function ReadReady(ResultH)
 		}
 	}
 }	
-// функция добавляет данные в хэш и отправляет обновленный хэш на сервер
+
 function saveResult() {
 var userName=window.localStorage["UserName"];
 var time=(parseFloat(window.localStorage["TimeMin"]))*60+parseFloat(window.localStorage["TimeSec"]);
 var steps=+window.localStorage["Steps"];
    
-	//добавляем нового победителя
+	
 	Storage.unshift({"name": userName, "score": time, "steps": steps});
 	Storage.sort(CompareScore);
 	
@@ -476,18 +505,17 @@ function LockGetReady(ResultH) {
 	}
 }
 
-// вывод сообщения об ошибке при записи
+
 function UpdateReady(ResultH) {
 	if ( ResultH.error!=undefined )
 		console.log("Извините, запись рекордов временно не доступна.\n"+ResultH.error); 
 }
 
-//вывод сообщения об ошибке
 function ErrorHandler(jqXHR,StatusStr,ErrorStr){	
 	console.log("Извините, запись рекордов временно не доступна.\n"+StatusStr+' '+ErrorStr);
 }
 
-//функция сравнения по времени для сортировки таблицы
+
 function CompareScore(A,B) {
 	return B.score - A.score;
 }
