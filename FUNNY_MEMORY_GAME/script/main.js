@@ -1,25 +1,5 @@
 
 document.addEventListener("keydown", keyboardKontrol);
-function aa(){
-    var wrap=document.getElementsByClassName("wrapper_card")
-    console.log(wrap)
-    console.log(document.activeElement)
-    for(var i=0; i<wrap.length; i++){
-        if (document.activeElement === wrap[i]) {
-            
-            document.body.keydown(function(event) {
-
-                if (event.keyCode === 53) {
-                    event.preventDefault()
-                    console.log('keydown pressed')
-                }
-            });
-        }
-    }
-}
-
-    
-
 
 var startPlay = function startPlay() {
     var nameplayers = document.getElementById("namePlayer");
@@ -37,10 +17,8 @@ var startPlay = function startPlay() {
     if (!validate()) {
         return false
     }
-
     var game = new Game();
     var timer = new Timer();
-
     game.getNumberOfCards();
     game.getBackCards();
     game.defineCardsFace();
@@ -48,9 +26,7 @@ var startPlay = function startPlay() {
     game.createBoardCards();
     game.addCards();
     game.addListeners();
-
     timer.start();
-
 }
 
 
@@ -93,7 +69,6 @@ function Game() {
                 break;
         }
     }
-
 
     self.getNumberOfCards = function () {
         var inputDifficulty = document.getElementsByName("difficulty");
@@ -177,11 +152,11 @@ function Game() {
                 self.startSound(soundName);
                 vibro();
                 flippedCards.forEach(function (elem) {
-                    var timeout1 = setTimeout(function () {
+                   setTimeout(function () {
                         elem.classList.add('hidden');
                         
                     }, 1000);
-                    var timeout2 = setTimeout(function () {
+                    setTimeout(function () {
 
                         self.wrapperCards.splice(self.wrapperCards.indexOf(elem.parentNode), 1);
                         elem.classList.remove('flipped');
@@ -210,10 +185,10 @@ function Game() {
             } else {
 
                 flippedCards.forEach((elem) => {
-                    var timeout1 = setTimeout(() => {
+                    setTimeout(() => {
                         elem.classList.remove('flipped');
                     }, 1000);
-                    var timeout2 = setTimeout(() => {
+                   setTimeout(() => {
                         self.counterFlippedCards = 0;
                     }, 1500);
 
@@ -243,19 +218,15 @@ function Game() {
             }
             audio.play();
         }
-
     }
 
     self.stop = function () {
-
         step.stop();
         document.getElementById("board_cards").innerHTML = "";
-
     };
 
     self.flowingCongratulations = function () {
        
-
         var timeMin = document.getElementById("min").innerHTML;
         var timeSec = document.getElementById("sec").innerHTML;
         window.localStorage.setItem("TimeMin", timeMin);
@@ -265,13 +236,10 @@ function Game() {
         var congratulations = document.getElementById("congratulations");
         document.getElementById("timerStepsReset").style.opacity = "0.6";
         document.getElementById("board_cards").style.opacity = "0.7"; 
-        congratulations.innerHTML = '<p>Your Time: '+timeMin+' '+timeSec+'</p><p>Your Steps: '+numberSteps+'</p><p>Best Score: </p><h3>'+window.localStorage["UserName"]+', Good Job!</h3><button id="btn_new_game" onclick="reset()">New Game</button>';
+        congratulations.innerHTML = '<p>Your Time: '+timeMin+' '+timeSec+'</p><p>Your Steps: '+numberSteps+'</p><p>Best Score: '+Storage[0].score+' sec</p><h3>'+window.localStorage["UserName"]+', Good Job!</h3><button id="btn_new_game" onclick="reset()">New Game</button>';
         congratulations.style.transform = "translateY(480px)";
     }
 
-    
-
-    //
     self.backReset = function () {
         var event = event || window.event;
         var oldHash = window.location.hash;
@@ -298,15 +266,11 @@ function Card(className, backCard, faceCard) {
     self.faceCard = faceCard;
 
     self.getWrapperCard = function () {
-
         var wrapperCard = document.createElement("div");
-
         wrapperCard.className = "wrapper_card";
-        wrapperCard.tabIndex="2";
        
         var back = document.createElement("span");
-        back.className = "back_card";
-        
+        back.className = "back_card";  
         back.style.background = "url(images/sprite_back2.svg#" + self.backCard + ") no-repeat";
         back.style.backgroundSize = "cover";
 
@@ -314,19 +278,11 @@ function Card(className, backCard, faceCard) {
         face.className = "face_card " + self.className + "";
         face.style.background = "url(images/" + self.backCard + "/" + self.faceCard + ".png) no-repeat";
         face.style.backgroundSize = "contain";
-
         wrapperCard.appendChild(back);
         wrapperCard.appendChild(face);
-
         return wrapperCard;
-
-        
-      
     };
-
 }
-
-
 
 var interval;
 function Timer() {
@@ -335,10 +291,8 @@ function Timer() {
     var second = 0, minute = 0; hour = 0;
     var sec = document.getElementById("sec");
     var min = document.getElementById("min");
-
     min.innerHTML = minute + "min";
     sec.innerHTML = second + "sec";
-
 
     self.start = function () {
         interval = setInterval(function () {
@@ -356,7 +310,6 @@ function Timer() {
         }, 1000);
     };
     self.stop = function () {
-
         clearInterval(interval);
     };
 }
@@ -374,7 +327,6 @@ function Steps() {
         counterSteps = 0;
         self.stepsSpan.innerHTML = counterSteps;
     }
-
 }
 
 
@@ -387,8 +339,7 @@ function reset() {
         var timer1 = new Timer();
         startPlay();
         document.getElementById("congratulations").style.transform = "translateY(-480px)";
-    function newGame(){
-        
+    function newGame(){    
         document.getElementById("timerStepsReset").style.opacity = "1";
         document.getElementById("board_cards").style.opacity = "1";
     }
@@ -399,7 +350,6 @@ function reset() {
 function keyboardKontrol(event) {
     event = event || window.event;
     if (event.altKey) {
-
         switch (event.keyCode) {
             case 49:
                 switchToMainPage();
@@ -415,12 +365,8 @@ function keyboardKontrol(event) {
                 break;
         }
     }
-
     return false;
 }
-
-
-
 
 //add vibro
 function vibro() {
@@ -472,10 +418,11 @@ var time=(parseFloat(window.localStorage["TimeMin"]))*60+parseFloat(window.local
 var steps=+window.localStorage["Steps"];
    
 	
-	Storage.unshift({"name": userName, "score": time, "steps": steps});
-	Storage.sort(CompareScore);
-	
-		
+    Storage.unshift({name: userName, score: time, steps: steps});
+    if(Storage.length>10){
+        Storage.pop();
+    }
+	Storage.sort(CompareScore);	
 	password = Math.random();
 	$.ajax({
 			url : AjaxHandlerScript,
@@ -505,7 +452,6 @@ function LockGetReady(ResultH) {
 	}
 }
 
-
 function UpdateReady(ResultH) {
 	if ( ResultH.error!=undefined )
 		console.log("Извините, запись рекордов временно не доступна.\n"+ResultH.error); 
@@ -515,7 +461,6 @@ function ErrorHandler(jqXHR,StatusStr,ErrorStr){
 	console.log("Извините, запись рекордов временно не доступна.\n"+StatusStr+' '+ErrorStr);
 }
 
-
 function CompareScore(A,B) {
-	return B.score - A.score;
+	return A.score - B.score;
 }

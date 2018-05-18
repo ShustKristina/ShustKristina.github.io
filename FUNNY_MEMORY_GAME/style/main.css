@@ -36,6 +36,8 @@ button {
     width: 250px;
     margin-bottom: 10px;
     cursor: pointer;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
     transition: all 0.6s;
 }
 button:hover{
@@ -78,6 +80,7 @@ button:hover{
     -webkit-animation-direction: alternate;
     animation-direction: alternate;
 }
+
 @-webkit-keyframes animatLogo{
     from{
  
@@ -102,16 +105,6 @@ button:hover{
         transition: rotate(-45deg);
     }
 }
-@keyframes animatlogo{
-    from{
-        -webkit-transition: rotate(45deg);
-        transition: rotate(45deg);
-    }
-    to{
-        -webkit-transition: rotate(-45deg);
-        transition: rotate(-45deg);
-    }
-}
 
 .start_page {
     display: -webkit-box;
@@ -122,17 +115,44 @@ button:hover{
     align-items:center;
     -ms-flex-pack: distribute;
     justify-content: space-around;
+    -webkit-transition: opacity 1s linear;
+    -o-transition: opacity 1s linear;
     transition: opacity 1s linear;
 }
 
 .main_pencil{ 
     height: 550px;
 }
+#face_pencil{
+    -webkit-animation: animatPencil 1s  ease-in-out;
+    animation: animatPencil 1s  ease-in-out;
+    -webkit-animation-direction: alternate;
+    animation-direction: alternate;
+    transform-origin: right;
+    animation-iteration-count: 6;
+}
+
+@keyframes animatPencil{
+    0{
+       
+        transform:rotate(5deg);
+    }
+   
+    50%{
+    
+        transform: rotate(-5deg);
+    }
+   
+    100%{
+    
+        transform: rotate(0deg);
+    }
+}
  
 /* style of description page*/
 .description_game{
     position: relative;
-    width: 400px;
+    width: 50vw;
     margin-top: 120px;
     padding: 30px;
     font-size: 20px;
@@ -153,26 +173,29 @@ button:hover{
     top:  calc(100% - 50px);
     left: -50px;
     -webkit-transform: rotate(-135deg);
-    transform: scale(0.5) rotate(-135deg);
-    
+    -ms-transform: scale(0.5) rotate(-135deg);
+        transform: scale(0.5) rotate(-135deg); 
 }
 .but2{
     top:  calc(100% - 50px);
     left: calc(100% - 50px);
     -webkit-transform: rotate(135deg);
-    transform: scale(0.5) rotate(135deg);
+    -ms-transform: scale(0.5) rotate(135deg);
+        transform: scale(0.5) rotate(135deg);
 }
 .but3{
     top:  calc(0% - 50px);
     left: -50px;
     -webkit-transform: rotate(-45deg);
-    transform: scale(0.5) rotate(-45deg);
+    -ms-transform: scale(0.5) rotate(-45deg);
+        transform: scale(0.5) rotate(-45deg);
 }
 .but4{
     top:  calc(0% - 50px);
     left: calc(100% - 50px);
     -webkit-transform: rotate(45deg);
-    transform: scale(0.5) rotate(45deg);
+    -ms-transform: scale(0.5) rotate(45deg);
+        transform: scale(0.5) rotate(45deg);
 }
 /* style of records page*/
 #table_records{
@@ -183,7 +206,8 @@ position: relative;
 background-color: rgba(255, 255,0, 0.6);
 border: 1px solid blue;
 font-size: 1.5em;
-box-shadow: 0 0 15px white;
+-webkit-box-shadow: 0 0 15px white;
+        box-shadow: 0 0 15px white;
 padding: 20px;
 color: antiquewhite;
     text-shadow: 1px 1px 1px red;
@@ -191,21 +215,33 @@ color: antiquewhite;
 #table_records tr:nth-of-type(1) td{
     border-collapse: collapse;
     border: 1px solid blue;
-    box-shadow: 0 0 15px white;
+    -webkit-box-shadow: 0 0 15px white;
+            box-shadow: 0 0 15px white;
 }
 
 /* style of play page*/
 #containerInfoGame{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 100%;
 }
-#play{flex-wrap: wrap;
+#play{-ms-flex-wrap: wrap;flex-wrap: wrap;
     padding-bottom: 30px;
     margin-top: 150px;
+    background: -webkit-gradient(linear, left bottom, right top, from(rgba(0, 255, 255, 0.7)),to(rgba(255,255,0, 0.7)));
+    background: -webkit-linear-gradient(bottom left, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
+    background: -o-linear-gradient(bottom left, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
     background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
-    align-items: flex-start;
-    box-shadow: 0 0 5px white;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-box-shadow: 0 0 5px white;
+            box-shadow: 0 0 5px white;
 }
 input[type="radio"]:not(checked) + img{
     width: 130px;
@@ -213,7 +249,8 @@ input[type="radio"]:not(checked) + img{
     border-radius: 10px;
     margin-left: 10px;
     cursor: pointer;
-    box-shadow: 0 0 5px 2px white;
+    -webkit-box-shadow: 0 0 5px 2px white;
+            box-shadow: 0 0 5px 2px white;
 }
 #play h3{
     text-align: center;
@@ -226,25 +263,34 @@ input[type="radio"]:not(checked) + img{
     cursor: pointer;
     padding: 10px;
     background: rgba(0, 255, 255, 0.7);
-    box-shadow: 0 0 5px 2px whitesmoke;
+    -webkit-box-shadow: 0 0 5px 2px whitesmoke;
+            box-shadow: 0 0 5px 2px whitesmoke;
     text-shadow: 1px 2px 3px white;
     font-size: 18px;
     margin-bottom: 10px;
     text-align: center;
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
     transition: all 0.6s;
 }
 input[type="radio"]:checked + label{
     color:red;
-    box-shadow: 0 0 5px 2px gray !important;
+    -webkit-box-shadow: 0 0 5px 2px gray !important;
+            box-shadow: 0 0 5px 2px gray !important;
     font-weight: bold;
     font-size: larger;
 }
 input[type="radio"] + img{
+    -webkit-transition: all 0.6s;
+    -o-transition: all 0.6s;
     transition: all 0.6s;
 }
 input[type="radio"]:checked + img{
-    transform: translateY(-20px);
-    box-shadow: 0 0 5px 2px gray;
+    -webkit-transform: translateY(-20px);
+        -ms-transform: translateY(-20px);
+            transform: translateY(-20px);
+    -webkit-box-shadow: 0 0 5px 2px gray;
+            box-shadow: 0 0 5px 2px gray;
 }
 #playerInfo div, label{
     font-size: 18px;
@@ -259,24 +305,39 @@ input[type="radio"]:checked + img{
 
 /* style of board with cards*/
 #board_cards{display: none;
-    flex-wrap: wrap;
-    justify-content: center;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: 10px 1vw 0 1vw;
 padding: 50px 4vw 10vh 4vw;
+background: -webkit-gradient(linear, left bottom, right top, from(rgba(0, 255, 255, 0.7)),to(rgba(255,255,0, 0.7)));
+background: -webkit-linear-gradient(bottom left, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
+background: -o-linear-gradient(bottom left, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
 background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
-box-shadow: 0 0 20px white;
+-webkit-box-shadow: 0 0 20px white;
+        box-shadow: 0 0 20px white;
+-webkit-transition: opacity 2.5s linear;
+-o-transition: opacity 2.5s linear;
 transition: opacity 2.5s linear;
 }
 .wrapper_card{
     width: 120px;
     height: 150px;
     margin: 5px;
-    transform-style: preserve-3d;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+    -webkit-transition: -webkit-transform 0.5s;
+    transition: -webkit-transform 0.5s;
+    -o-transition: transform 0.5s;
     transition: transform 0.5s;
+    transition: transform 0.5s, -webkit-transform 0.5s;
     background: rgba(255, 255, 0, 0.7);
     border-radius: 10px;
     border: 1px solid white;
-    box-shadow: 0 0 10px 2px cyan;
+    -webkit-box-shadow: 0 0 10px 2px cyan;
+            box-shadow: 0 0 10px 2px cyan;
 }
 .hidden{
     visibility: hidden;
@@ -291,19 +352,23 @@ transition: opacity 2.5s linear;
    position: absolute; 
     top:0;
     left: 0;
-    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
 }
 
 .wrapper_card .face_card{
-    transform: rotateY(180deg);
-    backface-visibility: hidden;
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
+    -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
 }
 .back_card{
     cursor: pointer;
 }
 
 .flipped {
-    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+            transform: rotateY(180deg);
 }
 .hidden{
     visibility: hidden;
@@ -312,9 +377,14 @@ transition: opacity 2.5s linear;
 #timerStepsReset{
     text-align: center;
     display:none;
-    justify-content: space-around;
-    align-items: center;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     margin-top: 120px;
+-webkit-transition: opacity 2s linear;
+-o-transition: opacity 2s linear;
 transition: opacity 2s linear;
 }
 
@@ -341,14 +411,20 @@ transition: opacity 2s linear;
 #timerStepsReset div,
 #timerStepsReset button{
     width: 150px;
+    background: -webkit-gradient(linear, left bottom, right top, from(rgba(0, 255, 255, 0.7)),to(rgba(255,255,0, 0.7)));
+    background: -webkit-linear-gradient(bottom left, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
+    background: -o-linear-gradient(bottom left, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
     background: linear-gradient(to top right, rgba(0, 255, 255, 0.7),rgba(255,255,0, 0.7));
-box-shadow: 0 0 5px white;
+-webkit-box-shadow: 0 0 5px white;
+        box-shadow: 0 0 5px white;
     padding: 15px;
 color: white;
 font-size: 20px;
 text-shadow: 1px 2px 3px red;
 display: inline-block;
 border-radius: 5px;
+-webkit-transition: all 0.6s linear;
+-o-transition: all 0.6s linear;
 transition: all 0.6s linear;
 }
 
@@ -357,10 +433,18 @@ transition: all 0.6s linear;
     color: white;
     font-size: 18px;
     z-index: 1;
-    flex-direction: column;
-    align-items: center;
-    transform: translateZ(0);
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-transform: translateZ(0);
+            transform: translateZ(0);
     will-change: transform;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     position: absolute;
     border-radius: 10px;
@@ -369,10 +453,18 @@ transition: all 0.6s linear;
     top: -310px;
     left: calc(50% - 200px);
     border-radius: 7px;
+    background: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 174, 255, 0.7)), to(rgba(18, 5, 137, 0.9)));
+    background: -webkit-linear-gradient(top, rgba(0, 174, 255, 0.7), rgba(18, 5, 137, 0.9));
+    background: -o-linear-gradient(top, rgba(0, 174, 255, 0.7), rgba(18, 5, 137, 0.9));
     background: linear-gradient(to bottom, rgba(0, 174, 255, 0.7), rgba(18, 5, 137, 0.9));
-    box-shadow: 0 0 5px 7px white;
+    -webkit-box-shadow: 0 0 5px 7px white;
+            box-shadow: 0 0 5px 7px white;
     border: 1.5px solid black;
+    -webkit-transition: -webkit-transform 4s ease-out;
+    transition: -webkit-transform 4s ease-out;
+    -o-transition: transform 4s ease-out;
     transition: transform 4s ease-out;
+    transition: transform 4s ease-out, -webkit-transform 4s ease-out;
 }
 #btn_new_game{
     padding: 5px;
@@ -389,17 +481,28 @@ transition: all 0.6s linear;
     
 #btn_play{
     padding: 8px;
-    order: 1;
+    -webkit-box-ordinal-group: 2;
+        -ms-flex-order: 1;
+            order: 1;
     margin-top: 120px !important;
 }
 #play{
-    order:2;
+    -webkit-box-ordinal-group:3;
+        -ms-flex-order:2;
+            order:2;
     margin-top: 20px;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 #playerInfo{
-    order:3;
+    -webkit-box-ordinal-group:4;
+        -ms-flex-order:3;
+            order:3;
 }
 input[type="radio"]:not(checked) + img{
     width: 95px;
@@ -408,6 +511,9 @@ input[type="radio"]:not(checked) + img{
 #timerStepsReset div{
     padding: 7px;
 }
+.description_game{
+    width: 90vw;
+}
 }
 @media screen and (max-width: 375px) {
     .description_game{
@@ -415,6 +521,5 @@ input[type="radio"]:not(checked) + img{
     }
 .description_game img{
     display: none;
-}
-    
+} 
 }
