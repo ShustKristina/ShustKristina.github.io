@@ -1,0 +1,201 @@
+header {
+    height: 55%;
+    background: url('../image_velo/velo_back1.jpg') no-repeat center;
+    background-size: cover;
+}
+
+footer {
+    margin: 0;
+}
+
+.velosport {
+    text-align: justify;
+    text-indent: 15px;
+    padding-top: 10px;
+    color: black;
+}
+
+.wrapper_velo h2 {
+    width: 100%;
+    text-align: center;
+    position: relative;
+    text-shadow: 2px 2px 2px darkgray;
+    margin-bottom: 15px;
+}
+
+.wrapper_velo h2:before,
+.wrapper_velo h2:after {
+    content: "";
+    position: absolute;
+    width: 27%;
+    border: 3px double darkgray;
+    top: 15px;
+    -webkit-box-shadow: 2px 2px 2px black;
+    box-shadow: 2px 2px 2px black;
+}
+
+.wrapper_velo h2:before {
+    left: 10px;
+}
+
+.wrapper_velo h2:after {
+    right: 10px;
+}
+
+.velosport p {
+    color: black;
+    padding: 15px;
+    margin: 0;
+}
+
+.velosport ul:not(.tp-grid) {
+    padding: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-transition: all .8s;
+    -o-transition: all .8s;
+    transition: all .8s;
+}
+
+.choice {
+    display: inline-block;
+    width: 35%;
+    padding: 40px 10px 40px 10px;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-align: center;
+    cursor: pointer;
+    background: rgba(0, 128, 128, 0.5);
+    -webkit-box-shadow: 0 0 10px 3px black;
+    box-shadow: 0 0 10px 3px black;
+    font-weight: bold;
+    -webkit-transition: all 1.4s;
+    -o-transition: all 1.4s;
+    transition: all 1.4s;
+    text-indent: 0;
+    overflow: hidden;
+}
+
+.velosport a {
+    padding: 0 10px 0 10px;
+    font-size: 18px;
+    color: white;
+    text-shadow: 1px 0 2px black;
+}
+
+.velosport li:hover {
+    background: rgba(105, 105, 105, 0.5);
+    -webkit-box-shadow: inset 0 0 5px 3px white;
+    box-shadow: inset 0 0 5px 3px white;
+}
+
+.wrapper_velo {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+}
+
+.wrapper_velo h3 {
+    background: rgba(0, 128, 128, 0.6);
+    text-align: center;
+    font-size: 19px;
+    text-shadow: 2px 1px 2px white;
+    padding: 10px 0 10px 0;
+}
+
+.wrapper_velo div {
+    width: 40%;
+    outline: 7px solid lightgray;
+    -webkit-box-shadow: 0 0 5px 2px gray;
+    box-shadow: 0 0 5px 2px gray;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.wrapper_velo p {
+    padding: 15px;
+    text-indent: 15px;
+}
+
+.wrapper_velo a {
+    font-weight: normal;
+    text-shadow: none;
+    font-size: inherit;
+    color: black;
+}
+
+@media screen and (max-width: 800px) {
+    .wrapper_velo h2:before,
+    .wrapper_velo h2:after {
+        width: 20%;
+    }
+    .velosport {
+
+        margin: 0;
+
+    }
+    .velosport ul,
+    h2 {
+        margin: 0;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .velosport li {
+        width: 40%;
+    }
+    .wrapper_velo div,
+    .wrapper_velo img {
+        width: 80%;
+    }
+    .wrapper_velo img {
+        margin-left: 10%;
+    }
+    .wrapper_velo h2:before,
+    .wrapper_velo h2:after {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 475px) {
+    .choice {
+        width: 70%;
+    }
+    .wrapper_velo {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .wrapper_velo div {
+        width: 100%;
+    }
+    .wrapper_velo img {
+        width: 45vw;
+        height: 30vw;
+        margin-left: 25vw;
+    }
+}
+
+@media screen and (max-width: 375px) {
+    .choice a {
+        font-size: 15px;
+    }
+
+    .wrapper_velo h2 {
+        font-size: 1.2em;
+    }
+}
