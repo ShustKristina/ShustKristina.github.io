@@ -1,6 +1,37 @@
 header {
 	height: 85%;
+}
+.hidden{
+	opacity:0;
+}
+.visible{
+	opacity:1;
+}
+.slider_main{
+	height: 100%;
+	position: relative;
+	top: -20px;
+}
+.slider_main .slide{
+	position: absolute;
+    height: 100%;
+	width: 100%;
+	opacity: 0;
+	transition: all 1s linear;
+}
+.slide_active{
+	opacity: 1 !important;
+}
+.slider_main .slide:first-child{
 	background: url('../image_main/slider3.jpg') no-repeat center;
+	background-size: cover;
+}
+.slider_main .slide:nth-of-type(2){
+	background: url('../image_main/slider2.jpg') no-repeat center;
+	background-size: cover;
+}
+.slider_main .slide:last-child{
+	background: url('../image_main/slider1.jpg') no-repeat center;
 	background-size: cover;
 }
 
