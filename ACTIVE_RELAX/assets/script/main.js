@@ -15,7 +15,7 @@ slides[currentSlide].className = 'slide slide_active';
 }
 
 jQuery(document).ready(function() {
-    jQuery('.section_flex, .wrapper_velo, .rent').addClass("hidden").viewportChecker({
+    jQuery('.section_flex, .wrapper_velo, .rent, .velosport, .tp-grid, .wrapper_places, .maps_all').addClass("hidden").viewportChecker({
         classToAdd: 'visible animated fadeIn',
         offset: 100
        });
