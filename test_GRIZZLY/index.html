@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GRIZZLY (тестовое задание)</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style/bootstrap.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="style/main.css">
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+  <script src="script/bootstrap.js"></script>
+</head>
+
+<body>
+  <div class="content">
+    <header class="container-fluid">
+      <section class="row banner">
+        <ul>
+          <li>
+            <img src="images/truck.png">Доставка по Минску бесплатно</li>
+          <li>
+            <img src="images/tag.png">Цены ниже рыночных</li>
+          <li>
+            <img src="images/check.png">Все в наличии</li>
+          <li class="graphic">Пн-Вс 9:00-18:00</li>
+        </ul>
+        <ul class="search_login">
+          <li>
+            <span class="find">Найти</span>
+            <i class="fas fa-search"></i>
+          </li>
+          <li>
+            <i class="fas fa-user"></i>
+          </li>
+        </ul>
+      </section>
+      <section class="row contacts">
+        <h1 class="logo">ЛОГО КОМПАНИИ</h1>
+        <ul id="numbers">
+          <li class="num">
+            <img src="images/velcom.jpg">+37529 333 33 33</li>
+          <li class="num">
+            <img src="images/life.png">+37525 333 33 33</li>
+          <li class="num">
+            <img src="images/mts.png">+37533 333 33 33</li>
+          <li>
+            <button onclick="createForm()">Заказать звонок</button>
+          </li>
+        </ul>
+        <div id="text_slider">
+          <ul>
+            <li class="text_slide slide_active">
+              <img src="images/velcom.jpg">+37529 333 33 33</li>
+            <li class="text_slide">
+              <img src="images/life.png">+37525 333 33 33</li>
+            <li class="text_slide">
+              <img src="images/mts.png">+37533 333 33 33</li>
+          </ul>
+          <button onclick="createForm()">Заказать звонок</button>
+        </div>
+      </section>
+      <section class="row navigation">
+        <nav class="navbar navbar-default" role="navigation">
+          <div class="">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <ul class="shopping nav-right">
+              <li>48,25 BYN</li>
+              <li>
+                <i class="fas fa-shopping-cart"></i>
+              </li>
+            </ul>
+          </div>
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="navbar-nav nav nav-left">
+              <li class="nav-item">
+                <a class="nav-link" href="#">КАТАЛОГ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">О НАС</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ДОСТАВКА И ОПЛАТА</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ГАРАНТИЯ И ВОЗВРАТ</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">ВАКАНСИИ</a>
+              </li>
+              <li class="active_link nav-item">
+                <a class="nav-link" href="#">КОНТАКТЫ</a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </section>
+    </header>
+
+    <main class="container-fluid">
+      <section class="row slider slider_contacts">
+        <div>
+          <div class="wrap_info">
+            <h2>КОНТАКТЫ</h2>
+            <p>Мы всегда на связи!</p>
+          </div>
+        </div>
+      </section>
+      <section class="all_contacts row">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+          <ol class="breadcrumb">
+            <li>
+              <a href="#">Главная</a>
+            </li>
+            <li class="active">Контакты</li>
+          </ol>
+          <h4>Свяжитесь с нами любым удобным способом:</h4>
+          <ol>
+            <li>
+              <i class="fas fa-phone"></i>Оптовый отдел: +375-29-391-21-28</li>
+            <li>
+              <i class="fas fa-phone"></i>Телефон для связи в России: +375-29-391-21-28</li>
+            <li>
+              <i class="fab fa-skype"></i>autostrong-minsk</li>
+            <li>
+              <i class="fas fa-envelope"></i>autostrong@yandex.ru </li>
+          </ol>
+          <h4>Информационное сотрудничество:</h4>
+          <ol>
+            <li>
+              <i class="fas fa-phone"></i>+375 33 333 33 33</li>
+          </ol>
+          <h4>Оптовое сотрудничество:</h4>
+          <ol>
+            <li>
+              <i class="fas fa-phone"></i>+375 33 333 33 33</li>
+          </ol>
+        </div>
+      </section>
+      <section class="row map_contacts">
+        <div class="col-xs-6 col-sm-4">
+          <h4>Торговые места:</h4>
+          <ol>
+            <i style="cursor: pointer" onclick="createMarker1()" class="fas fa-map-marker-alt"></i>
+            <li>№33/3</li>
+            <br>
+            <i class="fas fa-phone"></i>
+            <li>+ 375 44 333 33 33
+              <br>+ 375 44 333 33 33</li>
+            <br>
+            <i class="fas fa-clock"></i>
+            <li>Вт-Вс
+              <br>с 9-00 до 16-00</li>
+          </ol>
+        </div>
+        <div class="col-xs-6 col-sm-4">
+          <h4>Основной склад и магазин:</h4>
+          <ol>
+            <i style="cursor: pointer" onclick="createMarker2()" class="fas fa-map-marker-alt"></i>
+            <li>г.Минск, ул.Ивановская, 0</li>
+            <br>
+            <i class="fas fa-phone"></i>
+            <li>+375 33 333 33 33
+              <br>+375 33 333 33 33
+              <br>+375 33 333 33 33</li>
+            <br>
+            <i class="fas fa-clock"></i>
+            <li>Пн-Вс
+              <br>с 9-00 до 19-00</li>
+          </ol>
+        </div>
+        <div class="col-xs-12 col-xs-offset-3 col-sm-4 col-sm-offset-0">
+          <h4>Юридический адрес:</h4>
+          <ol>
+            <i style="cursor: pointer" onclick="createMarker3()" class="fas fa-map-marker-alt"></i>
+            <li>220089 г.Минск
+              <br>ул.Ивановская, 0</li>
+          </ol>
+          <h4>Наши реквизиты:</h4>
+        </div>
+        <div class="col-xs-12" id="map"></div>
+      </section>
+      <section class="col-xs-8 col-xs-offset-2 col-sm-6 col-sm-offset-3 form_window">
+        <div class="wrap_form">
+          <i onclick="closeForm()" class="fas fa-window-close"></i>
+          <h3>Есть вопросы или предложения?</h3>
+          <h4>Пишите нам в любое время!</h4>
+          <form id="ajax_form">
+            <input type="text" placeholder="Ваше имя">
+            <input type="email" placeholder="Ваш email*">
+            <input type="text" name="phone" placeholder="Ваш номер телефона*">
+            <textarea placeholder="Ваше сообщение"></textarea>
+            <input type="submit" value="ОТПРАВИТЬ">
+          </form>
+          <div id="result_form"></div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <footer class="container-fluid">
+    <section class="row">
+      <h1>ЛОГО КОМПАНИИ</h1>
+      <hr>
+      <nav class="navbar">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#">КАТАЛОГ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">О НАС</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ДОСТАВКА И ОПЛАТА</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ГАРАНТИЯ И ВОЗВРАТ</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">ВАКАНСИИ</a>
+          </li>
+          <li class="nav-item" style="text-decoration: underline">
+            <a class="nav-link" href="#">КОНТАКТЫ</a>
+          </li>
+        </ul>
+      </nav>
+      <hr>
+      <ul class="icons">
+        <li>
+          <a title="Звязаться в Skype" href="#">
+            <i class="fab fa-skype"></i>
+          </a>
+        </li>
+        <li>
+          <a title="Отправить письмо" href="#">
+            <i class="fas fa-envelope"></i>
+          </a>
+        </li>
+        <li>
+          <a title="Позвонить" href="#">
+            <i class="fas fa-phone"></i>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </footer>
+
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC-ikX2cbWJQQABitEzaK-S83bCmGNNj1k"></script>
+  <script src="script/map.js"></script>
+  <script src="script/main.js"></script>
+</body>
+</html>
