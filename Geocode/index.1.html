@@ -14,7 +14,7 @@
 </head>
 <body>
    <script>
-   var array;
+   var array=new Array();
    function geozones(){
     var url = "input.xlsx";
     var oReq = new XMLHttpRequest();
@@ -80,8 +80,6 @@ console.log(array)
         console.log( xhr.responseText );
         }    
     }
-
-
 }
 
 geozones()
