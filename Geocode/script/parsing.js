@@ -28,7 +28,7 @@ var array=new Array();
         
 }
 oReq.send();
-return array;
+
 localStorage.setItem("parsArr", array)
 }
 parsing();
