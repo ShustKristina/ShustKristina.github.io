@@ -8,74 +8,45 @@
     <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript" src="https://hst-api.wialon.com/wsdk/script/wialon.js"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css" />
+     <!-- load map -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js"></script>
     <title>Document</title>
 </head>
 <body>
-    <!-- load map -->
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js"></script>
-
-<div id="map" style="height: 400px"></div>
-    <script>
-function initMap() {
-    // create a map in the "map" div, set the view to a given place and zoom
-    map = L.map('map').setView([53.9, 27.55], 4);
-
-    // add an OpenStreetMap tile layer
-    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-        attribution: '&copy; <a href="http://gurtam.com">Gurtam</a>'
-    }).addTo(map);
-
-    
-}
-
-//initMap()
-
-function geozones(){
+   <script>
+   var array;
+   function geozones(){
     var url = "input.xlsx";
-
-var oReq = new XMLHttpRequest();
-oReq.open("GET", url, true);
-oReq.responseType = "arraybuffer";
-
-oReq.onload = function(e) {
-var arraybuffer = oReq.response;
+    var oReq = new XMLHttpRequest();
+        oReq.open("GET", url, true);
+        oReq.responseType = "arraybuffer";
+        oReq.onload = function(e) {
+    var arraybuffer = oReq.response;
 
 /* convert data to binary string */
-var data = new Uint8Array(arraybuffer);
-var arr = new Array();
-for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
-var bstr = arr.join("");
+    var data = new Uint8Array(arraybuffer);
+    var arr = new Array();
+    for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+    var bstr = arr.join("");
 
 /* Call XLSX */
-var workbook = XLSX.read(bstr, {type:"binary"});
+    var workbook = XLSX.read(bstr, {type:"binary"});
 
 /* DO SOMETHING WITH workbook HERE */
-var first_sheet_name = workbook.SheetNames[0];
+    var first_sheet_name = workbook.SheetNames[0];
+
 /* Get worksheet */
-var worksheet = workbook.Sheets[first_sheet_name];
-var array=XLSX.utils.sheet_to_json(worksheet,{raw:true})
-console.log(array);
-array.length=10;
-console.log(array)
-
-
-function newCircle(lat, lng){
-var r = 700;
-circle_zone = L.circle([lat, lng], r, {
-color: 'blue',
-fillColor: 'blue',
-fillOpacity: 0.7
-}).addTo(map);
-
+    var worksheet = workbook.Sheets[first_sheet_name];
+    array=XLSX.utils.sheet_to_json(worksheet,{raw:true})
+        console.log(array);
+        array.length=10;
+        console.log(array);
 }
-for(var i=0; i<array.length; i++){
-
-
-
-var xhr = new XMLHttpRequest();
-
-var params ={"itemId":17634994,
+oReq.send();
+console.log(array)
+    for(var i=0; i<array.length; i++){
+        var xhr = new XMLHttpRequest();
+        var params ={"itemId":17634994,
          "id": 0,
          "callMode": "create",
          "n": ""+array[i].Название+"",
@@ -99,28 +70,20 @@ var params ={"itemId":17634994,
                 "r":600
             }
          ]}
-var sid="054b6982e72906f2acec60d900c3c1fb";
+        var sid="054b6982e72906f2acec60d900c3c1fb";
+        var str=JSON.stringify(params);
 
-var str=JSON.stringify(params);
-
-xhr.open("POST", 'https://hst-api.wialon.com/wialon/ajax.html?svc=resource/update_zone&params='+str+'&sid='+sid+'', true);
-
-xhr.onreadystatechange = function() {
-if (xhr.readyState != 4 || xhr.status != 200) 
-return;
-
-console.log( xhr.responseText );
-
+    xhr.open("POST", 'https://hst-api.wialon.com/wialon/ajax.html?svc=resource/update_zone&params='+str+'&sid='+sid+'', true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState != 4 || xhr.status != 200) 
+            return;
+        console.log( xhr.responseText );
+        }    
+    }
 
 
-//newCircle(array[i].Широта, array[i].Долгота)
 }
 
-}
-}
-
-oReq.send();
-}
 geozones()
         
     </script>
