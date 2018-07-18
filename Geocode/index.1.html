@@ -15,7 +15,7 @@
 <body>
    <script>
    var array=new Array();
-   function geozones(){
+   function parsing(){
     var url = "input.xlsx";
     var oReq = new XMLHttpRequest();
         oReq.open("GET", url, true);
@@ -43,7 +43,10 @@
         console.log(array);
 }
 oReq.send();
+}
+parsing();
 console.log(array)
+function geozones(){
     for(var i=0; i<array.length; i++){
         var xhr = new XMLHttpRequest();
         var params ={"itemId":17634994,
