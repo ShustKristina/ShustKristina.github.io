@@ -39,11 +39,7 @@ for (var i=0; i<array.length; i++){
         };
     
         var resource = wialon.core.Session.getInstance().getItem(res); // get resource by id
-        resource.createZone(obj, // create geofence
-            function(code, data){ // create geofence callback
-                if(code){ msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
-                msg("<b>'"+data.n+"'</b> geofence created successfully"); // print create succeed message
-            });    
+        resource.createZone(obj);    
 }
      
 }
