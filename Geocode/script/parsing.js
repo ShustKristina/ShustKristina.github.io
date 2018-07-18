@@ -28,7 +28,8 @@ var array=new Array();
 for (var i=0; i<array.length; i++){
     // create circle geofence using entered data
         // construct object using entered data
-        var res = "kris_newapex";
+        var res = "17634994";
+        console.log(res)
         var obj = { n: ""+array[i].Название+"", //geofence name
             t: 3, // type (3 - circle)
             f: 0, // flags
