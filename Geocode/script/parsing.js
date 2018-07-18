@@ -39,6 +39,7 @@ for (var i=0; i<array.length; i++){
         };
     
         var resource = wialon.core.Session.getInstance().getItem(res); // get resource by id
+        console.log(resource)
         resource.createZone(obj);    
 }
      
