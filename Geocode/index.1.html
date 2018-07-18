@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="script/script.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="https://hst-api.wialon.com/wsdk/script/wialon.js"></script>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.css" />
+    <title>Document</title>
+</head>
+<body>
+    <!-- load map -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.2/leaflet.js"></script>
+
+<div id="map" style="height: 400px"></div>
+    <script>
+function initMap() {
+    // create a map in the "map" div, set the view to a given place and zoom
+    map = L.map('map').setView([53.9, 27.55], 4);
+
+    // add an OpenStreetMap tile layer
+    L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="http://gurtam.com">Gurtam</a>'
+    }).addTo(map);
+
+    
+}
+
+//initMap()
+
+function geozones(){
+    var url = "input.xlsx";
+
+var oReq = new XMLHttpRequest();
+oReq.open("GET", url, true);
+oReq.responseType = "arraybuffer";
+
+oReq.onload = function(e) {
+var arraybuffer = oReq.response;
+
+/* convert data to binary string */
+var data = new Uint8Array(arraybuffer);
+var arr = new Array();
+for(var i = 0; i != data.length; ++i) arr[i] = String.fromCharCode(data[i]);
+var bstr = arr.join("");
+
+/* Call XLSX */
+var workbook = XLSX.read(bstr, {type:"binary"});
+
+/* DO SOMETHING WITH workbook HERE */
+var first_sheet_name = workbook.SheetNames[0];
+/* Get worksheet */
+var worksheet = workbook.Sheets[first_sheet_name];
+var array=XLSX.utils.sheet_to_json(worksheet,{raw:true})
+console.log(array);
+array.length=10;
+console.log(array)
+
+
+function newCircle(lat, lng){
+var r = 700;
+circle_zone = L.circle([lat, lng], r, {
+color: 'blue',
+fillColor: 'blue',
+fillOpacity: 0.7
+}).addTo(map);
+
+}
+for(var i=0; i<array.length; i++){
+
+
+
+var xhr = new XMLHttpRequest();
+
+var params ={"itemId":17634994,
+         "id": 0,
+         "callMode": "create",
+         "n": ""+array[i].Название+"",
+         "d": "geozones_test",
+         "t": 3,
+         "w":3000,
+         "f": 112,
+         "c": 2583691008,
+         "tc": 16733440,
+         "ts": 12,
+         "min": 0,
+         "max": 18,
+         "path": "",
+         "libId": "",
+         "oldItemId":0,
+         "oldZoneId":0,
+         "p":[				
+            {
+                "x":array[i].Широта,
+                "y":array[i].Долгота,
+                "r":600
+            }
+         ]}
+var sid="054b6982e72906f2acec60d900c3c1fb";
+
+var str=JSON.stringify(params);
+
+xhr.open("POST", 'https://hst-api.wialon.com/wialon/ajax.html?svc=resource/update_zone&params='+str+'&sid='+sid+'', true);
+
+xhr.onreadystatechange = function() {
+if (xhr.readyState != 4 || xhr.status != 200) 
+return;
+
+console.log( xhr.responseText );
+
+
+
+//newCircle(array[i].Широта, array[i].Долгота)
+}
+
+}
+}
+
+oReq.send();
+}
+geozones()
+        
+    </script>
+</body>
+</html>
