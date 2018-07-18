@@ -1,4 +1,12 @@
 var array=new Array();
+$(document).ready(function () {
+    //saveCircle();
+
+    wialon.core.Session.getInstance().initSession("https://hst-api.wialon.com"); // init session
+
+    wialon.core.Session.getInstance().loginToken("9a199bdb98a4ac5d147cfd84cfed1047EE6C6BEB363CE635FC5C0E5BD519910BDB440E62", "" // try to login
+        );
+});
    function parsing(){
     var url = "input.xlsx";
     var oReq = new XMLHttpRequest();
@@ -48,13 +56,4 @@ oReq.send();
 
 }
 parsing();
-$(document).ready(function () {
-    //saveCircle();
 
-    wialon.core.Session.getInstance().initSession("https://hst-api.wialon.com"); // init session
-
-    wialon.core.Session.getInstance().loginToken("9a199bdb98a4ac5d147cfd84cfed1047EE6C6BEB363CE635FC5C0E5BD519910BDB440E62", "", // try to login
-        function (code) { // login callback
-            if (code){ msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
-    });
-});
