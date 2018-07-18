@@ -26,7 +26,7 @@ var array=new Array();
         array.length=10;
         console.log(array);
 for (var i=0; i<array.length; i++){
-    function saveCircle(){ // create circle geofence using entered data
+    // create circle geofence using entered data
         // construct object using entered data
         var res = 17634994;
         var obj = { n: ""+array[i].Название+"", //geofence name
@@ -42,24 +42,21 @@ for (var i=0; i<array.length; i++){
             function(code, data){ // create geofence callback
                 if(code){ msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
                 msg("<b>'"+data.n+"'</b> geofence created successfully"); // print create succeed message
-            });
-    }
-
-    $(document).ready(function () {
-        saveCircle()
-    
-        wialon.core.Session.getInstance().initSession("https://hst-api.wialon.com"); // init session
-
-        wialon.core.Session.getInstance().loginToken("9a199bdb98a4ac5d147cfd84cfed1047EE6C6BEB363CE635FC5C0E5BD519910BDB440E62", "", // try to login
-            function (code) { // login callback
-                if (code){ msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
-        });
-    });
+            });    
 }
      
 }
 oReq.send();
 
-localStorage.setItem("parsArr", array)
 }
 parsing();
+$(document).ready(function () {
+    //saveCircle();
+
+    wialon.core.Session.getInstance().initSession("https://hst-api.wialon.com"); // init session
+
+    wialon.core.Session.getInstance().loginToken("9a199bdb98a4ac5d147cfd84cfed1047EE6C6BEB363CE635FC5C0E5BD519910BDB440E62", "", // try to login
+        function (code) { // login callback
+            if (code){ msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
+    });
+});
